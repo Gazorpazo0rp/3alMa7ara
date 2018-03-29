@@ -292,6 +292,11 @@ border-bottom:1px #FFD200 solid;
 	height:100%;
 	left:50%;
 }
+#signup_form_div{
+	width:100%;
+	height:600px;
+	position:fixed;
+}
 @media screen and (max-width: 1200px) {
 
 	.collapse-item{

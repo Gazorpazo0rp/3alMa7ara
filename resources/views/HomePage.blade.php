@@ -97,7 +97,11 @@
 
 			</div>
 		</div> 
-	
+		<div id="signup_form_div">
+			<form id="signup_form">
+				gfdgdfgdgfdgdf
+			</form>
+		</div>
 			
 	</body>
 </html>
