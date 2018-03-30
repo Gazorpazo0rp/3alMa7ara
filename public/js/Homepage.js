@@ -89,6 +89,9 @@
 					}
 				});
 				
-				
-				
+				}
+				function showLoginForm(){
+					$('#Login_form_div').animate({
+						top:0
+					},1000);
 				}

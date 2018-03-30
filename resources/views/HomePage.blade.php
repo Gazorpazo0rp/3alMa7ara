@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 <html>
 	<head>
+
 		<link rel="stylesheet" type="text/css" href="css/homepageStyle.css">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +21,7 @@
 				<li> <a href="#">Finishing</a></li>
 				<li> <a href="#">Fire Fighting</a></li>
 				<li> <a href="#">Air Conditioning</a></li>
-				<li ID="Login-nav"> <a  href="#">Login/</a></li>
+				<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
 				<li ID="Signup-nav"> <a  href="#">Sign up</a></li>
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
 				
@@ -94,14 +95,20 @@
 				<div id="footer_right">
 
 				</div>
-
+			</div>
+			<div id="Login_form_div">
+				<form id="Login_form">
+						<h1> Login</h1>
+						<input type="text" placeholder="E-mail">
+						<br>
+						
+						<input type="text" name="lastname" placeholder="Password">
+						<br><br>
+						<input type="submit" value="Login" id="Login_button">
+				</form>
 			</div>
 		</div> 
-		<div id="signup_form_div">
-			<form id="signup_form">
-				gfdgdfgdgfdgdf
-			</form>
-		</div>
+		
 			
 	</body>
 </html>
