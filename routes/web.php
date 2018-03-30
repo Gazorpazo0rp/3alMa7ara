@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('HomePage');
-});
+Route::get('/', 'PagesController@Home');
+Route::get('/profile', 'PagesController@Profile');
+Route::get('/register', 'PagesController@Register');
+Route::get('/SubmitRegistration', 'UserController@Register');
