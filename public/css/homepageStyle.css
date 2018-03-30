@@ -341,6 +341,10 @@ border-bottom:1px #FFD200 solid;
 	top:19px;
 	right:19px;
 }
+form a{
+	border-bottom:1px solid #1c45b6;
+	color:#1c45b6;
+}
 @media screen and (max-width: 1200px) {
 
 	.collapse-item{

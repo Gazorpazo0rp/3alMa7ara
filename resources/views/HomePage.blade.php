@@ -99,12 +99,14 @@
 				<form id="Login_form">
 						<h1> Login</h1>
 						<i class="fa fa-times"  id="close" onclick="closeLoginForm()"></i>
-						<input type="text" placeholder="E-mail">
+						<input type="text" placeholder="E-mail" required>
 						<br>
 						
-						<input type="text" name="lastname" placeholder="Password">
+						<input type="text" name="lastname" placeholder="Password" required>
 						<br><br>
 						<input type="submit" value="Login" id="Login_button">
+						<br><br>
+						<a href="#" >forgot password? </a>
 				</form>
 			</div>
 		</div> 

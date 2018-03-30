@@ -1,0 +1,26 @@
+.main-container{
+    width:100%;
+    position:relative;
+}
+.signup_form{
+    position:relative;
+
+    width:70%;
+    left:15%;
+}
+
+.signup_form input{
+    height:50px;
+    width:30%;
+    margin-left:11.5%;
+    margin-top:40px;
+    padding-left:20px;
+    font-size:18px;
+}
+.vertical_line{
+    height:400px;
+    position:absolute;
+    left:50%;
+    top:100px;
+    border-left: 1px solid #1c45b6;
+}

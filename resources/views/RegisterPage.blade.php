@@ -3,26 +3,25 @@
 
 
 <html>
-<section class="form"  id="signup_form">
-<h1 style="font-size:45px;color:#FFD200;">Register</h1>
-<hr>
-<form style="display:block" method="POST" action="/SubmitRegistration">
-    <label for="name">Name</label>
-    <input type="text" id="firstname" name="name"  required >
-	
-	<label for="mob-_num">Mobile Number</label>
-    <input type="text" id="mob_num" name="mob_num" required >
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/RegisterPage.css">    </head>
 
-    <label for="E-mail">E-mail</label>
-    <input type="text" id="E-mail" name="E_mail" required >
-	
-	<label for="pw">Password</label>
-    <input type="password" id="pw" name="pw" required>
-    
-  
-   <button type="submit"> Submit</button>
-  </form>
-</section>
+<body>
+<div class="main-container">
+    <form class="signup_form">
+        <h1 style="text-align: center"> Sign Up </h1>
+        <input type="text" placeholder="Firsm Name" name="first_name" required>
+        <input type="text" placeholder="Last Name" name="last_name" required><br>
+        <input type="text" placeholder="Mobile" name="mobile" required>
+        <input type="text" placeholder="Age" name="age"><br>
+        <div class="vertical_line"></div>
+        <input type="text" placeholder="E-mail" name="email" required><br>
+        <input type="text" placeholder="Password" name="password" required><br>
+        <input type="text" placeholder="Confirm Password" name="confirm_password" required><br>
+        <input type="submit">
+
+
+    </form>
 </body>
 
 
