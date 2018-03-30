@@ -297,7 +297,7 @@ border-bottom:1px #FFD200 solid;
 	z-index:10;
 	width:100%;
 	height:900px;
-	position:absolute;
+	position:fixed;
 	top:-900px;
 	background-color: #020202dc;
 }
@@ -324,6 +324,22 @@ border-bottom:1px #FFD200 solid;
 	background-color: #233444;
 	border:0px;
 	font-family:Cairo;
+}
+#close{
+	position:absolute;
+	top:20px;
+	right:20px;
+	font-size:25px;
+	cursor:pointer;
+	color: #080808a1;
+	border-radius : 0px;
+	transition:all .05s ease 0s; 
+
+}
+#close:hover{
+	font-size:28px;
+	top:19px;
+	right:19px;
 }
 @media screen and (max-width: 1200px) {
 

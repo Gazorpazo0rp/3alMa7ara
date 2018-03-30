@@ -22,9 +22,8 @@
 				<li> <a href="#">Fire Fighting</a></li>
 				<li> <a href="#">Air Conditioning</a></li>
 				<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
-				<li ID="Signup-nav"> <a  href="#">Sign up</a></li>
+				<li ID="Signup-nav"> <a  href="/register">Sign up</a></li>
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
-				
 			</ul>
 		</nav>
 		<div class= "main-container">
@@ -99,6 +98,7 @@
 			<div id="Login_form_div">
 				<form id="Login_form">
 						<h1> Login</h1>
+						<i class="fa fa-times"  id="close" onclick="closeLoginForm()"></i>
 						<input type="text" placeholder="E-mail">
 						<br>
 						

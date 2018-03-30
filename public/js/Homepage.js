@@ -95,3 +95,8 @@
 						top:0
 					},1000);
 				}
+				function closeLoginForm(){
+					$('#Login_form_div').animate({
+						top:-900
+					},1000);
+				}
