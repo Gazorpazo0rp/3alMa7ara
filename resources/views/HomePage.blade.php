@@ -12,7 +12,7 @@
 		
 	</head>
 	<body>
-		@section
+	
 		<nav class="nav-bar" id="Main-nav">
 			<a id ="logoLink"href="#"><img id="logo" src="images/Homepage_images/logo.jpg"></a>
 			<ul>
@@ -26,7 +26,7 @@
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
 			</ul>
 		</nav>
-		@show
+	
 		<div class= "main-container">
 		
 			<div class="Homepage-main-panel ">
