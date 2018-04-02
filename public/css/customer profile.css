@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+body{
+    position: relative;
+	margin:0px !important;
+	padding:0px !important;
+	height:100%;
+	font-family:sans-serif;
+}
+a{
+	text-decoration:none;
+}
+.nav-bar{
+	opacity:.6;
+	position:fixed;
+	background-color:rgb(252, 252, 252);
+	height:60px;
+	margin:0px;
+	z-index:5;
+	width:100%;
+}
+.nav-bar:hover{
+	opacity:0.9;
+}
+.nav-bar ul{
+	padding-right:50px;
+	overflow: hidden;
+	display:block;
+	list-style:none;
+	margin:0px;
+	float:right;
+}
+
+.nav-bar li{
+	display:inline-block;
+	padding-top:0px;
+	height:60px;
+	transition:all .3s ease 0s; 
+}
+.nav-bar li:hover{
+	cursor:pointer;
+	border-bottom: 1px solid  #1c2233;
+	font-size:18px;
+}
+.nav-bar li a{
+	font-family: Cairo;
+	position:relative;
+	top:16px;
+	text-decoration:none;
+	padding-top:30px;
+	font-size:20px;
+	color:#233444;
+	margin-right:20px;
+	margin-left:20px;
+	
+}
+.nav-bar li a:hover{
+    color:#FFD200;
+}
+.nav-bar li a.active{
+    color:#FFD200;
+ 
+}
+
+#logo{
+	position:absolute;
+	float :left;
+	width:90px;
+	left:5%;
+	transition:all .2s ease 0s; 
+	z-index:1;
+	top:2px;
+	opacity:1;
+}
+#minilogo{
+	display: none;
+        position:absolute;
+        float :left;
+        width:140px;
+		left:80px;
+        transition:all .2s ease 0s; 
+        z-index:1;
+        top:8px;
+        opacity:1;
+}
+
+#Login-nav, #Signup-nav{
+	margin:0;
+	padding:0px;
+}
+#Login-nav a , #Signup-nav a{
+	text-align: left;
+	margin:0;
+	padding:0;
+}
+#Signup-nav a{
+	color:#FFD200;
+}
+.collapse-bars{
+	background-color:black;
+	height:1px;
+	width:40px;
+	display:block;
+	margin-top:15px;
+}
+.collapse-item{
+	float:right;
+	display:none;
+}
+
+.button {
+    background-color: #15205391; /* Green */
+    border-radius: 6px;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.6s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.data-panel{
+    position: absolute;
+    padding-top: 110px;
+    margin-left: 15%;
+    margin-bottom:5%;
+    width: 70%; 
+    display: inline-flex;
+}
+
+
+.basic-data{
+    position: relative;
+    background-color: rgba(253, 253, 253, 0.534);
+    width:40%;
+    margin-right: 2%;
+    margin-left:10%;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+
+
+.data-panel-title{
+
+    font-size: 45px;
+    text-align: center;
+    font-family: 'Questrial', sans-serif;
+    color: #1c2233;
+    opacity: 0.7;
+    padding-top: 10%;
+    padding-bottom:12%;
+}
+
+.show-data{
+    
+}
+
+
+ .show-data-boxes{
+    font-size: 25px;
+    color: #1c2233;
+    opacity: 0.6;
+    margin-left:2%;
+    width:100%;
+    word-wrap: break-word;
+ }
+
+ #show-name{
+    margin-top:1%;
+ }
+
+ #show-email{
+    margin-top:0;
+ }
+
+ #show-mobilenumber{
+    margin-top:2%;
+ }
+
+
+
+.edit-data{
+    display:none;
+}
+
+
+#name-icon{
+    color:#152053c5;
+    margin-left:9%; 
+    font-size: 40px;
+    margin-right: 5%;
+    opacity:0.9;
+ 
+}
+
+#mail-icon{
+    color:#152053c5;
+    margin-left:9%; 
+    font-size: 35px;
+    margin-right: 5%;
+    padding-left: 5px;
+    opacity:0.9;
+}
+
+
+#mobile-icon{
+    color:#152053c5;
+    margin-left:9%; 
+    font-size: 55px;
+    margin-right: 6%;
+    padding-left: 10px;
+    opacity:0.9;
+}
+
+#name-input{
+    color:#152053c5;
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+}
+
+#email-input{
+    color:#152053c5;
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+}
+
+
+#mobilenumber-input{
+    color:#152053c5;
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+}
+
+.mobilenumber-textbox{
+    margin-top: 1.5%;
+} 
+.info-panels{
+    width:100%;
+    margin-bottom:5%;
+    display:inline-flex;
+}
+
+.gender{
+    display: inline-flex;
+  /*  margin-top:2%;*/
+    margin-left:10%;
+  /*  margin-bottom:4%;*/
+}
+.radio-container {
+   display: block;
+    position: relative;
+    padding-left: 20%;
+    margin-bottom: 12px;
+    margin-right:11%;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+    background-color: rgba(13, 6, 75, 0.726);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.savedata-button{
+    position: absolute;
+    bottom:12px;
+    right:12px;
+}
+
+.editdata-button{
+    position: absolute;
+    bottom:12px;
+    right:12px;
+ }
+
+.addresses{
+    position: relative;
+    background-color: rgba(248, 248, 248, 0.733);
+    width:40%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 2%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+}
+
+.show-addresses-boxes{
+    font-size: 25px;
+    color: #1c2233;
+    opacity: 0.6;
+    margin-left:2%;
+    width:100%;
+    word-wrap: break-word;
+ }
+
+ #show-address{
+    margin-top:1%;
+ }
+
+ #gps-icon{
+    color:#152053c5;
+    margin-left:9%; 
+    font-size: 40px;
+    margin-right: 5%;
+    opacity:0.9;
+ 
+}
+
+#address-input{
+    color:#152053c5;
+    width:100%;
+    height:40px;
+    padding-left: 10px;
+}
+
+.edit-addresses{
+    display:none;
+}
+
+
+.saveaddresses-button{
+    position: absolute;
+    bottom:12px;
+    right:12px;
+ }
+ 
+ .editaddresses-button{
+    position: absolute;
+    bottom:12px;
+    right:12px;
+  }
+
+
+@media screen and (max-width: 1100px) {
+
+    .collapse-item{
+        cursor:pointer;
+        display:block;
+        float:left;
+        z-index:2;
+    }
+    .nav-bar li{
+        display:none;
+    }
+    .nav-bar.collapsed ul{
+        width:100%;
+        overflow: visible;
+        display:block;
+        list-style:none;
+        margin:0px;
+    }
+    .nav-bar.collapsed li{
+        padding-top:0px;
+        display:block;
+        height:60px;
+    }
+    .nav-bar.collapsed{
+        transition:all .6s ease 0s; 
+        position:relative;
+        margin:0px;
+        z-index:1;
+        height:600px;
+    }
+    #logo{
+        display: none;
+    }
+    #minilogo{
+        display: block;
+        position:absolute;
+        float :left;
+        width:130px;
+        left:30px;
+        transition:all .2s ease 0s; 
+        z-index:1;
+        top:10px;
+        opacity:1;
+        
+    }
+    #minilogoLink{
+        position:relative;
+        margin:auto;
+    }
+    .nav-bar.collapsed li a{
+        position:relative;
+        margin:0;
+        top:0px;
+        font-size:30px;
+        padding-top:0px;
+    }
+    .nav-bar.collapsed .collapse-item{
+        position:relative;
+        margin:auto;
+    }
+    .data-panel{
+        display:block;
+    }
+    .addresses{
+        position: relative;
+        background-color: rgba(248, 248, 248, 0.733);
+        width:80%;
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-top: 2%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    }
+
+    .basic-data{
+        background-color: rgba(253, 253, 253, 0.534);
+        width:80%;
+        margin-right: 10%;
+        margin-left:10%;
+        margin-top: 2%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.29);
+    }
+    
+}
+
+@media screen and (max-width: 1600px){
+    .gender{
+        display:block;
+        
+    }
+}
