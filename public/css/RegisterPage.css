@@ -1,12 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+body{
+  
+    background-color:#ddd;
+    margin-top:0px;
+}
 .main-container{
-    width:100%;
+    top:600;
+    background-color:white;
+    margin-left:20%;
+    width:60%;
     position:relative;
+    margin-top:0;
 }
 .signup_form{
     position:relative;
-
-    width:70%;
-    left:15%;
+    color:white;
+    width:100%;
+    margin-top:50px;
+    margin-bottom:40px;
+   
 }
 
 .signup_form input{
@@ -15,12 +27,44 @@
     margin-left:11.5%;
     margin-top:40px;
     padding-left:20px;
-    font-size:18px;
+    font-size:19px;
 }
 .vertical_line{
-    height:400px;
+    height:150px;
     position:absolute;
-    left:50%;
-    top:100px;
-    border-left: 1px solid #1c45b6;
+    left:50.1%;
+    top:150px;
+    border-left: 2px solid #ddd;
+}
+.wider_input{
+    width:74.5% !important;
+
+}
+#submit_button{
+    width:30%;
+    margin-left:35%;
+    margin-bottom:50px;
+    background-color: #233444;
+    border:0px;
+    color:white;
+    height:60px;
+    font-size:20px;
+    cursor:pointer;
+    border:1px solid white;
+    transition: all .1s;
+}
+#submit_button:hover{
+    border:1px solid #233444;
+}
+h1{
+    color: #233444;
+    padding-top:50px;
+    font-family:Ubuntu;
+}
+.add{
+    position:relative;
+    top:22px;
+    left:10px;
+    width:56px;
+    height:56px;
 }
