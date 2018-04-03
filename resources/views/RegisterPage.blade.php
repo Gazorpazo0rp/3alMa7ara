@@ -19,7 +19,8 @@
         </head>
 <body>
 <div class="main-container">
-    <form class="signup_form" method="POST" action="/SubmitRegistration">
+    <form class="signup_form" method="POST" action="SubmitRegistration">
+        {{ csrf_field() }}
         <h1 style="text-align: center"> Sign Up </h1>
         <div id="inputs_div">
             <input type="text" placeholder="First Name" name="first_name" required>
