@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'PagesController@Home');
-Route::get('/profile', 'PagesController@Profile');
-Route::get('/register', 'PagesController@Register');
-Route::get('/SubmitRegistration', 'UserController@Register');
+Route::get('/profile', 'PagesController@View_Profile');
+Route::get('/Register', 'PagesController@Register');
+Route::post('/Login', 'UserController@Login');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -9,7 +9,14 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/Homepage.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+		<style>
+		#Remember_Me_Check
+		{
+			width : 20px !important;
+			height : 20px !important;
+			
+		}
+		</style>
 	</head>
 	<body>
 	
@@ -22,7 +29,7 @@
 				<li> <a href="#">Fire Fighting</a></li>
 				<li> <a href="#">Air Conditioning</a></li>
 				<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
-				<li ID="Signup-nav"> <a  href="/register">Sign up</a></li>
+				<li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
 			</ul>
 		</nav>
@@ -97,17 +104,34 @@
 				</div>
 			</div>
 			<div id="Login_form_div">
-				<form id="Login_form">
+				<form id="Login_form" method="POST" action="/Login">
+				@csrf
 						<h1> Login</h1>
 						<i class="fa fa-times"  id="close" onclick="closeLoginForm()"></i>
-						<input type="text" placeholder="E-mail" required>
+						
+						<input type="email" name='Email' class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" required autofocus>
+								@if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
 						<br>
 						
-						<input type="text" name="lastname" placeholder="Password" required>
-						<br><br>
+						<input type="password" name='Password' class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" required>
+								@if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+						<br> 
+						<label>
+                            <input type="checkbox"  id = "Remember_Me_Check" name="remember" {{ old('remember') ? 'checked' : '' }}> 
+							{{ __('Remember me') }}
+                        </label>
+						<br>
 						<input type="submit" value="Login" id="Login_button">
 						<br><br>
-						<a href="#" >forgot password? </a>
+						<a href="{{ route('password.request') }}" >forgot password? </a>
 				</form>
 			</div>
 		</div> 

@@ -15,7 +15,7 @@ class PagesController extends Controller
         return ('Your Profile');
     }
     public function Register()
-    {
+    {        
         return view('RegisterPage');
     }
 }
