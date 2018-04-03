@@ -12,9 +12,9 @@
 */
 
 Route::get('/', 'PagesController@Home');
-Route::get('/profile', 'PagesController@View_Profile');
 Route::get('/Register', 'PagesController@Register');
 Route::post('/Login', 'UserController@Login');
+Route::get('/profile/{id}', 'UserController@View_Profile');
 
 Auth::routes();
 
