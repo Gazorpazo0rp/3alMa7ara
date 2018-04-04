@@ -43,6 +43,34 @@ class UserController extends Controller
         $_SESSION["ID"] = $user['id'];
         return view('HomePage');   
     }
+
+    public function Edit(Request $request)
+    {
+        $ToBeValidated = array('name'=> $request->input('name'),
+         'phone' => $request->input('mobile') , 'email' => $request->input('email'),
+         'male' => $request->input('male'),
+         'female' => $request->input('female'),
+         'other' => $request->input('other') 
+        );
+        
+        $user = User::find($_SESSION['ID']);
+        
+        $user->name = $request->input('name');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        
+        if($request->input('male'))
+          $user->gender = 'male';
+        else if($request->input('female'))
+          $user->gender = 'female';
+        else 
+          $user->gender = 'other';    
+        
+        $user->save();
+
+        return view('HomePage');   
+    }
+
     public function View_Profile()
     {
         $Data = User::find($_SESSION["ID"]);

@@ -142,30 +142,31 @@
            <div class="edit-data">
                  
                 <h1 class="data-panel-title ">Personal Data</h1>
-                <form class="edit-basic-data-form" method="POST" action="/profile/1">
+                <form class="edit-basic-data-form" method="POST" action="/EditProfile">
+                {{ csrf_field() }}
                         <div class="info-panels">
                             <i class="material-icons" id="name-icon">account_circle</i>
                             <div class="name"><input type="text" name="name" id="name-input" required/></div>
                         </div>
                         <div class="info-panels">
                                 <i class="fa fa-envelope"  id="mail-icon"></i>
-                            <div class="email-textbox"> <input type="text" name="name" id="email-input" required/></div>
+                            <div class="email-textbox"> <input type="text" name="email" id="email-input" required/></div>
                         </div>
                         <div class="info-panels">
                             <i class="fa fa-mobile-phone" id="mobile-icon"></i> 
-                            <div class="mobilenumber-textbox"><input type="text" name="name" id="mobilenumber-input" required/></div>
+                            <div class="mobilenumber-textbox"><input type="text" name="phone" id="mobilenumber-input" required/></div>
                         </div>
                         <div class="gender">
                               <label class="radio-container">Male
-                                <input type="radio" name="radio"  id="edit-Male-radio-button" >
+                                <input type="radio" name="male"  id="edit-Male-radio-button" >
                                 <span class="checkmark"></span>
                               </label>
                               <label class="radio-container" >Female
-                                <input type="radio" name="radio"  id="edit-Female-radio-button" >
+                                <input type="radio" name="female"  id="edit-Female-radio-button" >
                                 <span class="checkmark"></span>
                               </label>
                               <label class="radio-container" >Other
-                                <input type="radio" name="radio"  id="edit-Other-radio-button" >
+                                <input type="radio" name="other"  id="edit-Other-radio-button" >
                                 <span class="checkmark"></span>
                               </label>
                         </div>
