@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+session_start();
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Apartments;
 class UserController extends Controller
@@ -28,7 +29,7 @@ class UserController extends Controller
         if( $validateObj->fails()) {return ("failure");}
         
         $user = new User;
-        
+      
         $user->name = $request->input('first_name') .' '. $request->input('last_name');
         $user->age = $request->input('age');
         $user->password = Hash::make($request->input('password'));
@@ -37,8 +38,10 @@ class UserController extends Controller
         $user->gender = 'Male';   // Needs to be changed later
         
         $user->save();
-
-        return redirect('/');   
+        $_SESSION["loggedIn"] = 2; // logged in
+           
+        $_SESSION["ID"] = $user['id'];
+        return view('HomePage');   
     }
     public function View_Profile()
     {
