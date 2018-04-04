@@ -184,10 +184,14 @@
 
             <div class="show-addresses">
                 <h1 class="data-panel-title">Addresses</h1>
+                <?php
+                foreach($Apartment_Data as $AP)
+                echo'
                 <div class="info-panels">
                         <i class="fa fa-map-marker" id="gps-icon"></i>
-                        <div class="show-addresses-boxes" id="show-address"><?php echo $Apartment_Data[0]['Location'];?></div>
-                    </div>
+                        <div class="show-addresses-boxes" id="show-address">'.$AP['Location'].'</div>
+                    </div>';
+                ?>
                 <div class="editaddresses-button">
                         <button class="button" id="edit" onclick="editaddresses()">Edit</button>
                     </div>
