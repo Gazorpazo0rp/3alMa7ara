@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>profile </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/workerprofile.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/WorkerProfile.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nova+Flat|Titillium+Web" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amaranth|Patua+One" rel="stylesheet">
