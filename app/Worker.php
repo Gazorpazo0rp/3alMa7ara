@@ -8,6 +8,6 @@ class Worker extends User
 {
     //Table Name
     protected $table = 'workers';
-
-
+    //Timestamps
+    public $timestamps = false;
 }

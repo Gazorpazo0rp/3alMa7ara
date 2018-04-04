@@ -11,7 +11,7 @@ class Customer extends User
     //Primary Key
     public $primaryKey = 'customer_id';
     //Timestambs
-    public $timestambs = false;
+    public $timestamps = false;
     
     public function apartments()
     {
