@@ -265,7 +265,6 @@
             break;
         }
     }
-
     function editaddresses(){
         document.getElementById('name-input').value ="{{$Apartment_Data['location']}}";
         $('.show-addresses').hide();
@@ -275,7 +274,6 @@
         $(adder).before("<div class=\"info-panels\" style=\"display:none\"><i class=\"fa fa-map-marker\" id=\"gps-icon\"></i><div class=\"address\"><input type=\"text\" name=\"address[]\" id=\"address-input\" placeholder=\"Enter New Address\" required/></div><a><img class=\"remove-address-icon\" src=\"/images/customerprofile_images/remove.PNG\" onclick=\"RemoveAddress(this)\"></a></div>");
         $(adder).prev().slideToggle();
     }
-
     function RemoveAddress(remover){
           $(remover).parent().parent().slideToggle("medium",function(){
           $(this).remove();
