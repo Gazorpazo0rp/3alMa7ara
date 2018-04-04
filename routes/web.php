@@ -16,6 +16,7 @@ Route::get('/Register', 'PagesController@Register');
 Route::post('/Login', 'UserController@Login');
 Route::get('/profile/{id}', 'UserController@View_Profile');
 Route::post('/SubmitRegistration', 'UserController@Register');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

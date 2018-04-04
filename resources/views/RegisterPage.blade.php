@@ -31,33 +31,61 @@
             <input type="text" placeholder="E-mail" name="email" required class="wider_input"><br>
             <input type="text" placeholder="Password" name="password" required class="wider_input"><br>
             <input type="text" placeholder="Confirm Password" name="confirm_password" required class="wider_input"><br>
-            <input type="text" placeholder="apartment address" name="apartment1" required   style="width:65%"> <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment()"><br>
-            
+            <input type="text" placeholder="apartment address" name="apartment1" required   style="width:65%" class="apartment_input" state="add"> 
+            <!-- <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><br>-->
+            <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><img class="add" scr="/images/Homepage_images/close.png" onclick="AddApartment(0)"><br>
         </div>
         <input type="submit" id="submit_button">
 
     </form>
     <script>
-        function AddApartment(){
-            // add input
-        var new_input=document.createElement("INPUT");
-        new_input.setAttribute("type","text");
-        new_input.setAttribute("name","apartment1");
-        new_input.setAttribute("placeholder","Appartment Address");
-        new_input.setAttribute("style","width:65%");
-            //add icon
-        var new_add_icon= document.createElement("IMG");
-        new_add_icon.setAttribute("src","images/Homepage_images/addIcon.png");
-        new_add_icon.setAttribute("class","add");
-        new_add_icon.setAttribute("onclick","AddApartment()");
-        count++;
-        input_name="apartment"+count;
-        new_add_icon.setAttribute("name",input_name);
-        console.log(input_name);
-        //append to div
-        document.getElementById("inputs_div").appendChild(new_input);
-        document.getElementById("inputs_div").appendChild(new_add_icon);
-        }
+         function AddApartment(flag){
+             if
+         }
+
+
+
+
+
+     /*   function AddApartment(add){
+
+            var apartment_inputs=document.getElementsByClassName("apartment_input");
+            var icons=document.getElementsByClassName("apartment_input");
+            if(add==1){
+                // add input
+                if(apartment_inputs[count].value!=""){
+                icons[count].setAttribute("src","images/Homepage_images/close.png");
+                icons[count].setAttribute("state","close");
+                    console.log(icons[count].src)
+                var new_input=document.createElement("INPUT");
+                new_input.setAttribute("type","text");
+                new_input.setAttribute("placeholder","Appartment Address");
+                new_input.setAttribute("style","width:65%");
+                new_input.setAttribute("class","apartment_input");
+                
+
+                    //add icon
+                var new_add_icon= document.createElement("IMG");
+                new_add_icon.setAttribute("src","images/Homepage_images/addIcon.png");
+                new_add_icon.setAttribute("class","add");
+                new_add_icon.setAttribute("onclick","AddApartment()");
+                new_add_icon.setAttribute("state","Add");
+
+                count++;
+                input_name="apartment"+count;
+                new_input.setAttribute("name",input_name);
+                new_add_icon.setAttribute("id",input_name);
+                console.log(count);
+                //append to div
+                document.getElementById("inputs_div").appendChild(new_input);
+                document.getElementById("inputs_div").appendChild(new_add_icon);
+                //
+                }
+            }
+            console.log(count);
+
+         }
+*/
 
     </script>
 </body>

@@ -68,15 +68,11 @@
         </ul>
     </nav>
     
-   
-   
-   
     <div class="data-panel">
         
         
         <div class="basic-data">
-            
-            
+ 
             <div class="show-data"> 
                     <h1 class="data-panel-title">Personal Data</h1>
                         <div class="info-panels">
@@ -107,7 +103,9 @@
                         </div>
                         </br> </br> </br> 
                         <script>
-                         var gender = "{{$User_Data['gender']}}";
+                        // var gender = "{{$User_Data['gender']}}";
+                        var gender =<?php echo $User_Data['gender'];?>;
+
                         switch(gender){
                             case "male":
                             $(document).ready(function(){
@@ -131,6 +129,7 @@
                             });
                             break;
                         }
+                        
                         </script>
                         <div class="editdata-button">
                             <button class="button" id="edit" onclick="editdata()">Edit</button>
@@ -187,7 +186,7 @@
                 <h1 class="data-panel-title">Addresses</h1>
                 <div class="info-panels">
                         <i class="fa fa-map-marker" id="gps-icon"></i>
-                        <div class="show-addresses-boxes" id="show-address">{{$Apartment_Data['location']}}</div>
+                        <div class="show-addresses-boxes" id="show-address"><?php echo $Apartment_Data[0]['Location'];?></div>
                     </div>
                 <div class="editaddresses-button">
                         <button class="button" id="edit" onclick="editaddresses()">Edit</button>
@@ -266,7 +265,7 @@
         }
     }
     function editaddresses(){
-        document.getElementById('name-input').value ="{{$Apartment_Data['location']}}";
+        document.getElementById('name-input').value ="<?php echo $Apartment_Data[0]['Location'];?>";
         $('.show-addresses').hide();
         $('.edit-addresses').show();
     }

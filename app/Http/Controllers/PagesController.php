@@ -16,6 +16,6 @@ class PagesController extends Controller
     }
     public function Register()
     {        
-        return view('RegisterPage');
+        return view('CustomerProfile');
     }
 }

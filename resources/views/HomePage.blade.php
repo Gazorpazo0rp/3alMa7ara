@@ -36,7 +36,7 @@
 				<?php
 				if( $_SESSION["status"] == 0) echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
 				<li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
-				else if($_SESSION["status"] == 1)echo'<li> <a href="#">My Profile</a></li>';
+				else if($_SESSION["status"] == 1)echo'<li> <a href="#"><b>My Profile</b></a></li>';
 				?>
 				
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
