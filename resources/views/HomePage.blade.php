@@ -17,6 +17,11 @@
 			
 		}
 		</style>
+		<?php
+		session_start();
+		$_SESSION["status"] = 1;
+		
+		?>
 	</head>
 	<body>
 	
@@ -28,8 +33,12 @@
 				<li> <a href="#">Finishing</a></li>
 				<li> <a href="#">Fire Fighting</a></li>
 				<li> <a href="#">Air Conditioning</a></li>
-				<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
-				<li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>
+				<?php
+				if( $_SESSION["status"] == 0) echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
+				<li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
+				else if($_SESSION["status"] == 1)echo'<li> <a href="#">My Profile</a></li>';
+				?>
+				
 				<div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
 			</ul>
 		</nav>
@@ -40,11 +49,13 @@
 				<img class="slider 	" src="images/Homepage_images/apartment.jpg">
 				<img class="slider 	"  src="images/Homepage_images/apartment2.jpg">
 				<img class="slider 	" src="images/Homepage_images/apartment3.jpg">
-				<div id="Homepage-main-panel-box">
+				<?php if( $_SESSION["status"] == 0) echo'<div id="Homepage-main-panel-box">
 					<h2>Pick your worker and make a reservation now</h2>
 					<h4 style="color:#FFD200">Sign Up now for free and join the platform</h2>
 					<button>Sign Up</button>
-				</div>
+				</div>';?>
+				
+			
 				<button class="w3-button w3-display-left " onclick="slideAnimate(-1)" id="left">&#10094;</button>
 				<button class="w3-button w3-display-right " onclick="slideAnimate(1)" id="right">&#10095;</button>
 				<i id="Down-arrow" class="fa fa-angle-double-down" style="font-size:36px" ></i> 
