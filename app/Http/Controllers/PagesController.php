@@ -8,6 +8,9 @@ class PagesController extends Controller
 {
     public function Home()
     {
+        session_start();
+
+		 $_SESSION["loggedIn"]=1;
         return view('HomePage');
     }
     public function Profile()

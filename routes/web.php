@@ -15,6 +15,7 @@ Route::get('/', 'PagesController@Home');
 Route::get('/Register', 'PagesController@Register');
 Route::post('/Login', 'UserController@Login');
 Route::get('/profile', 'UserController@View_Profile');
+Route::get('/logout', 'UserController@logout');
 Route::post('/SubmitRegistration', 'UserController@Register');
 
 Auth::routes();

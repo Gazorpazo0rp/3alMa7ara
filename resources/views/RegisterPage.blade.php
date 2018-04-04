@@ -31,7 +31,7 @@
             <input type="text" placeholder="E-mail" name="email" required class="wider_input"><br>
             <input type="text" placeholder="Password" name="password" required class="wider_input"><br>
             <input type="text" placeholder="Confirm Password" name="confirm_password" required class="wider_input"><br>
-            <input type="text" placeholder="apartment address" name="apartment1" required   style="width:65%" class="apartment_input" state="add"> 
+            <input type="text" placeholder="apartment address" name="apartment1" required   style="width:65%" class="apartment_input"> 
             <!-- <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><br>-->
             <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><img class="add" scr="/images/Homepage_images/close.png" onclick="AddApartment(0)"><br>
         </div>
@@ -40,7 +40,11 @@
     </form>
     <script>
          function AddApartment(flag){
-             if
+            var apartment_inputs=document.getElementsByClassName("apartment_input");
+            var icons=document.getElementsByClassName("apartment_input");
+             if (flag==1){
+               
+             }
          }
 
 

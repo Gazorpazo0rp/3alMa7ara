@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Apartments;
-
 class UserController extends Controller
 {
     public function Register(Request $request)
@@ -49,17 +49,25 @@ class UserController extends Controller
     public function Login()
     {
        $_user = User::where('email',$_POST['Email'])->get();
-       session_start();
        if($_user->count() > 0)
        {
-            $_SESSION["status"] = 1;
+            $_SESSION["loggedIn"] = 2; // logged in
+           // auth::user()->status = 1;
+           
             $_SESSION["ID"] = $_user[0]['id'];
        }
        else
        {
-            $_SESSION["status"] = 2;
+            $_SESSION["loggedIn"] = 3;
        }
-       return redirect('/');
+        return view('HomePage');
+    }
+    public function logout()
+    {
+        $_SESSION["loggedIn"] = 1; // Not logged in
+        // auth::user()->status = 0;
+        session_unset(); 
+        return view ('HomePage');
     }
     
 }
