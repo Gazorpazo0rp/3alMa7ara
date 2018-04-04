@@ -40,20 +40,20 @@ class UserController extends Controller
 
         return redirect('/');   
     }
-    public function View_Profile($id)
+    public function View_Profile()
     {
-        $Data = User::find($id);
-        $Ap = Apartments::where('customer_id',$id)->get();
+        $Data = User::find($_SESSION["ID"]);
+        $Ap = Apartments::where('customer_id',$_SESSION["ID"])->get();
         return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
     }
     public function Login()
     {
-       $_user = User::where('email',$_POST['Email']);
+       $_user = User::where('email',$_POST['Email'])->get();
        session_start();
        if($_user->count() > 0)
        {
             $_SESSION["status"] = 1;
-            $_SESSION["ID"] = $_user['id'];
+            $_SESSION["ID"] = $_user[0]['id'];
        }
        else
        {
