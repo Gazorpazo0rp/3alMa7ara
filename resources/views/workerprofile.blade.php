@@ -214,7 +214,7 @@
      
 
         function scrollingeffect() {
-
+            console.log(window.pageYOffset);
          var actualheight = $(window).height()+window.pageYOffset;
         if (window.pageYOffset  < 30) {
             $('#minilogo').slideUp(300);

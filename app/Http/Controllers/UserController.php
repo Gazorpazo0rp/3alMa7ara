@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Customer;
 use App\Apartments;
 class UserController extends Controller
 {
@@ -73,13 +74,22 @@ class UserController extends Controller
 
     public function View_Profile()
     {
+
         $Data = User::find($_SESSION["ID"]);
-        $Ap = Apartments::where('customer_id',$_SESSION["ID"])->get();
+        if(Customer::find($_SESSION["ID"])){
+            $Ap = Apartments::where('customer_id',$_SESSION["ID"])->get();
         return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
+        }
+        else if(Customer::find($_SESSION["ID"])){
+            return view('/WorkerProfile',['User_Data' => $Data]);
+
+        }
+
+        
     }
     public function Login()
     {
-       $_user = User::where('email',$_POST['Email'])->get();
+       $_user = User::where('email',$_POST['Email'])->where('password',$_POST['password'])->get();
        if($_user->count() > 0)
        {
             $_SESSION["loggedIn"] = 2; // logged in
@@ -97,7 +107,6 @@ class UserController extends Controller
     {
         $_SESSION["loggedIn"] = 1; // Not logged in
         // auth::user()->status = 0;
-        session_unset(); 
         return view ('HomePage');
     }
     

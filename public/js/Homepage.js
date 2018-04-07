@@ -15,26 +15,37 @@
 
 		// scroll down button in home page
 		$("#Down-arrow").click(function(){
-  $("html,body").animate({
+  		$("html,body").animate({
         scrollTop: $("#how-it-works-container").offset().top
-    }, 1000); 
-	});
+  		  }, 1000); 
+		});
 
+		// mouse scroll for nav-bar
+		$(window).scroll(function(){	
+			console.log(window.pageYOffset);
+			if(window.pageYOffset>300){
 
-	// mouse scroll for nav-bar
-	 $(window).bind('mousewheel', function(e){
-        if(e.originalEvent.wheelDelta /120 > 0) {
-            console.log('scrolling up !');
-			$('.nav-bar').fadeIn("slow");
-        }
-        else{
-            console.log('scrolling down !');
-			$('.nav-bar').fadeOut("slow");
-        }
-    });
+				$('#logo').animate({
+					"opacity":0
+				},{duration:1000,queue:true});
+				$('#minilogo').animate({
+					"opacity":1
+				},{duration:1000,queue:true});
+			}
+			if(window.pageYOffset<300){
+				$('#logo').animate({
+					"opacity":1
+				},{duration:1000,queue:true});
+				$('#minilogo').animate({
+					"opacity":0
+				},{duration:1000,queue:true});
+			}
 			
-});
-
+		});
+			
+			
+	});
+	
 
 		//slider JS
 		var currentIndex=1;
@@ -42,7 +53,7 @@
 		function slideAnimate(passed ){
 			var allSlides = document.getElementsByClassName("slider");
 		if(passed==1){
-			$(allSlides[currentIndex-1]).animate({
+					$(allSlides[currentIndex-1]).animate({
 					"left":"100%" 
 					},{duration: 1200, queue: false});
 					$(allSlides[currentIndex]).animate({
