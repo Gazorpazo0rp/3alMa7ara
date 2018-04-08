@@ -13,7 +13,11 @@
             $(document).ready(function(){
                 $('.main-container').animate({
                     top:0},500);
+                    $('.add').attr('src','images/Homepage_images/addIcon.png');
+                    $('.add').attr('state','add');
+                    $('.add').attr('class','add');
             });
+
         </script>
 
         </head>
@@ -31,36 +35,34 @@
             <input type="text" placeholder="E-mail" name="email" required class="wider_input"><br>
             <input type="text" placeholder="Password" name="password" required class="wider_input"><br>
             <input type="text" placeholder="Confirm Password" name="confirm_password" required class="wider_input"><br>
-            <input type="text" placeholder="apartment address" name="apartment1" required   style="width:65%" class="apartment_input"> 
+            <input type="text" placeholder="apartment address" name="apartment0" style="width:65%" class="apartment_input"> 
             <!-- <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><br>-->
-            <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><img class="add" scr="/images/Homepage_images/close.png" onclick="AddApartment(0)"><br>
+            <img class="add" id="apartment0" scr="images/Homepage_images/addIcon.png" onclick="AddApartment(this)" state="add"><br>
+        
         </div>
         <input type="submit" id="submit_button">
 
     </form>
     <script>
-         function AddApartment(flag){
-            var apartment_inputs=document.getElementsByClassName("apartment_input");
-            var icons=document.getElementsByClassName("apartment_input");
-             if (flag==1){
-               
-             }
-         }
+        
 
 
 
 
 
-     /*   function AddApartment(add){
+        function AddApartment(passed){
 
             var apartment_inputs=document.getElementsByClassName("apartment_input");
-            var icons=document.getElementsByClassName("apartment_input");
-            if(add==1){
+            var icons=document.getElementsByClassName("add");
+            //console.log(count);
+            if(passed.getAttribute("state")=="add"){
+
                 // add input
                 if(apartment_inputs[count].value!=""){
-                icons[count].setAttribute("src","images/Homepage_images/close.png");
-                icons[count].setAttribute("state","close");
-                    console.log(icons[count].src)
+                    console.log('trig');
+                icons[count].setAttribute("src","images/Homepage_images/remove.png");
+                icons[count].setAttribute("state","remove");
+
                 var new_input=document.createElement("INPUT");
                 new_input.setAttribute("type","text");
                 new_input.setAttribute("placeholder","Appartment Address");
@@ -72,24 +74,37 @@
                 var new_add_icon= document.createElement("IMG");
                 new_add_icon.setAttribute("src","images/Homepage_images/addIcon.png");
                 new_add_icon.setAttribute("class","add");
-                new_add_icon.setAttribute("onclick","AddApartment()");
-                new_add_icon.setAttribute("state","Add");
+                new_add_icon.setAttribute("onclick","AddApartment(this)");
+                new_add_icon.setAttribute("state","add");
+                
 
                 count++;
                 input_name="apartment"+count;
                 new_input.setAttribute("name",input_name);
                 new_add_icon.setAttribute("id",input_name);
-                console.log(count);
+
+                //console.log(count);
                 //append to div
-                document.getElementById("inputs_div").appendChild(new_input);
-                document.getElementById("inputs_div").appendChild(new_add_icon);
-                //
+                $(new_input).hide(0);
+                $('#inputs_div').append(new_input);
+                $(new_input).show(1000);
+                $(new_add_icon).hide(0);
+                $('#inputs_div').append(new_add_icon);
+                $(new_add_icon).show(1000);
                 }
+            }
+            else{
+                passed.style.display="none";  
+                document.getElementsByName(passed.getAttribute("id"))[0].style.display="none";
+                document.getElementsByName(passed.getAttribute("id"))[0].value="";
+                //count--;
             }
             console.log(count);
 
-         }
-*/
+            }
+
+         
+
 
     </script>
 </body>

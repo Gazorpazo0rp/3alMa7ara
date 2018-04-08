@@ -22,23 +22,19 @@
 
 		// mouse scroll for nav-bar
 		$(window).scroll(function(){	
-			console.log(window.pageYOffset);
 			if(window.pageYOffset>300){
-
-				$('#logo').animate({
-					"opacity":0
-				},{duration:1000,queue:true});
-				$('#minilogo').animate({
-					"opacity":1
-				},{duration:1000,queue:true});
+				if($('#logo').css('display')!='none'){
+					console.log($('#logo').css('display'));
+					$('#logo').fadeOut(1000);
+					$('#minilogo').fadeIn(1000);
+				}
 			}
 			if(window.pageYOffset<300){
-				$('#logo').animate({
-					"opacity":1
-				},{duration:1000,queue:true});
-				$('#minilogo').animate({
-					"opacity":0
-				},{duration:1000,queue:true});
+				if($('#logo').css('display')!='block'){
+					console.log($('#logo').css('display'));
+					$('#minilogo').fadeOut(1000);
+					$('#logo').fadeIn(1000);
+				}
 			}
 			
 		});

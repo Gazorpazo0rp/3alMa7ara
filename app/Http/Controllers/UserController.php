@@ -19,7 +19,16 @@ class UserController extends Controller
          'phone' => $request->input('mobile') , 'email' => $request->input('email')  
         );
 
- 
+        //post apartments addresses to apartmentsArray
+        $apartmentsArray = array ();
+        foreach($_POST as $key=>$value){
+          if(strpos($key,'apartment')!==false&&$value!=""){
+
+              array_push($apartmentsArray,$value);
+
+          }
+        }
+       
         $validateObj=Validator::make($ToBeValidated, [
             'name' => 'required|string|max:255',
             'age' => 'required|integer|min:1|max:150',
@@ -39,13 +48,27 @@ class UserController extends Controller
         $user->gender = 'Male';   // Needs to be changed later
         
         $user->save();
+        // الخول حسين بيحط اليوزر ف تيبول user ومبيحطوش ف تيبول ال customer 
+        $customerObj= new Customer;
+        $customerObj->customer_id=$user->id;
+        $customerObj->save();
+        // insert each apartment into the db
+        foreach($apartmentsArray as $apartment){
+            $apartmentObj= new Apartments;
+            $apartmentObj->Location=$apartment;
+            $apartmentObj->customer_id=$user->id;
+            $apartmentObj->state="tob a7mar";
+            $apartmentObj->area="150";
+
+            $apartmentObj->save();
+        }
         $_SESSION["loggedIn"] = 2; // logged in
            
-        $_SESSION["ID"] = $user['id'];
+        $_SESSION["ID"] = $user['id']; // for future use 
         return view('HomePage');   
     }
 
-    public function Edit(Request $request)
+    public function EditPersonalInfo(Request $request)
     {
         $ToBeValidated = array('name'=> $request->input('name'),
          'phone' => $request->input('mobile') , 'email' => $request->input('email'),

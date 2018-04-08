@@ -106,7 +106,7 @@ a{
 	left:7%;
 	z-index:1;
 	top:2px;
-	opacity:1;
+	display:block;
 }
 #minilogo{
         position:absolute;
@@ -115,8 +115,8 @@ a{
 		left:80px;
         z-index:1;
         top:8px;
-        opacity:0;
-}
+		display:none;
+	}
 
 #Login-nav, #Signup-nav{
 	margin:0;

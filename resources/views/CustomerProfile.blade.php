@@ -53,55 +53,52 @@
 <body>
     
     <nav class="nav-bar" id="Main-nav">
-        <a id ="logoLink"href="#"><img id="logo" src="/images/customerprofile_images/logo.png"></a>
-        <a id ="minilogoLink"href="#"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
+        <a id ="logoLink"href="/"><img id="logo" src="/images/customerprofile_images/logo.png"></a>
+        <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
 
         <ul>
-            <li> <a href="#" class="active">Home</a></li>
+            <li> <a href="/" class="active">Home</a></li>
             <li> <a href="#">Design</a></li>
             <li> <a href="#">Finishing</a></li>
             <li> <a href="#">Fire Fighting</a></li>
             <li> <a href="#">Air Conditioning</a></li>
-            <li ID="Login-nav"> <a  href="#">Logout</a></li>
+            <li ID="Login-nav"> <a  href="/logout">Logout</a></li>
             <div class="collapse-item" onClick="Showcollapsed()"><span class="collapse-bars"></span> <span class="collapse-bars"></span><span class="collapse-bars"></span></div> 
             
         </ul>
     </nav>
     
     <div class="data-panel">
-        
-        
         <div class="basic-data">
- 
             <div class="show-data"> 
-                    <h1 class="data-panel-title">Personal Data</h1>
-                        <div class="info-panels">
-                            <i class="material-icons" id="name-icon">account_circle</i>
-                            <div class="show-data-boxes" id="show-name">{{$User_Data['name']}}</div>
-                        </div>
-                        <div class="info-panels">
-                                <i class="fa fa-envelope"  id="mail-icon"></i>
-                            <div class="show-data-boxes" id="show-email">{{$User_Data['email']}}</div>
-                        </div>
-                        <div class="info-panels">
-                            <i class="fa fa-mobile-phone" id="mobile-icon"></i> 
-                            <div class="show-data-boxes" id="show-mobilenumber">{{$User_Data['phone']}}</div>
-                        </div>      
-                            <div class="gender">
-                              <label class="radio-container">Male
-                                <input type="radio" name="radio"  id="Male-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="radio-container" >Female
-                                <input type="radio" name="radio"  id="Female-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="radio-container" >Other
-                                <input type="radio" name="radio"  id="Other-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                        </div>
-                        </br> </br> </br> 
+                <h1 class="data-panel-title">Personal Data</h1>
+                <div class="info-panels">
+                    <i class="material-icons" id="name-icon">account_circle</i>
+                    <div class="show-data-boxes" id="show-name">{{$User_Data['name']}}</div>
+                </div>
+                <div class="info-panels">
+                        <i class="fa fa-envelope"  id="mail-icon"></i>
+                    <div class="show-data-boxes" id="show-email">{{$User_Data['email']}}</div>
+                </div>
+                <div class="info-panels">
+                    <i class="fa fa-mobile-phone" id="mobile-icon"></i> 
+                    <div class="show-data-boxes" id="show-mobilenumber">{{$User_Data['phone']}}</div>
+                </div>      
+                    <div class="gender">
+                        <label class="radio-container">Male
+                        <input type="radio" name="radio"  id="Male-radio-button" >
+                        <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-container" >Female
+                        <input type="radio" name="radio"  id="Female-radio-button" >
+                        <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-container" >Other
+                        <input type="radio" name="radio"  id="Other-radio-button" >
+                        <span class="checkmark"></span>
+                        </label>
+                </div>
+                </br> </br> </br> 
                         <script>
                         // var gender = "{{$User_Data['gender']}}";
                         var gender =<?php echo $User_Data['gender'];?>;
