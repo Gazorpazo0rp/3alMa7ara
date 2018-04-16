@@ -21,8 +21,10 @@ class UserController extends Controller
 
         //post apartments addresses to apartmentsArray
         $apartmentsArray = array ();
-        foreach($_POST as $key=>$value){
-          if(strpos($key,'apartment')!==false&&$value!=""){
+        foreach($_POST as $key=>$value)
+        {
+          if(strpos($key,'apartment')!==false&&$value!="")
+          {
 
               array_push($apartmentsArray,$value);
 
@@ -30,10 +32,11 @@ class UserController extends Controller
         }
        
         $validateObj=Validator::make($ToBeValidated, [
-            'name' => 'required|string|max:255',
+            'name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z0-9]*[ ]{0,1}[a-zA-Z0-9]*$/',
+            'min:3','max:255'],
             'age' => 'required|integer|min:1|max:150',
             'password' => 'required|string|min:6|same:password_confirmation',
-            'phone' => 'required|string|min:11|max:11',
+            'phone' => 'required|digits:11',
             'email' => 'required|string|email|max:255|unique:users'
         ]);
         if( $validateObj->fails()) {return ("failure");}
@@ -48,12 +51,14 @@ class UserController extends Controller
         $user->gender = 'Male';   // Needs to be changed later
         
         $user->save();
-        // الخول حسين بيحط اليوزر ف تيبول user ومبيحطوش ف تيبول ال customer 
+        
         $customerObj= new Customer;
         $customerObj->customer_id=$user->id;
         $customerObj->save();
+        
         // insert each apartment into the db
-        foreach($apartmentsArray as $apartment){
+        foreach($apartmentsArray as $apartment)
+        {
             $apartmentObj= new Apartments;
             $apartmentObj->Location=$apartment;
             $apartmentObj->customer_id=$user->id;
@@ -71,24 +76,32 @@ class UserController extends Controller
     public function EditPersonalInfo(Request $request)
     {
         $ToBeValidated = array('name'=> $request->input('name'),
-         'phone' => $request->input('mobile') , 'email' => $request->input('email'),
-         'male' => $request->input('male'),
-         'female' => $request->input('female'),
-         'other' => $request->input('other') 
+         'phone' => $request->input('phone') , 'email' => $request->input('email')
         );
+        
+        // check for username and phone
+        $validateObj=Validator::make($ToBeValidated, [
+            'name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z0-9]*[ ]{0,1}[a-zA-Z0-9]*$/',
+            'min:3','max:255'],
+            'phone' => 'required|digits:11'  
+        ]);
+
+        if( $validateObj->fails()) {return ("failure");}
         
         $user = User::find($_SESSION['ID']);
         
+        // check whether the entered email is unique or not
+        $test = User::where('email' , $request->input('email'))->get();
+        if($test->count() > 0 && $test[0]['id'] != $user->id)
+        {
+            return ("failure");
+        }
+        
         $user->name = $request->input('name');
         $user->phone = $request->input('phone');
-        $user->email = $request->input('email');
+        $user->email = $request->input('email'); 
+        $user->gender = 'male';
         
-        if($request->input('male'))
-          $user->gender = 'male';
-        else if($request->input('female'))
-          $user->gender = 'female';
-        else 
-          $user->gender = 'other';    
         
         $user->save();
 
@@ -110,10 +123,14 @@ class UserController extends Controller
 
         
     }
+    //Logic of the Login of the user
     public function Login()
     {
-       $_user = User::where('email',$_POST['Email'])->where('password',$_POST['password'])->get();
-       if($_user->count() > 0)
+        // getting the user who owns the Email
+       $_user = User::where('email',$_POST['Email'])->get(); 
+       
+       //check if user exists and whether the password is correct
+       if($_user->count() > 0 && password_verify($_POST['password'], $_user[0]['password']))
        {
             $_SESSION["loggedIn"] = 2; // logged in
            // auth::user()->status = 1;

@@ -13,6 +13,7 @@ class Customer extends User
     //Timestambs
     public $timestamps = false;
     
+    public $numberOfApartments;
     public function apartments()
     {
         return $this->hasMany('App\Apartments','customer_id');

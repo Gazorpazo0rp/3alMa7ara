@@ -33,8 +33,8 @@
             <input type="text" placeholder="Age" name="age"><br>
             <div class="vertical_line"></div>
             <input type="text" placeholder="E-mail" name="email" required class="wider_input"><br>
-            <input type="text" placeholder="Password" name="password" required class="wider_input"><br>
-            <input type="text" placeholder="Confirm Password" name="confirm_password" required class="wider_input"><br>
+            <input type="password" placeholder="Password" name="password" required class="wider_input"><br>
+            <input type="password" placeholder="Confirm Password" name="confirm_password" required class="wider_input"><br>
             <input type="text" placeholder="apartment address" name="apartment0" style="width:65%" class="apartment_input"> 
             <!-- <img class="add" scr="/images/Homepage_images/addIcon.png" onclick="AddApartment(1)"><br>-->
             <img class="add" id="apartment0" scr="images/Homepage_images/addIcon.png" onclick="AddApartment(this)" state="add"><br>

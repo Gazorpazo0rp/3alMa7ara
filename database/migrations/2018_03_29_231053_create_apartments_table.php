@@ -15,7 +15,8 @@ class CreateApartmentsTable extends Migration
     {
         Schema::create('apartments', function (Blueprint $table) {
             $table->unsignedInteger('customer_id');
-            $table->foreign('customer_id')->references('customer_id')->on('customers');
+            $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('Cascade')
+            ->onUpdate('Cascade');
 
             $table->string('State');
             $table->string('Location');
