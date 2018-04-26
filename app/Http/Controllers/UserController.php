@@ -31,15 +31,25 @@ class UserController extends Controller
           }
         }
        
-        $validateObj=Validator::make($ToBeValidated, [
-            'name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z0-9]*[ ]{0,1}[a-zA-Z0-9]*$/',
-            'min:3','max:255'],
-            'age' => 'required|integer|min:1|max:150',
-            'password' => 'required|string|min:6|same:password_confirmation',
-            'phone' => 'required|digits:11',
-            'email' => 'required|string|email|max:255|unique:users'
-        ]);
-        if( $validateObj->fails()) {return ("failure");}
+        $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
+        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Your name must contain letters only")->with($request); }
+
+        $validateObj=Validator::make($ToBeValidated, ['age' => 'required|integer|min:1|max:150']);
+        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Invalid Age")->with($request); }
+
+        $validateObj=Validator::make($ToBeValidated, ['password' => 'required|string|min:6|same:password_confirmation']);
+        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Password is not identical")->with($request); }
+
+        $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
+        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Your phone number must be 11 digits.")->with($request); }
+
+        $validateObj=Validator::make($ToBeValidated, ['email' => 'required|string|email|max:255|unique:users']);
+        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! This email is used. Please enter a new one.")->with($request); }
+
+
+            
+            
+        //if( $validateObj->fails()) {return ("failure");}
         
         $user = new User;
       
@@ -78,15 +88,14 @@ class UserController extends Controller
         $ToBeValidated = array('name'=> $request->input('name'),
          'phone' => $request->input('phone') , 'email' => $request->input('email')
         );
-        
-        // check for username and phone
-        $validateObj=Validator::make($ToBeValidated, [
-            'name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z0-9]*[ ]{0,1}[a-zA-Z0-9]*$/',
-            'min:3','max:255'],
-            'phone' => 'required|digits:11'  
-        ]);
+                    //Validation section.
+        $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
+        if( $validateObj->fails()) { return view('CustomerProfile')->with("Error! Your name must contain letters only")->with($request); }
 
-        if( $validateObj->fails()) {return ("failure");}
+        $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
+        if( $validateObj->fails()) { return view('CustomerProfile')->with("Error! Your phone number must be 11 digits.")->with($request); }
+                    //---------
+        
         
         $user = User::find($_SESSION['ID']);
         
@@ -94,14 +103,13 @@ class UserController extends Controller
         $test = User::where('email' , $request->input('email'))->get();
         if($test->count() > 0 && $test[0]['id'] != $user->id)
         {
-            return ("failure");
+            return view('CustomerProfile')->with("Error! The email you entered is already exist.")->with($request);
         }
         
         $user->name = $request->input('name');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email'); 
         $user->gender = 'male';
-        
         
         $user->save();
 
