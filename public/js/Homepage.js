@@ -16,20 +16,20 @@
 		// scroll down button in home page
 		$("#Down-arrow").click(function(){
   		$("html,body").animate({
-        scrollTop: $("#how-it-works-container").offset().top
+        scrollTop: $("#how-it-works-container").offset().top-100
   		  }, 1000); 
 		});
 
 		// mouse scroll for nav-bar
 		$(window).scroll(function(){	
-			if(window.pageYOffset>300){
+			if(window.pageYOffset>900){
 				if($('#logo').css('display')!='none'){
 					console.log($('#logo').css('display'));
 					$('#logo').fadeOut(1000);
 					$('#minilogo').fadeIn(1000);
 				}
 			}
-			if(window.pageYOffset<300){
+			if(window.pageYOffset<900){
 				if($('#logo').css('display')!='block'){
 					console.log($('#logo').css('display'));
 					$('#minilogo').fadeOut(1000);
@@ -90,7 +90,7 @@
 				$(".how-it-works-explantion").each(function(i){
 					if(n==i){
 						$("html,body").animate({
-						scrollTop: $(this).offset().top
+						scrollTop: $(this).offset().top-60
 					}, 250*i+600 )
 					
 					}
@@ -104,6 +104,16 @@
 				}
 				function closeLoginForm(){
 					$('#Login_form_div').animate({
+						top:-900
+					},1000);
+				}
+				function showJoinUsForm(){
+					$('#JoinUs_form_div').animate({
+						top:0
+					},1000);
+				}
+				function closeJoinUsForm(){
+					$('#JoinUs_form_div').animate({
 						top:-900
 					},1000);
 				}

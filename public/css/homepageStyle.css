@@ -302,7 +302,7 @@ border-bottom:1px #FFD200 solid;
 	height:100%;
 	left:70%;
 }
-#Login_form_div{
+.Homepage_Form_div{
 	
 	z-index:10;
 	width:100%;
@@ -311,7 +311,7 @@ border-bottom:1px #FFD200 solid;
 	top:-900px;
 	background-color: #020202dc;
 }
-#Login_form{
+.Homepage_Form{
 	position:absolute;
 	background-color: #f2f2f2;
 	width:50%;
@@ -321,6 +321,11 @@ border-bottom:1px #FFD200 solid;
 	text-align:center;
 	opacity:1;
 }
+#JoinUs_form{
+	top:5%;
+	width:70%;
+	left:15%;
+}
 #Login_form input{
 	width:60%;
 	margin:2%;
@@ -328,7 +333,17 @@ border-bottom:1px #FFD200 solid;
 	padding-left:20px;
 	opacity:1 !important;
 }
-#Login_button{
+#JoinUs_form input{
+	padding-left:20px;
+	opacity:1 !important;
+	margin:2%;
+	height:50px;
+	top:3%;
+	width:40%;
+	left:5%;
+	right:5%;
+}
+.Form_submit{
 	cursor:pointer;
 	color:#f2f2f2;
 	background-color: #233444;

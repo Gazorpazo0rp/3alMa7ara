@@ -13,6 +13,7 @@
 			$(document).ready(function(){
 				var wrong_auth={{$_SESSION["loggedIn"]}};
 				if (wrong_auth == 3) alert('Wrong username or password. Please Try again');
+				
 			});
 			
 		</script>
@@ -40,6 +41,7 @@
 				<li> <a href="#">Finishing</a></li>
 				<li> <a href="#">Fire Fighting</a></li>
 				<li> <a href="#">Air Conditioning</a></li>
+				<li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>
 				<?php
 				if( $_SESSION["loggedIn"] == 1|| $_SESSION["loggedIn"] == 3) echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
 				<li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
@@ -122,8 +124,8 @@
 					
 				</div>
 			</div>
-			<div id="Login_form_div">
-				<form id="Login_form" method="POST" action="/Login">
+			<div id="Login_form_div" class="Homepage_Form_div">
+				<form id="Login_form" class="Homepage_Form" method="POST" action="/Login">
 				@csrf
 						<h1> Login</h1>
 						<i class="fa fa-times"  id="close" onclick="closeLoginForm()"></i>
@@ -148,10 +150,37 @@
 							{{ __('Remember me') }}
                         </label>
 						<br>
-						<input type="submit" value="Login" id="Login_button">
+						<input type="submit" value="Login" id="Login_submit" class="Form_submit">
 						<br><br>
 						<a href="{{ route('password.request') }}" >forgot password? </a>
 				</form>
+				
+			</div>
+			<div id="JoinUs_form_div" class="Homepage_Form_div">
+				<form id="JoinUs_form" method="POST" class="Homepage_Form"action="/JoinUs">
+				@csrf
+						<h1> Join us !</h1>
+						<p> Fill this form to join 3alma7ara community. We'll be very happy to work with you.</p>
+						<i class="fa fa-times"  id="close" onclick="closeJoinUsForm()"></i>
+						
+						<input type="email" name='Email' class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" required autofocus>
+								@if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+						<br>
+						
+						<input type="text" name='name' placeholder="Full name" required>
+						<input type="text" name='profession' placeholder="Phone number" required>
+						<input type="text" name='phoneNumber' placeholder="Profession" required>
+						<input type="text" name='age' placeholder="Age" required>
+						<input type="bio" name='bio' placeholder="Bio" >
+						<input type="text" name='address' placeholder="Address" >
+						<input type="file" name='cv'>
+						<input type="submit" value="Submit" id="JoinUs_button" class="Form_submit">
+						
+				</form>	
 			</div>
 		</div> 
 		
