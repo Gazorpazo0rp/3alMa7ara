@@ -70,8 +70,9 @@ class UserController extends Controller
         foreach($apartmentsArray as $apartment)
         {
             $apartmentObj= new Apartments;
-            $apartmentObj->Location=$apartment;
             $apartmentObj->customer_id=$user->id;
+
+            $apartmentObj->Location=$apartment;
             $apartmentObj->state="tob a7mar";
             $apartmentObj->area="150";
 
@@ -85,6 +86,7 @@ class UserController extends Controller
 
     public function EditPersonalInfo(Request $request)
     {
+        $path = $request->photo();
         $ToBeValidated = array('name'=> $request->input('name'),
          'phone' => $request->input('phone') , 'email' => $request->input('email')
         );

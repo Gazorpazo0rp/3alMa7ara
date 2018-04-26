@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkersTable extends Migration
+class CreateWorkerRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateWorkersTable extends Migration
      */
     public function up()
     {
-        Schema::create('workers', function (Blueprint $table) {
+        Schema::create('worker_requests', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('age');
+            $table->string('name');
+            $table->string('profession');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->unsignedInteger('age');
             $table->string('address');
             $table->mediumText('bio');
-            $table->unsignedInteger('rate')->default('0');
-            $table->string('video');  // Video folder path
-            $table->string('dueto');
-            $table->string('status')->default('Available'); //Worker available or Not
+            $table->string('filepath');
+            // Gallery & Video
+            $table->timestamps();
         });
     }
 
@@ -34,6 +35,6 @@ class CreateWorkersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('workers');
+        Schema::dropIfExists('worker_requests');
     }
 }

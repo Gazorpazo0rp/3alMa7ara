@@ -18,9 +18,9 @@ class CreateApartmentsTable extends Migration
             $table->foreign('customer_id')->references('customer_id')->on('customers')->onDelete('Cascade')
             ->onUpdate('Cascade');
 
-            $table->string('State');
             $table->string('Location');
-            $table->unsignedInteger('Area');
+            $table->string('State')->default('Tob A7mar');
+            $table->unsignedInteger('Area')->default('300');
             $table->timestamps();
         });
     }
