@@ -157,13 +157,13 @@
 				
 			</div>
 			<div id="JoinUs_form_div" class="Homepage_Form_div">
-				<form id="JoinUs_form" method="POST" class="Homepage_Form"action="/JoinUs">
+				<form id="JoinUs_form" method="POST" class="Homepage_Form"action="/JoinUs"enctype = "multipart/form-data">
 				@csrf
 						<h1> Join us !</h1>
 						<p> Fill this form to join 3alma7ara community. We'll be very happy to work with you.</p>
 						<i class="fa fa-times"  id="close" onclick="closeJoinUsForm()"></i>
 						
-						<input type="email" name='Email' class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" required autofocus>
+						<input type="email" name='email' class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="E-mail" required autofocus>
 								@if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>

@@ -18,7 +18,7 @@ Route::get('/profile', 'UserController@View_Profile');
 Route::get('/logout', 'UserController@logout');
 Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
-
+Route::post('/JoinUs', 'RequestsController@Submit_Request');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

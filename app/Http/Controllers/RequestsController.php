@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\WorkerRequest;
 
 class RequestsController extends Controller
 {
@@ -12,20 +13,27 @@ class RequestsController extends Controller
         
         $Req = new WorkerRequest;  
       
-        $Req->name = $request->input('name');
-        $Req->age = $request->input('age');
-        $Req->phone = $request->input('mobile');
         $Req->email = $request->input('email');
+        $Req->name = $request->input('name');
+        $Req->profession = $request->input('profession');
+        $Req->phone = $request->input('phoneNumber');
+        $Req->age = $request->input('age');
         $Req->bio = $request->input('bio');
         $Req->address = $request->input('address');
-        $Req->profession = $request->input('prof');
-        $path = $request->file('avater')->store('avatars');
-        $Req->filepath = $path;
+         
+        //See if the form has a file
+        if($request->hasFile('cv'))
+        {   
+            //get the name of the file
+            $filename = $request->cv->getClientOriginalName();
+            //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
+            $path = $request->cv->storeAs('public/upload', $Req->email.' '.$filename);
+            $Req->filepath = $path;
+        }
+       
         $Req->save();
         
-        
-        
-        
+        //$_SESSION["loggedIn"] = 1;
         return view('HomePage');
     }
     /*
@@ -45,8 +53,7 @@ class RequestsController extends Controller
         $Worker->profession = $request->input('prof');
         
         $Req->save();
-        
-        
+          
         return view('HomePage');
     }
     public function Reject_Request(Request $request)
