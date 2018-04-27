@@ -20,7 +20,7 @@ class CreateApartmentsTable extends Migration
 
             $table->string('Location');
             $table->string('State')->default('Tob A7mar');
-            $table->unsignedInteger('Area')->default('300');
+            $table->unsignedInteger('Area')->default('150');
             $table->timestamps();
         });
     }

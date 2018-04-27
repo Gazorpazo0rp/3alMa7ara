@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Customer;
 use App\Apartments;
+use DB;
+
 class UserController extends Controller
 {
     public function Register(Request $request)
@@ -118,12 +120,29 @@ class UserController extends Controller
         return view('HomePage');   
     }
 
+    public function EditApartments(Request $request)
+    {
+        //Delete old Apartments 
+        DB::table('apartments')->where('customer_id', $_SESSION["ID"])->delete();
+
+        foreach($request->input('address') as $newApart)
+        {
+            $newApartment = new Apartments;
+
+            $newApartment->customer_id = $_SESSION["ID"];
+            $newApartment->Location = $newApart;
+            $newApartment->save();
+        }
+        
+        return view('HomePage');
+    }
+
     public function View_Profile()
     {
 
         $Data = User::find($_SESSION["ID"]);
         if(Customer::find($_SESSION["ID"])){
-            $Ap = Apartments::where('customer_id',$_SESSION["ID"])->get();
+            $Ap = Apartments::where('customer_id', $_SESSION["ID"])->get();
         return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
         }
         else if(Customer::find($_SESSION["ID"])){

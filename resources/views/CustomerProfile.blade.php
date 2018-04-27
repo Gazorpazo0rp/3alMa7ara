@@ -139,7 +139,8 @@
 
             <div class="edit-addresses">
                     <h1 class="data-panel-title">Addresses</h1>
-                    <form class="edit-addresses-form" method="POST" action="/profile/1">
+                    <form class="edit-addresses-form" method="POST" action="/EditApartment">
+                    {{ csrf_field() }}
                 @foreach ($Apartment_Data as $AP)
                     <div class="info-panels">
                             <i class="fa fa-map-marker" id="gps-icon"></i>
@@ -194,10 +195,10 @@
     }
 
     function editaddresses(){
-       
+     
         document.getElementById('name-input').value ="<?php echo $Apartment_Data[0]['Location'];?>";
         $('.show-addresses').hide();
-        $('.edit-addresses').show();
+        $('.edit-addresses').show();   
     }
 
     function AddAddress(adder){
