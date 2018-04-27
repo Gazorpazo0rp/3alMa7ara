@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Hassan') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -70,6 +70,10 @@
         <main class="py-4">
             @yield('content')
         </main>
+    </div>
+    <div class="container"> 
+        @include('inc.messages')
+        @yield('content')
     </div>
 </body>
 </html>
