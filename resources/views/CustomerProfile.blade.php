@@ -84,50 +84,7 @@
                     <i class="fa fa-mobile-phone" id="mobile-icon"></i> 
                     <div class="show-data-boxes" id="show-mobilenumber">{{$User_Data['phone']}}</div>
                 </div>      
-                    <div class="gender">
-                        <label class="radio-container">Male
-                        <input type="radio" name="radio"  id="Male-radio-button" >
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-container" >Female
-                        <input type="radio" name="radio"  id="Female-radio-button" >
-                        <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-container" >Other
-                        <input type="radio" name="radio"  id="Other-radio-button" >
-                        <span class="checkmark"></span>
-                        </label>
-                </div>
-                </br> </br> </br> 
-                        <script>
-                        // var gender = "{{$User_Data['gender']}}";
-                        var gender =<?php echo $User_Data['gender'];?>;
 
-                        switch(gender){
-                            case "male":
-                            $(document).ready(function(){
-                                document.getElementById("Male-radio-button").checked = true;
-                                document.getElementById("Female-radio-button").disabled = true;
-                                document.getElementById("Other-radio-button").disabled = true;
-                            });
-                            break;
-                            case "female":
-                            $(document).ready(function(){
-                                document.getElementById("Male-radio-button").disabled = true;
-                                document.getElementById("Female-radio-button").checked = true;
-                                document.getElementById("Other-radio-button").disabled = true;
-                            });
-                            break;
-                            case "other":
-                            $(document).ready(function(){
-                                document.getElementById("Male-radio-button").disabled = true;
-                                document.getElementById("Female-radio-button").disabled = true;
-                                document.getElementById("Other-radio-button").checked = true;
-                            });
-                            break;
-                        }
-                        
-                        </script>
                         <div class="editdata-button">
                             <button class="button" id="edit" onclick="editdata()">Edit</button>
                         </div>
@@ -153,21 +110,6 @@
                             <i class="fa fa-mobile-phone" id="mobile-icon"></i> 
                             <div class="mobilenumber-textbox"><input type="text" name="phone" id="mobilenumber-input" required/></div>
                         </div>
-                        <div class="gender">
-                              <label class="radio-container">Male
-                                <input type="radio" name="male"  id="edit-Male-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="radio-container" >Female
-                                <input type="radio" name="female"  id="edit-Female-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                              <label class="radio-container" >Other
-                                <input type="radio" name="other"  id="edit-Other-radio-button" >
-                                <span class="checkmark"></span>
-                              </label>
-                        </div>
-                        </br> </br> </br> 
                         <div class="savedata-button">
                             <button class="button" id="save">Save</button>
                         </div>
@@ -198,11 +140,13 @@
             <div class="edit-addresses">
                     <h1 class="data-panel-title">Addresses</h1>
                     <form class="edit-addresses-form" method="POST" action="/profile/1">
-                        <div class="info-panels">
+                @foreach ($Apartment_Data as $AP)
+                    <div class="info-panels">
                             <i class="fa fa-map-marker" id="gps-icon"></i>
-                            <div class="address"><input type="text" name="address[]" id="address-input" required/></div>
+                            <div class="address"><input type="text" name="address[]" value="{{$AP['Location']}}" placeholder="Add new address" required/></div>
                             <a><img class="remove-address-icon" src="/images/customerprofile_images/remove.PNG" onclick="RemoveAddress(this)"></a>
-                        </div>
+                    </div> 
+                @endforeach
                         <div class="add-new-address" style="display:inline-flex;" onclick="AddAddress(this)">
                         <a><img class="add-address-icon" src="/images/customerprofile_images/add_address.PNG" ></a>
                         <h1 id="new-address-command">Add a new address!</h1>
@@ -247,39 +191,47 @@
         document.getElementById('name-input').value ="{{$User_Data['name']}}";
         document.getElementById('email-input').value = "{{$User_Data['email']}}";
         document.getElementById('mobilenumber-input').value = "{{$User_Data['phone']}}";
-        var gender = "{{$User_Data['gender']}}";
-        switch(gender){
-            case "male":
-            $(document).ready(function(){
-                document.getElementById("edit-Male-radio-button").checked = true;
-            });
-            break;
-            case "female":
-            $(document).ready(function(){
-                document.getElementById("edit-Female-radio-button").checked = true;
-            });
-            break;
-            case "other":
-            $(document).ready(function(){
-                document.getElementById("edit-Other-radio-button").checked = true;
-            });
-            break;
-        }
     }
+
     function editaddresses(){
+       
         document.getElementById('name-input').value ="<?php echo $Apartment_Data[0]['Location'];?>";
         $('.show-addresses').hide();
         $('.edit-addresses').show();
     }
+
     function AddAddress(adder){
-        $(adder).before("<div class=\"info-panels\" style=\"display:none\"><i class=\"fa fa-map-marker\" id=\"gps-icon\"></i><div class=\"address\"><input type=\"text\" name=\"address[]\" id=\"address-input\" placeholder=\"Enter New Address\" required/></div><a><img class=\"remove-address-icon\" src=\"/images/customerprofile_images/remove.PNG\" onclick=\"RemoveAddress(this)\"></a></div>");
-        $(adder).prev().slideToggle();
+        
+        var check = true;
+        for(var i = 0; i < $('input[name="address[]"]').length;i++){
+                if( $('input[name="address[]"]').eq(i).val() == "")
+                        check = false;
+        }
+        if(check){
+            $(adder).before('<div class="info-panels" style="display:none">'+
+                            '<i class="fa fa-map-marker" id="gps-icon"></i>'+
+                            '<div class="address"><input type="text" name="address[]" placeholder="Add new address" required/></div>'+
+                            '<a><img class="remove-address-icon" src="/images/customerprofile_images/remove.PNG" onclick="RemoveAddress(this)"></a>'+
+                            '</div>'
+                    );
+                    $(adder).prev().slideToggle();
+                  
+        }
+      
     }
+
     function RemoveAddress(remover){
+        if($('input[name="address[]"]').length>1){
+
+            
           $(remover).parent().parent().slideToggle("medium",function(){
           $(this).remove();
-});
+        });
+        }
     }
+
+    
+ 
 </script>
 </body>
 </html>
