@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Worker
+class Image extends Model
 {
-    //Table Name
-    protected $table = 'workers';
+    //Table name
+    protected $table = 'images';
     //Timestamps
     public $timestamps = true;
 
     //Relation : Worker can have many Images
-    public function images()
+    public function worker()
     {
-        return $this->hasMany('App\Image','worker_id');
+        return $this->belongsTo('App\Worker','worker_id');
     }
 }

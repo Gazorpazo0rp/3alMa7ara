@@ -15,15 +15,18 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('age');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
+            $table->string('profession');
+            $table->unsignedInteger('age');
             $table->string('address');
-            $table->mediumText('bio');
-            $table->unsignedInteger('rate')->default('0');
-            $table->string('video');  // Video folder path
-            $table->string('dueto');
             $table->string('status')->default('Available'); //Worker available or Not
+            $table->mediumText('bio')->nullable();
+            $table->unsignedInteger('rate')->default('0');
+            $table->string('video')->nullable();  // Video folder path
+            $table->string('dueto')->nullable();  
+            $table->timestamps();     
         });
     }
 
