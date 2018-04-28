@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\WorkerRequest;
@@ -33,7 +33,6 @@ class RequestsController extends Controller
        
         $Req->save();
         
-        //$_SESSION["loggedIn"] = 1;
         return view('HomePage');
     }
     /*

@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-session_start();
-
+use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -80,9 +79,9 @@ class UserController extends Controller
 
             $apartmentObj->save();
         }
-        $_SESSION["loggedIn"] = 2; // logged in
+        Session::put('loggedIn','2'); // logged in
            
-        $_SESSION["ID"] = $user['id']; // for future use 
+        Session::put('ID',$user['id']) ; // for future use 
         return view('HomePage');   
     }
 
@@ -101,7 +100,7 @@ class UserController extends Controller
                     //---------
         
         
-        $user = User::find($_SESSION['ID']);
+        $user = User::find(Session::get('ID'));
         
         // check whether the entered email is unique or not
         $test = User::where('email' , $request->input('email'))->get();
@@ -123,13 +122,13 @@ class UserController extends Controller
     public function EditApartments(Request $request)
     {
         //Delete old Apartments 
-        DB::table('apartments')->where('customer_id', $_SESSION["ID"])->delete();
+        DB::table('apartments')->where('customer_id', Session::get('ID'))->delete();
 
         foreach($request->input('address') as $newApart)
         {
             $newApartment = new Apartments;
 
-            $newApartment->customer_id = $_SESSION["ID"];
+            $newApartment->customer_id = Session::get('ID');
             $newApartment->Location = $newApart;
             $newApartment->save();
         }
@@ -140,12 +139,12 @@ class UserController extends Controller
     public function View_Profile()
     {
 
-        $Data = User::find($_SESSION["ID"]);
-        if(Customer::find($_SESSION["ID"])){
-            $Ap = Apartments::where('customer_id', $_SESSION["ID"])->get();
+        $Data = User::find(Session::get('ID'));
+        if(Customer::find(Session::get('ID'))){
+            $Ap = Apartments::where('customer_id', Session::get('ID'))->get();
         return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
         }
-        else if(Customer::find($_SESSION["ID"])){
+        else if(Customer::find(Session::get('ID'))){
             return view('/WorkerProfile',['User_Data' => $Data]);
 
         }
@@ -161,20 +160,20 @@ class UserController extends Controller
        //check if user exists and whether the password is correct
        if($_user->count() > 0 && password_verify($_POST['password'], $_user[0]['password']))
        {
-            $_SESSION["loggedIn"] = 2; // logged in
+        Session::put('loggedIn','2'); // logged in
            // auth::user()->status = 1;
-           
-            $_SESSION["ID"] = $_user[0]['id'];
+           Session::put('ID',$_user[0]['id']);
+            
        }
        else
        {
-            $_SESSION["loggedIn"] = 3;
+        Session::put('loggedIn','3');
        }
         return view('HomePage');
     }
     public function logout()
     {
-        $_SESSION["loggedIn"] = 1; // Not logged in
+        Session::put('loggedIn','1'); // Not logged in
         // auth::user()->status = 0;
         return view ('HomePage');
     }

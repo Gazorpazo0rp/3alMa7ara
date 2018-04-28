@@ -1,0 +1,139 @@
+
+.nav-bar{
+	opacity:.9;
+	position:fixed;
+	background-color:#F8F8F8;
+	height:60px;
+	margin:0px;
+	z-index:5;
+	width:100%;
+}
+.nav-bar:hover{
+	opacity:1;
+}
+.nav-bar ul{
+	padding-right:50px;
+	overflow: hidden;
+	display:block;
+	list-style:none;
+	margin:0px;
+	float:right;
+}
+
+.nav-bar li{
+	display:inline-block;
+	padding-top:0px;
+	height:60px;
+	transition:all .3s ease 0s; 
+}
+.nav-bar li:hover{
+	cursor:pointer;
+	border-bottom: 1px solid  #1c2233;
+	font-size:18px;
+}
+.nav-bar li a{
+	font-family: Cairo;
+	position:relative;
+	top:20px;
+	text-decoration:none;
+	padding-top:30px;
+	font-size:15px;
+	color:#233444;
+	margin-right:20px;
+	margin-left:20px;
+	
+}
+.nav-bar li a:hover{
+	color:#FFD200;
+}
+.nav-bar li a.active{
+	color:#FFD200;
+}
+
+
+
+#logo{
+	position:absolute;
+	float :left;
+	width:90px;
+	left:7%;
+	z-index:1;
+	top:2px;
+	display:block;
+}
+#minilogo{
+        position:absolute;
+        float :left;
+        width:140px;
+		left:80px;
+        z-index:1;
+        top:8px;
+		display:none;
+	}
+
+#Login-nav, #Signup-nav{
+	margin:0;
+	padding:0px;
+}
+#Login-nav a , #Signup-nav a{
+	text-align: left;
+	margin:0;
+	padding:0;
+}
+#Signup-nav a{
+	color:#FFD200;
+}
+
+
+
+
+@media screen and (max-width: 1200px) {
+.collapse-item{
+    cursor:pointer;
+    display:block;
+    float:left;
+    z-index:2;
+}
+.nav-bar li{
+    display:none;
+}
+.nav-bar.collapsed ul{
+    width:100%;
+    overflow: visible;
+    display:block;
+    list-style:none;
+    margin:0px;
+}
+.nav-bar.collapsed li{
+    padding-top:0px;
+    display:block;
+    height:60px;
+}
+.nav-bar.collapsed{
+    transition:all .6s ease 0s; 
+    position:relative;
+    margin:0px;
+    z-index:1;
+    height:600px;
+}
+ #logo{
+    position:relative;
+    margin:auto;
+    left:35%;
+}
+#logoLink{
+    position:relative;
+    margin:auto;
+}
+.nav-bar.collapsed li a{
+    position:relative;
+    margin:0;
+    top:0px;
+    font-size:30px;
+    padding-top:0px;
+}
+.nav-bar.collapsed .collapse-item{
+    position:relative;
+    margin:auto;
+}
+}

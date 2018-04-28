@@ -20,6 +20,7 @@ Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'RequestsController@Submit_Request');
+Route::get('/Reservation','PagesController@Reservation');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script>
 			$(document).ready(function(){
-				var wrong_auth={{$_SESSION["loggedIn"]}};
+				var wrong_auth={{Session::get('loggedIn')}};
 				if (wrong_auth == 3) alert('Wrong username or password. Please Try again');
 				
 			});
@@ -39,7 +39,7 @@
 				<img class="slider 	" src="images/Homepage_images/apartment.jpg">
 				<img class="slider 	" src="images/Homepage_images/apartment2.jpg">
 				<img class="slider 	" src="images/Homepage_images/apartment3.jpg">
-				<?php if( $_SESSION["loggedIn"] == 1|| $_SESSION["loggedIn"] == 3) echo'<div id="Homepage-main-panel-box">
+				<?php if( Session::get('loggedIn') == 1|| Session::get('loggedIn') == 3) echo'<div id="Homepage-main-panel-box">
 					<h2>Pick your worker and make a reservation now</h2>
 					<h4 style="color:#FFD200">Sign Up now for free and join the platform</h2>
 					<button>Sign Up</button>
