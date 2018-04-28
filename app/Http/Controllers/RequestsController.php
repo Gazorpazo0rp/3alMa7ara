@@ -27,7 +27,7 @@ class RequestsController extends Controller
             //get the name of the file
             $filename = $request->cv->getClientOriginalName();
             //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
-            $path = $request->cv->storeAs('public/upload', $Req->email.' '.$filename);
+            $path = $request->cv->storeAs('public/upload/CVs', $Req->email.' '.$filename);
             $Req->filepath = $path;
         }
        

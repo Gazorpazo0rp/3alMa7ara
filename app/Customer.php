@@ -16,6 +16,6 @@ class Customer extends User
     public $numberOfApartments;
     public function apartments()
     {
-        return $this->hasMany('App\Apartments','customer_id');
+        return $this->hasMany('App\Apartment','customer_id');
     }
 }
