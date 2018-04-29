@@ -10,6 +10,7 @@
 	</head>
 	<body>
         @include('inc.navbar')
+        @include('inc.messages')
         <style> 
             .nav-bar.collapsed ul{
                 width:80%!important;

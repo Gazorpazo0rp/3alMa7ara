@@ -9,14 +9,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/Homepage.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<script>
-			$(document).ready(function(){
-				var wrong_auth={{Session::get('loggedIn')}};
-				if (wrong_auth == 3) alert('Wrong username or password. Please Try again');
-				
-			});
-			
-		</script>
+
 		<style>
 		#Remember_Me_Check
 		{
@@ -32,7 +25,7 @@
 	</head>
 	<body>
 		@include('inc.navbar')
-	
+		@include('inc.messages')
 		<div class= "main-container">
 		
 			<div class="Homepage-main-panel ">

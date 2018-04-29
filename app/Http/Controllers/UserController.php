@@ -31,26 +31,42 @@ class UserController extends Controller
 
           }
         }
-       
+        
         $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
-        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Your name must contain letters only")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Your name must contain letters only');
+            return view('RegisterPage');
+        }
 
         $validateObj=Validator::make($ToBeValidated, ['age' => 'required|integer|min:1|max:150']);
-        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Invalid Age")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Invalid Age');
+            return view('RegisterPage'); 
+        }
 
         $validateObj=Validator::make($ToBeValidated, ['password' => 'required|string|min:6|same:password_confirmation']);
-        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Password is not identical")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Password is not identical');
+            return view('RegisterPage');
+        }
 
         $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
-        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! Your phone number must be 11 digits.")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Your phone number must be 11 digits.');
+            return view('RegisterPage');
+        }
 
         $validateObj=Validator::make($ToBeValidated, ['email' => 'required|string|email|max:255|unique:users']);
-        if( $validateObj->fails()) { return view('RegisterPage')->with("Error! This email is used. Please enter a new one.")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! This email is used. Please enter a new one.');
+            return view('RegisterPage');
+        }
 
-
-            
-            
-        //if( $validateObj->fails()) {return ("failure");}
         
         $user = new User;
       
@@ -93,10 +109,18 @@ class UserController extends Controller
         );
                     //Validation section.
         $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
-        if( $validateObj->fails()) { return view('CustomerProfile')->with("Error! Your name must contain letters only")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Your name must contain letters only');
+            return view('CustomerProfile');
+        }
 
         $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
-        if( $validateObj->fails()) { return view('CustomerProfile')->with("Error! Your phone number must be 11 digits.")->with($request); }
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Your phone number must be 11 digits.');
+            return view('CustomerProfile');
+        }
                     //---------
         
         
@@ -106,7 +130,8 @@ class UserController extends Controller
         $test = User::where('email' , $request->input('email'))->get();
         if($test->count() > 0 && $test[0]['id'] != $user->id)
         {
-            return view('CustomerProfile')->with("Error! The email you entered is already exist.")->with($request);
+            Session::put('Message','Error! The email you entered is already exist.');
+            return view('CustomerProfile');
         }
         
         $user->name = $request->input('name');
@@ -167,7 +192,7 @@ class UserController extends Controller
        }
        else
        {
-        Session::put('loggedIn','3');
+        Session::put('Message','Invalid email or password');
        }
         return view('HomePage');
     }

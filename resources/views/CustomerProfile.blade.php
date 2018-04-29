@@ -51,7 +51,7 @@
             </script>
 </head>
 <body>
-    
+        @include('inc.messages')
     <nav class="nav-bar" id="Main-nav">
         <a id ="logoLink"href="/"><img id="logo" src="/images/customerprofile_images/logo.png"></a>
         <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>

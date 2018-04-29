@@ -22,6 +22,7 @@
 
         </head>
 <body>
+        @include('inc.messages')
 <div class="main-container">
     <form class="signup_form" method="POST" action="SubmitRegistration">
         {{ csrf_field() }}
