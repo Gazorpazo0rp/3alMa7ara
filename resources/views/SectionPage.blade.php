@@ -35,7 +35,7 @@
 				<div class="fh5co-text">
 					<div class="container" id="title">
 						<div class="row text-center">
-							<h1 class="animate-box">Decoring</h1>
+							<h1 class="animate-box">{{$Address}}</h1>
 							<div class="fh5co-go animate-box">
 								<a href="#" class="js-fh5co-next">
 									View Projects
@@ -56,7 +56,7 @@
 			<div class="container">
 				<div class="row r-pb">
 					<div class="col-md-8 col-md-offset-2 text-center section-heading">
-						<p class="fh5co-lead animate-box">So me and the lads went over to me nans place. Me mate brought this proper fit berdie with him, There weren’t together or nofing, So my aim was to shag her by the end of the night. Whilst at me nans she made us some tea, and we left, me mate suggested some fish and chips, but i said nah id rather have a cheeky nandos.</p>
+						<p class="fh5co-lead animate-box">{{$Paragraph}}</p>
 					</div>
 				</div>
 
