@@ -21,6 +21,7 @@ Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'RequestsController@Submit_Request');
 Route::get('/Reservation','PagesController@Reservation');
+Route::get('/sections','PagesController@Section');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

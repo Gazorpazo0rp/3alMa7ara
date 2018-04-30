@@ -7,15 +7,15 @@
 
     <ul>
         <li> <a href="/" class="active">Home</a></li>
+        <li> <a href="#">Refurbishment</a></li>
+        <li> <a href="#">Decor & Art</a></li>
+        <li> <a href="#">FireFighting | Air Conditioning</a></li>
         <li> <a href="#">Design</a></li>
-        <li> <a href="#">Finishing</a></li>
-        <li> <a href="#">Fire Fighting</a></li>
-        <li> <a href="#">Air Conditioning</a></li>
         <li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>
         <?php
-        if(Session::get('loggedIn') == 2)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="/logout"><b>Log out</b></a></li>';
-        else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login/</a></li>
-        <li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
+        if(Session::get('loggedIn') == 2)echo'<li> <a href="|profile"><b>My Profile</b></a></li><li> <a href="|logout"><b>Log out</b></a></li>';
+        else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login|</a></li>
+        <li ID="Signup-nav"> <a  href="|Register">Sign up</a></li>';
         ?>
         
         <div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 

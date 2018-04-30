@@ -21,4 +21,8 @@ class PagesController extends Controller
     {        
         return view('RegisterPage');
     }
+    public function Section()
+    {        
+        return view('SectionPage');
+    }
 }
