@@ -13,7 +13,7 @@
         <li> <a href="/Designs">Design</a></li>
         <li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>
         <?php
-        if(Session::get('loggedIn') == 2)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="|logout"><b>Log out</b></a></li>';
+        if(Session::get('loggedIn') == 2)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="/logout"><b>Log out</b></a></li>';
         else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login|</a></li>
         <li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
         ?>
