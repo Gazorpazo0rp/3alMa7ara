@@ -98,12 +98,12 @@ class UserController extends Controller
         Session::put('loggedIn','2'); // logged in
            
         Session::put('ID',$user['id']) ; // for future use 
-        return view('HomePage');   
+        return redirect('/');   
     }
 
     public function EditPersonalInfo(Request $request)
     {
-        $path = $request->photo();
+        //$path = $request->photo();    Why this is here ?! Why Ya Hussien ?!!
         $ToBeValidated = array('name'=> $request->input('name'),
          'phone' => $request->input('phone') , 'email' => $request->input('email')
         );
@@ -141,7 +141,7 @@ class UserController extends Controller
         
         $user->save();
 
-        return view('HomePage');   
+        return redirect('/');   
     }
 
     public function EditApartments(Request $request)
@@ -194,13 +194,13 @@ class UserController extends Controller
        {
         Session::put('Message','Invalid email or password');
        }
-        return view('HomePage');
+        return redirect('/');
     }
     public function logout()
     {
         Session::put('loggedIn','1'); // Not logged in
         // auth::user()->status = 0;
-        return view ('HomePage');
+        return redirect('/');
     }
     
 }
