@@ -73,6 +73,7 @@ a{
 	z-index:1;
 	top:2px;
 	opacity:1;
+	background-color:rgb(252, 252, 252);
 }
 #minilogo{
 	display: none;

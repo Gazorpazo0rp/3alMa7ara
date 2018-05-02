@@ -21,6 +21,7 @@ Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'RequestsController@Submit_Request');
 Route::get('/Reservation','PagesController@Reservation');
+Route::get('/simu','PagesController@sim');
 //Sections.
 Route::get('/Designs','ImagesController@Designs');
 Route::get('/Refurbishment','ImagesController@Refubishmement');
