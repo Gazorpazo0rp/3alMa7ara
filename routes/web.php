@@ -12,16 +12,19 @@
 */
 
 Route::get('/', 'PagesController@Home');
-Route::get('/Register', 'PagesController@Register');
 Route::post('/Login', 'UserController@Login');
-Route::get('/profile', 'UserController@View_Profile');
+
 Route::get('/logout', 'UserController@logout');
 Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'RequestsController@Submit_Request');
+
+//URL
 Route::get('/Reservation','PagesController@Reservation');
 Route::get('/Simulator','PagesController@Simulator');
+Route::get('/profile', 'UserController@View_Profile');
+Route::get('/Register', 'PagesController@Register');
 //Sections.
 Route::get('/Designs','ImagesController@Designs');
 Route::get('/Refurbishment','ImagesController@Refubishmement');

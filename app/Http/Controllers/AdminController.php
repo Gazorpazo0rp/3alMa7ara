@@ -1,12 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\WorkerRequest;
+use App\Form;
+use App\User;
+use App\Selected_Service;
+use App\Service;
+use App\Price;
 
-class RequestsController extends Controller
+
+class AdminController extends Controller
 {
     public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
     {
@@ -69,11 +76,48 @@ class RequestsController extends Controller
     {
         $Req = WorkerRequest::find($id);
         
-        return view('------')->with('Req',$Req);    //with->(The variable name inside the view,The variable name here).
+        return $Req;    
     }
     public function View_Requests()
     {
         $Reqs = WorkerRequest::orderBy('created_at');
-        return view('------')->with('requests',$Reqs);    //with->(The variable name inside the view,The variable name here).
+        return $Reqs;
+    }
+    
+    //Staff Part.
+    public function View_Staff()
+    {
+        $Reqs = Worker::orderBy('id');
+        return $Reqs;
+    }
+
+    public function Show_Worker()
+    {
+        $Req = Worker::find($id);
+        return $Req;
+    }
+
+    //Reservation Part.
+    public function View_Reservations()
+    {
+        $Res = Form::orderdBy('created_at');
+        return $Res;
+
+    }
+    public function Show_Reservations($id)
+    {
+        $Res = Form::find($id);
+        $Customer_Info = User::find($Res['customer_id']);
+        $IDS = Selected_Service::find($id);
+        $Qus = array();
+        $Ans = array();
+        foreach($IDS as $tmp)
+        {
+            $Q = Service::find($tmp['service_id']);
+            $A = Price::find($tmp['price_id']);
+            array_push($Qus,$Q['descriptions']);
+            array_push($Ans,$A['name']);
+        }
+                    //return $Customer_Info,$Qus,$Ans. 
     }
 }
