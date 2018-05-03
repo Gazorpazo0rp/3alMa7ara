@@ -57,14 +57,14 @@
 					<h1 style="font-size:45px;color:#FFD200;">Personalize your own design</h1>
 					<p>Use the simulation to pick the colors for the floor,the walls, the roof and the furniture for Your appartment.</p>
 					<p>You Don't have to go through this step. It's optional.</p>
-					<p>Click this link to Try the simulation <a href="#" style="color:#FFD200">Try Now</a></p>
+					<p>Click this link to Try the simulation <a href="/Simulator" style="color:#FFD200">Try Now</a></p>
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
 				<div class="how-it-works-explantion right-panel">
 					<h1 style="font-size:45px;color:#FFD200;">Open a reservation form</h1>
 					<p>Contact the company by filling a simple form. Fill up basic data about the apartment then choose the services you need</p>
 					<p>To open a form you must <a href="/register" style="color:#FFD200">Signup </a> first. Here is a </p>
-					<p>Already signued up? <a href="#" style="color:#FFD200">Open a form now</a><</p>
+					<p>Already signued up? <a href="/Reservation" style="color:#FFD200">Open a form now</a></p>
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
 				<div class="how-it-works-explantion left-panel">
