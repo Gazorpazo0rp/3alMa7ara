@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\WorkerRequest;
 
-class RequestsController extends Controller
+class AdminController extends Controller
 {
     public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
     {
@@ -69,11 +70,22 @@ class RequestsController extends Controller
     {
         $Req = WorkerRequest::find($id);
         
-        return view('------')->with('Req',$Req);    //with->(The variable name inside the view,The variable name here).
+        return view('------')->with('Req',$Req);    
     }
     public function View_Requests()
     {
         $Reqs = WorkerRequest::orderBy('created_at');
-        return view('------')->with('requests',$Reqs);    //with->(The variable name inside the view,The variable name here).
+        return view('------')->with('requests',$Reqs);
+    }
+
+
+    //Reservation Part.
+    public function View_Reservations()
+    {
+        
+    }
+    public function Show_Reservations($id)
+    {
+        
     }
 }
