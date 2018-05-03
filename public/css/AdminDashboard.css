@@ -1,0 +1,51 @@
+.navigation-bar-button{
+    margin-top:0px ;
+    margin-left:0px;
+    display:block;
+    height:70px;
+    width:100%;
+    background-color:rgba(42, 42, 44, 0.26);
+    font-size:20px;
+    border:0px;
+    color:rgb(229, 236, 240);
+    transition:all .3s ease 0s;
+    border-bottom:1px solid rgba(42, 42, 44, 0.795);
+    text-align:left;
+    padding-left:20px;
+}
+#navigation-bar{
+    position:fixed;
+    left:0px!important;
+    top:0px;
+    width:20%;
+    height:100%;
+    background-color:rgba(42, 42, 44, 0.925);
+
+}
+
+.navigation-bar-button:hover{
+    cursor:pointer;
+    background-color: rgba(42, 42, 44, 0.61);
+}
+.navigation-bar-button:active{
+    cursor:pointer;
+    background-color: rgb(229, 236, 240);
+}
+#minilogo{
+    width:80%;
+    position:absolute;
+    left:10%;
+    top:20px;
+
+
+}
+.active{
+}
+#action-center{
+    width:80%;
+    position:fixed;
+    top:0px;
+    left:20%;
+    height:1000px;
+    background-color: rgb(229, 236, 240);
+}
