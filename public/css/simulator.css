@@ -1,0 +1,451 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.bkg {
+    width: 100%; 
+    height:100%;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    z-index:0;
+}
+
+#floor {
+    width: 100%; 
+    height:100%;
+    position: absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    z-index:2;
+}
+
+
+#wall-color{
+    position: absolute;
+    height: 100%; 
+    width: 100%; 
+    z-index: 1;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    opacity:0.4;
+    display:none;
+}
+
+.sidenav {
+ 
+ 
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    top: 210px;
+    left: 0;
+    background-color: rgba(83, 83, 83, 0.521);
+    overflow-x: hidden;
+    transition: 1.0s;
+    padding-top: 80px;
+    padding-bottom:50px;
+    border-radius: 10px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #474747;
+    display: block;
+    transition: 0.8s;
+}
+
+.sidenav a:hover {
+    color: #949494;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#opener{
+    z-index:3;   
+    position: absolute;
+    top: 250px;
+    padding-left:10px;
+    font-size:28px;
+    border-radius: 5px;
+    cursor:pointer;
+    font-family: 'Mina', sans-serif;
+    background-color: rgba(238, 238, 238, 0.795);
+}
+
+#opener:hover{
+    background-color: rgba(238, 238, 238, 0.897);
+}
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+    transition: 0.5s;
+    z-index:3;
+}
+
+#sofa-part{
+    cursor: pointer;
+    z-index:3;
+    width:150px;
+    margin-left:15px;
+}
+#chair-part{
+    cursor: pointer;
+    z-index:3;
+    width:100px;
+    margin-left:50px;
+}
+#table-part{
+    cursor: pointer;
+    z-index:3;
+    width:150px;
+    margin-left:15px;
+}
+
+#wall-input{
+    z-index:3;
+    position: absolute;
+    top: 70%;
+    left: 96%;
+    transition: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+
+
+.arrow,
+.arrow:before {
+  position: absolute;
+  left: 50%;
+  z-index:3;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  top: 72.5%;
+ left: 94%;
+  margin: -20px 0 0 -20px;
+  -webkit-transform: rotate(-45deg);
+  border-left: none;
+  border-top: none;
+  border-right: 2px rgb(0, 0, 0) solid;
+  border-bottom: 2px rgb(8, 8, 8) solid;
+}
+
+.arrow:before {
+  content: "";
+  width: 10px;
+  height:10px;
+  top: 78%;
+  left:95%;
+  margin: -10px 0 0 -10px;
+  border-left: none;
+  border-top: none;
+  border-right: 1px rgb(5, 5, 5) solid;
+  border-bottom: 1px rgb(12, 12, 12) solid;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: arrow;
+}
+
+@keyframes arrow {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-10px, -5px);
+  }
+}
+
+
+#sofa-closebtn,#leftchair-closebtn,#rightchair-closebtn,#table-closebtn,#sofa-input,#leftchair-input,#rightchair-input,#table-input{
+    cursor: pointer;
+    z-index:3;
+}
+
+#sofa-png,#leftchair-png,#rightchair-png,#table-png,#sofa-svg,#leftchair-svg,#rightchair-svg,#table-svg{
+    cursor: move;
+}
+
+#sofa-closebtn{
+ 
+    display:none;
+    position: absolute;
+    top: 380px;
+    left: 700px;
+    transition: none;
+    width: 20px;
+    color:black;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#sofa-input{
+    display:none;
+    position: absolute;
+    top: 383px;
+    left: 680px;
+    transition: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+
+#sofa-png{
+    display:none;
+    width: 400px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    transition: none;
+    z-index: 4;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+#sofa-svg{
+    display:none;
+    width: 400px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    z-index: 5;
+    fill-opacity: 0.5;
+    transition: none;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#leftchair-closebtn{
+    display:none;
+    position: absolute;
+    top: 400px;
+    left: 293px;
+    transition: none;
+    width: 20px;
+    color:black;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#leftchair-input{
+    display:none;
+    position: absolute;
+    top: 420px;
+    left: 290px;
+    transition: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+
+#leftchair-png{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    transition: none;
+    z-index:6;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+#leftchair-svg{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    z-index: 7;
+    fill-opacity: 0.5;
+    transition: none;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#rightchair-closebtn{
+    display:none;
+    position: absolute;
+    top: 390px;
+    left: 500px;
+    transition: none;
+    width: 20px;
+    color:black;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#rightchair-input{
+    display:none;
+    position: absolute;
+    top: 410px;
+    left: 497px;
+    transition: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+
+#rightchair-png{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    transition: none;
+    z-index:8;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+#rightchair-svg{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    z-index: 9;
+    fill-opacity: 0.5;
+    transition: none;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#table-closebtn{
+    display:none;
+    position: absolute;
+    top: 400px;
+    left: 510px;
+    transition: none;
+    width: 20px;
+    color:black;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+#table-input{
+    display:none;
+    position: absolute;
+    top: 420px;
+    left: 507px;
+    transition: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 25px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+
+#table-png{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    transition: none;
+    z-index:8;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+#table-svg{
+    display:none;
+    width: 200px;
+    position: absolute;
+    top: 400px;
+    left: 300px;
+    z-index: 9;
+    fill-opacity: 0.7;
+    transition: none;
+
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}

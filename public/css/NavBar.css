@@ -1,15 +1,27 @@
 
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+body{
+    position: relative;
+	margin:0px !important;
+	padding:0px !important;
+	height:100%;
+	font-family:sans-serif;
+}
+a{
+	text-decoration:none;
+	transition:all 0.5s; 
+}
 .nav-bar{
-	opacity:.9;
+	opacity:0.8;
 	position:fixed;
-	background-color:#F8F8F8;
+	background-color:rgb(252, 252, 252);
 	height:60px;
 	margin:0px;
 	z-index:5;
 	width:100%;
 }
 .nav-bar:hover{
-	opacity:1;
+	opacity:0.9;
 }
 .nav-bar ul{
 	padding-right:50px;
@@ -34,10 +46,10 @@
 .nav-bar li a{
 	font-family: Cairo;
 	position:relative;
-	top:20px;
+	top:16px;
 	text-decoration:none;
 	padding-top:30px;
-	font-size:15px;
+	font-size:20px;
 	color:#233444;
 	margin-right:20px;
 	margin-left:20px;
@@ -45,31 +57,35 @@
 }
 .nav-bar li a:hover{
 	color:#FFD200;
+	
 }
 .nav-bar li a.active{
-	color:#FFD200;
+    color:#FFD200;
+ 
 }
-
-
 
 #logo{
 	position:absolute;
 	float :left;
 	width:90px;
-	left:7%;
+	left:5%;
+	transition:all .2s ease 0s; 
 	z-index:1;
 	top:2px;
-	display:block;
+	opacity:1;
+	background-color:rgb(252, 252, 252);
 }
 #minilogo{
+	display: none;
         position:absolute;
         float :left;
         width:140px;
 		left:80px;
+        transition:all .2s ease 0s; 
         z-index:1;
         top:8px;
-		display:none;
-	}
+        opacity:1;
+}
 
 #Login-nav, #Signup-nav{
 	margin:0;
@@ -82,6 +98,17 @@
 }
 #Signup-nav a{
 	color:#FFD200;
+}
+.collapse-bars{
+	background-color:black;
+	height:1px;
+	width:40px;
+	display:block;
+	margin-top:15px;
+}
+.collapse-item{
+	float:right;
+	display:none;
 }
 
 

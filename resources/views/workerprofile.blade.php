@@ -80,6 +80,7 @@
             </script>
 </head>
 <body scrollingeffect()>
+        @include('inc.messages')
     	<nav class="nav-bar" id="Main-nav">
                 <a id ="logoLink"href="#"><img id="logo" src="images/workerprofile_images/logo.png"></a>
                 <a id ="minilogoLink"href="#"><img id="minilogo" src="images/workerprofile_images/minilogo.png"></a>

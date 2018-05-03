@@ -12,6 +12,7 @@
 	</head>
 	<body>
         @include('inc.navbar')
+        @include('inc.messages')
         <style> 
         #logo{
             display:none;

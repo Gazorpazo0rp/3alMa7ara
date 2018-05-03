@@ -51,22 +51,8 @@
             </script>
 </head>
 <body>
-    
-    <nav class="nav-bar" id="Main-nav">
-        <a id ="logoLink"href="/"><img id="logo" src="/images/customerprofile_images/logo.png"></a>
-        <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
-
-        <ul>
-            <li> <a href="/" class="active">Home</a></li>
-            <li> <a href="#">Design</a></li>
-            <li> <a href="#">Finishing</a></li>
-            <li> <a href="#">Fire Fighting</a></li>
-            <li> <a href="#">Air Conditioning</a></li>
-            <li ID="Login-nav"> <a  href="/logout">Logout</a></li>
-            <div class="collapse-item" onClick="Showcollapsed()"><span class="collapse-bars"></span> <span class="collapse-bars"></span><span class="collapse-bars"></span></div> 
-            
-        </ul>
-    </nav>
+        @include('inc.messages')
+        @include('inc.navbar')
     
     <div class="data-panel">
         <div class="basic-data">

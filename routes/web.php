@@ -21,6 +21,13 @@ Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'RequestsController@Submit_Request');
 Route::get('/Reservation','PagesController@Reservation');
+Route::get('/simu','PagesController@sim');
+//Sections.
+Route::get('/Designs','ImagesController@Designs');
+Route::get('/Refurbishment','ImagesController@Refubishmement');
+Route::get('/Decor&Art','ImagesController@Decor_and_art');
+Route::get('/FireFighting_Air_Conditioning','ImagesController@Firefighting_and_air_conditioning');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -9,5 +9,11 @@ class Worker
     //Table Name
     protected $table = 'workers';
     //Timestamps
-    public $timestamps = false;
+    public $timestamps = true;
+
+    //Relation : Worker can have many Images
+    public function images()
+    {
+        return $this->hasMany('App\Image','worker_id');
+    }
 }
