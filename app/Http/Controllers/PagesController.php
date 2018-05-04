@@ -34,4 +34,31 @@ class PagesController extends Controller
 
         return ('AdminDashboard');
     }
+    public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
+    {
+        
+        $Req = new WorkerRequest;  
+      
+        $Req->email = $request->input('email');
+        $Req->name = $request->input('name');
+        $Req->profession = $request->input('profession');
+        $Req->phone = $request->input('phoneNumber');
+        $Req->age = $request->input('age');
+        $Req->bio = $request->input('bio');
+        $Req->address = $request->input('address');
+         
+        //See if the form has a file
+        if($request->hasFile('cv'))
+        {   
+            //get the name of the file
+            $filename = $request->cv->getClientOriginalName();
+            //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
+            $path = $request->cv->storeAs('public/upload/CVs', $Req->email.' '.$filename);
+            $Req->filepath = $path;
+        }
+       
+        $Req->save();
+        
+        return view('HomePage');
+    }
 }
