@@ -33,6 +33,8 @@ Route::get('/FireFighting_Air_Conditioning','ImagesController@Firefighting_and_a
 //Admin
 Route::get('/adminDashboard','PagesController@Admin');
 Route::get('/pendingRequests','AdminController@View_Requests');
+Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
+Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
 
 Auth::routes();
 

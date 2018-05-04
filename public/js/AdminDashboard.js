@@ -24,7 +24,6 @@ function viewTab(idx){
     
 }
 function fetchTab1(response){
-    console.log(response);
     document.getElementById('action-center').innerHTML=response;
 
 }
@@ -44,16 +43,19 @@ function fetchTab5(response){
     document.getElementById('action-center').innerHTML="1";
 
 }
-function updateRequests(action,id){
-    console.log(id);
+function updateRequests(action,id,buttonObj){
+    console.log($(buttonObj).parent());
+    $(this).parent().fadeOut(1200);
     var url_holder;
     if(action==1) url_holder="/acceptRequest/"+id;
+    if(action==2) url_holder="rejectRequest/"+id;
     else url_holder="rejectRequest/"+id;
     $.ajax({
         method:'GET',
         url: url_holder,
         success: function(response){
-            
+            document.getElementById('action-center').innerHTML=response;
+
         },
         error:function(jqXHR, textStatus, errorThrown) { 
             console.log(jqXHR);

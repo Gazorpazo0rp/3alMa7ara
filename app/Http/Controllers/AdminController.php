@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Worker;
 use App\WorkerRequest;
 use App\Form;
 use App\User;
 use App\Selected_Service;
 use App\Service;
 use App\Price;
-
+use DB;
 
 class AdminController extends Controller
 {
@@ -23,29 +24,32 @@ class AdminController extends Controller
     {
         $request = WorkerRequest::find($id);
         
-        
-        $Worker = new Worker; 
+        $WorkerObj = new Worker; 
       
-        $Worker->name = $request->name;
-        $Worker->age = $request->age;
-        $Worker->phone = $request->phone;
-        $Worker->email = $request->email;
-        $Worker->bio = $request->bio;
-        $Worker->address = $request->address;
-        $Worker->profession = $request->profession;
+        $WorkerObj->name = $request->name;
+        $WorkerObj->age = $request->age;
+        $WorkerObj->phone = $request->phone;
+        $WorkerObj->email = $request->email;
+        $WorkerObj->bio = $request->bio;
+        $WorkerObj->address = $request->address;
+        $WorkerObj->profession = $request->profession;
         
-        $Worker->save();
+        $WorkerObj->save();
         
-        WorkerRequest::delete($id);
+        //$request->delete();
 
         DB::table('worker_requests')->where('id',$id)->delete();
 
-        //return view('HomePage');
-    }
+        $Reqs = WorkerRequest::orderBy('created_at')->get();
+        $data = view('fetchRequests',['requests'=>$Reqs])->render();
+        return $data;
+        }
     public function Reject_Request($id)
     {
         DB::table('worker_requests')->where('id',$id)->delete();
-        //return view('HomePage');
+        $Reqs = WorkerRequest::orderBy('created_at')->get();
+        $data = view('fetchRequests',['requests'=>$Reqs])->render();
+        return $data;
     }
     public function View_Requests()
     {
