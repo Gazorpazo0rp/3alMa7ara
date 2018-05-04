@@ -195,6 +195,7 @@ class UserController extends Controller
             unset( $prices );
 
         }
+        return $data;
         return view('ReservationPage',['data'=>$data]);
     }
     //Logic of the Login of the user

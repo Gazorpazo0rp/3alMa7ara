@@ -22,7 +22,7 @@ class CreateWorkerRequestsTable extends Migration
             $table->unsignedInteger('age');
             $table->string('address');
             $table->mediumText('bio');
-            $table->string('filepath')->nullable();
+            $table->string('CvFile')->nullable();
             $table->string('imagepath')->nullable();
             
             $table->timestamps();
