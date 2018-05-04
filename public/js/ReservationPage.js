@@ -20,7 +20,6 @@ $(document).ready(function(){
     // modify cost value
     $('input[type="radio"]').click(function(){
         //toggle 
-        debugger;
         $tempThis=$(this);
         $tempName=$(this).attr('name');
            if($(this).attr('waschecked')=='true'){
@@ -38,6 +37,7 @@ $(document).ready(function(){
            });
         //console.log($(this).children('[type=radio]').prop('checked'));
         var radioId=$(this).parent().attr('id');
+        console.log(radioId);
         var radioInputObj=$(this);
         var currentCost=parseInt(document.getElementById("cost-value").innerHTML);
         var xhttp= new XMLHttpRequest();
@@ -80,7 +80,6 @@ $(document).ready(function(){
             }
             
         };
-
         xhttp.open("GET","modifyCost.php?id="+radioId,true);
         xhttp.send();
  });

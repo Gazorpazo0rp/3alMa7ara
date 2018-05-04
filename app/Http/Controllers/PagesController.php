@@ -10,9 +10,7 @@ class PagesController extends Controller
     {
         return view('HomePage');
     }
-    public function Reservation(){
-        return view('ReservationPage');
-    }
+   
     public function Profile()
     {
         return ('Your Profile');

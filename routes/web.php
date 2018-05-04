@@ -21,7 +21,7 @@ Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'PagesController@Submit_Request');
 
 //URL
-Route::get('/Reservation','PagesController@Reservation');
+Route::get('/Reservation','UserController@Reservation');
 Route::get('/Simulator','PagesController@Simulator');
 Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');

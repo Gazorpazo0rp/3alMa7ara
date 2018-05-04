@@ -39,50 +39,25 @@
                 <button class="form-navigation-bar-button" onclick="viewTab(2)">Fire Fighting</button>
                 <button class="form-navigation-bar-button" onclick="viewTab(3)">Air Conditioning</button>
             </div>
-
             <form id="reservation-form" method="POST" action="/">
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
                 <div class="form-tab" id="refub-tab"> 
+                    @foreach($data as $key=>$value)
+
                     <div class="radio-options-div">
-                        <h3> نوع البتاع عايز يبقى ايه؟ -</h3>
+                        <h3> {{$key}} -</h3> 
                         <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box">
-                        <label  class="container" id="khashab">خشب
+ 
+                        @foreach($data[$key] as $value)
+                        <label  class="container" id="{{$value->name}}">{{$value->name}}
                             <input type="radio" name="radio1" waschecked="false">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container" id="ezaz">ازاز
-                            <input type="radio" name="radio1" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" id="ceramic">سيراميك
-                            <input type="radio" name="radio1" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" id="metal">معدن
-                            <input type="radio" name="radio1" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
+                        @endforeach
+                        
                     </div>
-                    <div class="radio-options-div">
-                        <h3> نوع البتاع عايز يبقى ايه؟ -</h3>
-                        <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box">
-                        <label  class="container" id="khashab">خشب
-                            <input type="radio" name="radio2" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" id="ezaz">ازاز
-                            <input type="radio" name="radio2" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" id="ceramic">سيراميك
-                            <input type="radio" name="radio2" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container" id="metal">معدن
-                            <input type="radio" name="radio2" waschecked="false">
-                            <span class="checkmark"></span>
-                        </label>
-                    </div>
+                    @endforeach
+                    
                 </div>
                 <div class="form-tab"> Decor and Atr</div>
                 <div class="form-tab"> Fire Fighting</div>

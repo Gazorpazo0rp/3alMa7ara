@@ -27,10 +27,7 @@
     cursor:pointer;
     background-color: rgba(42, 42, 44, 0.61);
 }
-.navigation-bar-button:active{
-    cursor:pointer;
-    background-color: rgb(229, 236, 240);
-}
+
 #minilogo{
     width:80%;
     position:absolute;

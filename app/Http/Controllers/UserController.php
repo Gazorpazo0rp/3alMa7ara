@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\Customer;
 use App\Apartments;
+use App\Service;
+use App\Form;
+use App\Price;
+use App\Service_option_Price;
 use DB;
 
 class UserController extends Controller
@@ -175,6 +179,23 @@ class UserController extends Controller
         }
 
         
+    }
+    public function Reservation(){
+        $data=array();
+        $services=Service::all();
+        foreach($services as $serv){
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $prices=array();
+            foreach($options as $op){
+                $price=Price::find($op->price_id);
+                $prices[]=$price;
+            }
+           
+            $data[$serv->descriptions]=$prices;
+            unset( $prices );
+
+        }
+        return view('ReservationPage',['data'=>$data]);
     }
     //Logic of the Login of the user
     public function Login()
