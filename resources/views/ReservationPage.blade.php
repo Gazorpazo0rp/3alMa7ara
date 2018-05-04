@@ -41,17 +41,19 @@
             </div>
             <form id="reservation-form" method="POST" action="/">
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
-                <div class="form-tab" id="refub-tab"> 
+                <div class="form-tab" id="refub-tab">
+                    <script>  pricesArray=new Array();     lastClickedArray=new Array();</script> 
                     @foreach($data as $key=>$value)
-
+                    <script> lastClickedArray["{{$key}}"]="";</script>
                     <div class="radio-options-div">
                         <h3> {{$key}} -</h3> 
                         <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box">
  
                         @foreach($data[$key] as $value)
                         <label  class="container" id="{{$value->name}}">{{$value->name}}
-                            <input type="radio" name="radio1" waschecked="false">
+                            <input type="radio" name="{{$key}}" waschecked="false">
                             <span class="checkmark"></span>
+                            <script> pricesArray["{{$value->name}}"]={{$value->price}};</script>
                         </label>
                         @endforeach
                         

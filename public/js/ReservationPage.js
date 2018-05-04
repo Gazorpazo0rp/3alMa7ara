@@ -2,10 +2,9 @@
     var currentIdx=0;
     var refubTabsToggleFlag=0;
     var cost=0;
-    var lastAddedRadioCost=0;
-    var lastAddedRadioName="";
-    var lastClickedRadio;
+    var modifiedCost=0;
 $(document).ready(function(){
+    
     //initialize the form tabs to view only refubrishment tab
     $('.form-tab').each(function(){
         if($(this).attr('id')!='refub-tab')
@@ -17,73 +16,50 @@ $(document).ready(function(){
         $('#submit-button').removeAttr('disabled');
     });
 
-    // modify cost value
     $('input[type="radio"]').click(function(){
-        //toggle 
-        $tempThis=$(this);
-        $tempName=$(this).attr('name');
-           if($(this).attr('waschecked')=='true'){
-               $(this).prop('checked',false);
-               $(this).attr('waschecked','false');
-           }
-           else{
-               $(this).attr('waschecked','true');
-           }
-           $('input[name='+$tempName+']').each(function(){
-              
-               if(!$(this).is($tempThis)){
-                   $(this).attr('waschecked','false');
-               }
-           });
-        //console.log($(this).children('[type=radio]').prop('checked'));
+        debugger;
+        modifiedCost=0;
+        var thisObj=$(this);
+        var radioName=$(this).attr('name');
         var radioId=$(this).parent().attr('id');
-        console.log(radioId);
-        var radioInputObj=$(this);
+        //console.log($(this).attr('waschecked'));
+
         var currentCost=parseInt(document.getElementById("cost-value").innerHTML);
-        var xhttp= new XMLHttpRequest();
-        xhttp.onreadystatechange=function(){
-            if(this.readyState===4 &&this.status===200){
-                
-                if(this.responseText){
-                    var clickedCost=this.responseText;
-                    var modifiedCost=currentCost;
-                    if($(radioInputObj).attr('waschecked')=="true"){
-                        if(radioInputObj.attr('name')==lastAddedRadioName){
-                            if(radioInputObj.is(lastClickedRadio)){ 
-                                modifiedCost+=parseInt(clickedCost);
-                            }
-                            else{
-                                modifiedCost-=parseInt(lastAddedRadioCost);
-                                modifiedCost+=parseInt(clickedCost);
-                            }
-                    }
-                    else{
-                        modifiedCost+=parseInt(clickedCost);
-                        //needs further validation
-                        $('input[name='+$tempName+']').each(function(){
-              
-                           
-                       });
-                    }
-                    lastAddedRadioName=radioInputObj.attr('name');
-                    lastClickedRadio=radioInputObj;
-                    lastAddedRadioCost=clickedCost;
-
-                    }
-                    else {
-                        var modifiedCost=currentCost-parseInt(clickedCost);
-                        lastAddedRadioCost=0;
-                    }
-                    document.getElementById("cost-value").innerHTML=modifiedCost.toString();
-
-                }
+        var clickedCost=pricesArray[radioId];
+        if($(thisObj).attr('waschecked')=="false"){
+            modifiedCost+=clickedCost;
+            if(lastClickedArray[radioName]!="") {
+                modifiedCost-=pricesArray[lastClickedArray[radioName]];
+                console.log(lastClickedArray[radioName]);
             }
-            
-        };
-        xhttp.open("GET","modifyCost.php?id="+radioId,true);
-        xhttp.send();
- });
+           // console.log(radioName);
+            lastClickedArray[radioName]=radioId;
 
+        }
+        else{
+            modifiedCost-=clickedCost;
+            lastClickedArray[radioName]="";
+            //console.log(radioName); 
+            console.log(lastClickedArray[radioName]);
+        }
+        cost=modifiedCost+currentCost;
+        document.getElementById('cost-value').innerHTML=cost.toString();
+        //toggle radio button
+        if($(this).attr('waschecked')=='true'){
+            $(this).prop('checked',false);
+            $(this).attr('waschecked','false');
+        }
+        else{
+            $(this).attr('waschecked','true');
+        }
+        $('input[name="'+radioName+'"]').each(function(){
+           
+            if(!$(this).is(thisObj)){
+                $(this).attr('waschecked','false');
+            }
+        });
+
+    });
     // radio button toggle 
     /*$('input[type="radio"]').click(function(){
      console.log('2');
