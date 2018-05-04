@@ -73,10 +73,16 @@ class AdminController extends Controller
     }
 
     //Reservation Part.
-    public function View_Reservations()
+    public function View_Reservations()  //What should be printed here ?!
     {
-        $Res = Form::orderdBy('created_at')->get();
-        return $Res;
+        $Forms = Form::orderdBy('created_at')->get();
+        $FormsID = array();
+        foreach($Forms as $F)
+        {
+            array_push($FormsID,$F['id']);
+
+        }
+        //return $F;
 
     }
     public function Show_Reservation($id)
@@ -94,6 +100,12 @@ class AdminController extends Controller
             array_push($Ans,$A['name']);
         }
                     //return $Customer_Info,$Qus,$Ans. 
+    }
+    public function View_Customers()
+    {
+        $Customers = User::orderdBy('id')->get();
+
+        //Ready to be returned.
     }
 
 

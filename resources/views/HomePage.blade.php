@@ -146,8 +146,8 @@
 						<br>
 						
 						<input type="text" name='name' placeholder="Full name" required>
-						<input type="text" name='profession' placeholder="Phone number" required>
-						<input type="text" name='phoneNumber' placeholder="Profession" required>
+						<input type="text" name='profession' placeholder="Profession" required>
+						<input type="text" name='phoneNumber' placeholder="Phone number" required>
 						<input type="text" name='age' placeholder="Age" required>
 						<input type="bio" name='bio' placeholder="Bio" >
 						<input type="text" name='address' placeholder="Address" >

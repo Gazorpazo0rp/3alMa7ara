@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
+use App\WorkerRequest;
 
 class PagesController extends Controller
 {
@@ -56,7 +57,7 @@ class PagesController extends Controller
         }
        
         $Req->save();
-        
-        return view('HomePage');
+        Session::put('Message','Your request has been sent Successfully.');
+        return redirect('/');
     }
 }
