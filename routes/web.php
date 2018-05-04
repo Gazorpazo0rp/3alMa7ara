@@ -18,7 +18,7 @@ Route::get('/logout', 'UserController@logout');
 Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
-Route::post('/JoinUs', 'RequestsController@Submit_Request');
+Route::post('/JoinUs', 'PagesController@Submit_Request');
 
 //URL
 Route::get('/Reservation','PagesController@Reservation');

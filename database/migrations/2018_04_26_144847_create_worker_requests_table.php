@@ -23,6 +23,7 @@ class CreateWorkerRequestsTable extends Migration
             $table->string('address');
             $table->mediumText('bio');
             $table->string('filepath')->nullable();
+            $table->string('imagepath')->nullable();
             
             $table->timestamps();
         });

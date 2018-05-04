@@ -15,33 +15,6 @@ use App\Price;
 
 class AdminController extends Controller
 {
-    public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
-    {
-        
-        $Req = new WorkerRequest;  
-      
-        $Req->email = $request->input('email');
-        $Req->name = $request->input('name');
-        $Req->profession = $request->input('profession');
-        $Req->phone = $request->input('phoneNumber');
-        $Req->age = $request->input('age');
-        $Req->bio = $request->input('bio');
-        $Req->address = $request->input('address');
-         
-        //See if the form has a file
-        if($request->hasFile('cv'))
-        {   
-            //get the name of the file
-            $filename = $request->cv->getClientOriginalName();
-            //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
-            $path = $request->cv->storeAs('public/upload/CVs', $Req->email.' '.$filename);
-            $Req->filepath = $path;
-        }
-       
-        $Req->save();
-        
-        return view('HomePage');
-    }
     /*
     The function below is called when the admin accepts an applicant request.
     The request now will be deleted from the DB and the info will added as a new worker.
@@ -61,34 +34,32 @@ class AdminController extends Controller
         $Worker->address = $request->address;
         $Worker->profession = $request->profession;
         
-        $Req->save();
+        $Worker->save();
         
-        return view('HomePage');
+        WorkerRequest::delete($id);
+
+        DB::table('worker_requests')->where('id',$id)->delete();
+
+        //return view('HomePage');
     }
-    public function Reject_Request(Request $request)
+    public function Reject_Request($id)
     {
-        $Req = WorkerRequest::find($id);
-        $Req->delete();
-        
-        return view('HomePage');
-    }
-    public function Show_Request($id)
-    {
-        $Req = WorkerRequest::find($id);
-        
-        return $Req;    
+        DB::table('worker_requests')->where('id',$id)->delete();
+        //return view('HomePage');
     }
     public function View_Requests()
     {
-        $Reqs = WorkerRequest::orderBy('created_at');
-        return $Reqs;
+        $Reqs = WorkerRequest::orderBy('created_at')->get();
+        $data = view('fetchRequests',['requests'=>$Reqs])->render();
+        return $data;
     }
     
     //Staff Part.
     public function View_Staff()
     {
-        $Reqs = Worker::orderBy('id');
-        return $Reqs;
+        $Reqs = Worker::orderBy('id')->get();
+        //$data = view('fetchRequests',['workers'=>$Reqs])->render();
+        return $data;
     }
 
     public function Show_Worker()
@@ -100,11 +71,11 @@ class AdminController extends Controller
     //Reservation Part.
     public function View_Reservations()
     {
-        $Res = Form::orderdBy('created_at');
+        $Res = Form::orderdBy('created_at')->get();
         return $Res;
 
     }
-    public function Show_Reservations($id)
+    public function Show_Reservation($id)
     {
         $Res = Form::find($id);
         $Customer_Info = User::find($Res['customer_id']);
@@ -120,4 +91,6 @@ class AdminController extends Controller
         }
                     //return $Customer_Info,$Qus,$Ans. 
     }
+
+
 }
