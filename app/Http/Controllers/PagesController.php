@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
+use App\WorkerRequest;
 
 class PagesController extends Controller
 {
@@ -32,9 +33,16 @@ class PagesController extends Controller
 
         return ('AdminDashboard');
     }
+
     public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
-    {
-        
+    {     
+        //$user = WorkerRequest::find(1);
+
+        //$data = response()->make($user->filepath, 200, array(
+          //  'Content-Type' => (new finfo(FILEINFO_MIME))->buffer($user->filepath)));
+        // Return the image in the response with the correct MIME type
+        //return View('HomePage')->with('data',$data);
+
         $Req = new WorkerRequest;  
       
         $Req->email = $request->input('email');
@@ -50,9 +58,12 @@ class PagesController extends Controller
         {   
             //get the name of the file
             $filename = $request->cv->getClientOriginalName();
+
+            $file = $request->file('cv');
+            $contents = $file->openFile()->fread($file->getSize());
+
             //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
-            $path = $request->cv->storeAs('public/upload/CVs', $Req->email.' '.$filename);
-            $Req->filepath = $path;
+            $Req->filepath = $contents;
         }
        
         $Req->save();
