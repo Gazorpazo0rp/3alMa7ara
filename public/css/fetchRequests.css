@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+.worker_div{
+    position:relative;
+    width:60%;
+    padding-left:5%;
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:30px;
+    font-size:20px;
+    font-family: Cairo !important;
+    border:1px solid black;
+}
+.accept-button{
+    width:100px;
+    height:45px;
+    font-size:17px;
+    position:absolute;
+    left:75%;
+    bottom:15px;
+    color:rgb(229, 236, 240);
+    background-color: rgb(21, 129, 21);
+    border: 2px solid rgb(229, 236, 240);
+    transition:all .2s ease 0s;
+}
+.accept-button:hover{
+    cursor:pointer;
+    border: 1px solid rgb(229, 236, 240);
+    background-color: rgb(14, 114, 14);
+
+}
+.reject-button{
+    width:100px;
+    height:45px;
+    font-size:17px;
+    position:absolute;
+    right:1%;
+    bottom:15px;
+    color:rgb(229, 236, 240);
+    background-color: rgb(168, 52, 44);
+    border: 2px solid rgb(229, 236, 240);
+    transition:all .2s ease 0s;
+}
+.reject-button:hover{
+    cursor:pointer;
+    border: 1px solid rgb(229, 236, 240);
+    background-color: rgb(156, 44, 36);
+}

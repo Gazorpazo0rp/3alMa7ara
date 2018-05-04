@@ -32,7 +32,7 @@ Route::get('/Decor&Art','ImagesController@Decor_and_art');
 Route::get('/FireFighting_Air_Conditioning','ImagesController@Firefighting_and_air_conditioning');
 //Admin
 Route::get('/adminDashboard','PagesController@Admin');
-Route::get('/pendingRequests','PagesController@ajaxTest');
+Route::get('/pendingRequests','AdminController@View_Requests');
 
 Auth::routes();
 

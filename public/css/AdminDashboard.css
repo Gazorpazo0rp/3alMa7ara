@@ -43,9 +43,9 @@
 }
 #action-center{
     width:80%;
-    position:fixed;
+    position:absolute ;
+    line-height: 1;
     top:0px;
     left:20%;
-    height:1000px;
     background-color: rgb(229, 236, 240);
 }
