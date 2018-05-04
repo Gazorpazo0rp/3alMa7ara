@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Worker
+class Worker extends Model
 {
     //Table Name
     protected $table = 'workers';
