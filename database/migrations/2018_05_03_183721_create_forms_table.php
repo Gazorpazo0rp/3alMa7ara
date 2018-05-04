@@ -19,6 +19,7 @@ class CreateFormsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('Cascade')
             ->onUpdate('Cascade');
 
+            $table->unsignedInteger('status');
             $table->timestamps();
         });
     }
