@@ -14,7 +14,7 @@
         @include('inc.messages')
         <div id="main-wrapper">
                 <div id="navigation-bar">
-                        <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
+                        <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/Homepage_images/Admin.png"></a>
                         <br><br><br><br><br><br><br>
                         <button class="navigation-bar-button" onclick="viewTab(1)">Pending Reservations</button>
                         <button class="navigation-bar-button" onclick="viewTab(2)">Join us Requests</button>

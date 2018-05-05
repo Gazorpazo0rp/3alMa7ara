@@ -61,18 +61,11 @@
 				</div>
 
 				<div class="row">
+					@foreach($Images as $Image)
 					<figure class="animate-box">
-					<img src="/storage/Section_images/{{$Images[0]->imagepath}}" alt="" class="img-responsive">
+					<img src="/storage/Section_images/{{$Image->imagepath}}" alt="" class="img-responsive">
 					</figure>
-					<figure class="animate-box">
-						<img src="/storage/Section_images/{{$Images[1]->imagepath}}" alt="" class="img-responsive">
-					</figure>
-					<figure class="animate-box">
-						<img src="/storage/Section_images/{{$Images[2]->imagepath}}" alt="" class="img-responsive">
-					</figure>
-					<figure class="animate-box">
-						<img src="/storage/Section_images/{{$Images[3]->imagepath}}" alt="" class="img-responsive">
-					</figure>
+					@endforeach
 					</div>
 	
 			</div>

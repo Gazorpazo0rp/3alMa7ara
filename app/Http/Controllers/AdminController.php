@@ -12,6 +12,7 @@ use App\User;
 use App\Selected_Service;
 use App\Service;
 use App\Price;
+use App\Image;
 use DB;
 
 class AdminController extends Controller
@@ -73,9 +74,9 @@ class AdminController extends Controller
     }
 
     //Reservation Part.
-    public function View_Reservations()  //What should be printed here ?!
+    public function View_Reservations($read)  //What should be printed here ?!
     {
-        $Forms = Form::orderdBy('created_at')->get();
+        $Forms = Form::orderdBy('created_at')->where('status',$read)->get();
         $FormsID = array();
         foreach($Forms as $F)
         {
@@ -106,6 +107,16 @@ class AdminController extends Controller
         $Customers = User::orderdBy('id')->get();
 
         //Ready to be returned.
+    }
+    public function Add_Image($Info)
+    {
+        $Image = new Image;
+        $Image->imagepath = $Info->path;
+        $Image->worker_id = $Info->workerID;
+        $Image->type = $Info->type;
+        $Image->save();
+
+        //What is next action.
     }
 
 
