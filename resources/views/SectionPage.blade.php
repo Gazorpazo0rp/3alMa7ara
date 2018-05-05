@@ -62,16 +62,16 @@
 
 				<div class="row">
 					<figure class="animate-box">
-						<img src="images/Section/p1.jpg" alt="" class="img-responsive">
+					<img src="/storage/Section_images/{{$Images[0]->imagepath}}" alt="" class="img-responsive">
 					</figure>
 					<figure class="animate-box">
-						<img src="images/Section/p2.jpg" alt="" class="img-responsive">
+						<img src="/storage/Section_images/{{$Images[1]->imagepath}}" alt="" class="img-responsive">
 					</figure>
 					<figure class="animate-box">
-						<img src="images/Section/p3.jpg" alt="" class="img-responsive">
+						<img src="/storage/Section_images/{{$Images[2]->imagepath}}" alt="" class="img-responsive">
 					</figure>
 					<figure class="animate-box">
-						<img src="images/Section/p4.jpg" alt="" class="img-responsive">
+						<img src="/storage/Section_images/{{$Images[3]->imagepath}}" alt="" class="img-responsive">
 					</figure>
 					</div>
 	

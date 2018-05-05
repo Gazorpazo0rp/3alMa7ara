@@ -27,7 +27,7 @@ Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');
 //Sections.
 Route::get('/Designs','ImagesController@Designs');
-Route::get('/Refurbishment','ImagesController@Refubishmement');
+Route::get('/Refurbishment','ImagesController@Refurbishment');
 Route::get('/Decor&Art','ImagesController@Decor_and_art');
 Route::get('/FireFighting_Air_Conditioning','ImagesController@Firefighting_and_air_conditioning');
 //Admin

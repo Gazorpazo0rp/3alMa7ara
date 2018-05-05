@@ -36,13 +36,6 @@ class PagesController extends Controller
 
     public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
     {     
-        //$user = WorkerRequest::find(1);
-
-        //$data = response()->make($user->filepath, 200, array(
-          //  'Content-Type' => (new finfo(FILEINFO_MIME))->buffer($user->filepath)));
-        // Return the image in the response with the correct MIME type
-        //return View('HomePage')->with('data',$data);
-
         $Req = new WorkerRequest;  
       
         $Req->email = $request->input('email');
@@ -52,18 +45,22 @@ class PagesController extends Controller
         $Req->age = $request->input('age');
         $Req->bio = $request->input('bio');
         $Req->address = $request->input('address');
-         
-        //See if the form has a file
+
+        //Handle Uploaded File (CV)
         if($request->hasFile('cv'))
         {   
-            //get the name of the file
-            $filename = $request->cv->getClientOriginalName();
+            //Get the name of the file
+            $fileNameWithExt = $request->file('cv')->getClientOriginalName();
+            // Get just filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Get just ext.
+            $extension = $request->file('cv')->getClientOriginalExtension();
+            // FileName To store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            // Upload File
+            $path = $request->file('cv')->storeAs('public/ApplicantCV', $fileNameToStore);
 
-            $file = $request->file('cv');
-            $contents = $file->openFile()->fread($file->getSize());
-
-            //save the file with its original name >>>> Concatenate email with filename to avoid replacing files
-            $Req->filepath = $contents;
+            $Req->filepath = $path;
         }
        
         $Req->save();
