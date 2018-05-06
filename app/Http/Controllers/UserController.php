@@ -201,29 +201,34 @@ class UserController extends Controller
     public function Submit_Reservation(Request $request){
         
         //post the data
-        $reqWithoutToken= $request->except('_token');
-        foreach($reqWithoutToken as $key=>$value){
-            // ِيل ال _ هنا   
+        $request = $request->except('_token');
+        $Form = new Form;
+        $Form->customer_id = Session::get('ID');
+        $Form->status = 0; // 0-> Unread.
+        $Form->save();
+        
+        $Extra;
+        foreach($request as $key=>$value)
+        {
+            $key = str_replace("_"," ",$key); //Removing the _ from the string to get the string formula in the db.
+            //The concept of Extra depends on that the value is overwritten, 
+            //if the user fill a text & didn't choose anything the value will not be added in the db and will be overwritten.
             if(strpos($key,'note')!==false){
-                //store the note 
+                $Extra = $value;
+                if($Extra == null) $Extra = "";
             }
-
-            else if(Service::where('descriptions',$key)->get()){
-                $servObj=Service::where('descriptions',$key)->get();
-                //$tester= Service::all();
-                //return $tester[0]['descriptions'];
-                return $key;
-                //return $servObj->count();
-                $servID=$servObj[0]['id'];
-                $selectedService= new Selected_Service;
-                $selectedService->service_id=$servID;
-                $selectedService->price_id=$value;
-                $selectedService->save();
-                
+            else 
+            {
+                $SS = new Selected_Service;
+                $SS->form_id = $Form->id;
+                $tmp = Service::where('descriptions',$key)->get();
+                $SS->service_id =  $tmp[0]['id'];
+                $SS->price_id = $value;
+                $SS->note = $Extra;
+                $SS->save();
             }
-            
         }        
-        return 'success';
+        return ('success');
     }
     //Logic of the Login of the user
     public function Login()
