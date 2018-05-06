@@ -64,3 +64,17 @@ function updateRequests(action,id,buttonObj){
         }
     });
 }
+function EditWorker(id){
+    $.ajax({
+        method:'GET',
+        url: "EditWorker/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}

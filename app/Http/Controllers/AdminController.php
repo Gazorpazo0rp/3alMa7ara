@@ -61,11 +61,17 @@ class AdminController extends Controller
     //Staff Part.
     public function View_Staff()
     {
-        $Reqs = Worker::orderBy('id')->get();
-        //$data = view('fetchRequests',['workers'=>$Reqs])->render();
+        $workers = Worker::orderBy('id')->get();
+        $data = view('fetchViewWorkers',['workers'=>$workers])->render();
         return $data;
     }
 
+    public function Edit_Staff($id){
+        $worker= Worker::find($id);
+        $data = view('fetchEditWorker',['worker'=>$worker])->render();
+        return $data;
+
+    }
     public function Show_Worker()
     {
         $Req = Worker::find($id);
@@ -116,6 +122,24 @@ class AdminController extends Controller
         $Image->save();
 
         //What is next action.
+    }
+    public function View_Reservation_info(){
+        $Res=array();
+        $services=Service::all();
+        foreach($services as $serv){
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $prices=array();
+            foreach($options as $op){
+                $price=Price::find($op->price_id);
+                $prices[]=$price;
+            }
+           
+            $Res[$serv->descriptions]=$prices;
+            unset( $prices );
+            
+        }
+        $data= view('ReservationPage',['data'=>$Res])->render();
+        return $data; // not tested
     }
 
 

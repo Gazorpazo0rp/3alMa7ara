@@ -40,9 +40,9 @@
 }
 #action-center{
     width:80%;
-    position:absolute ;
+    position:relative ;
     line-height: 1;
     top:0px;
     left:20%;
-    background-color: rgb(229, 236, 240);
+    background-color: rgb(255, 255, 255);
 }

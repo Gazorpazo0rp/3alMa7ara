@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+h1{
+    padding-left:80px;
+    font-family:Cairo;
+    color:rgba(24, 24, 26, 0.925);
+}
+form{
+    width:90%;
+    margin-left:2%;
+    position:relative;
+    margin-bottom:100px;
+    height:100%;
+}
+input[type="text"]{
+    height:40px;
+    width:35%;
+    margin-left:2%;
+    margin-right:2%;
+    margin-top:30px;
+    padding-left:10px;
+    border:1px solid rgba(196, 196, 199, 0.925);
+    float:left;
+    font-family: Cairo;
+    transition:all .3s ease 0s;
+}
+input[type="text"]:focus{
+    background-color: rgba(246, 245, 247, 0.966);
+}
+input[type="submit"]{
+    color:rgba(196, 196, 199, 0.925);
+    background-color: rgba(42, 42, 44, 0.925);
+    color:rgba(246, 245, 247, 0.966);
+    width:200px;
+    height:60px;
+    position:absolute;
+    top:30px;
+    right:-50px;
+    border:0px;
+}
+input[type="submit"]:hover{
+    cursor:pointer;
+    background-color: rgba(42, 42, 44, 0.973);
+}
