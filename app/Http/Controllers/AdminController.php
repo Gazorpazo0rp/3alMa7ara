@@ -34,7 +34,6 @@ class AdminController extends Controller
         $WorkerObj->bio = $request->bio;
         $WorkerObj->address = $request->address;
         $WorkerObj->profession = $request->profession;
-        
         $WorkerObj->save();
         
         //$request->delete();

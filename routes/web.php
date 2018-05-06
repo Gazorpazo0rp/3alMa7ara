@@ -19,6 +19,7 @@ Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'PagesController@Submit_Request');
+Route::post('/SubmitReservation', 'UserController@Submit_Reservation');
 
 //URL
 Route::get('/Reservation','UserController@Reservation');
@@ -32,9 +33,11 @@ Route::get('/Decor&Art','PagesController@Decor_and_art');
 Route::get('/FireFighting_Air_Conditioning','PagesController@Firefighting_and_air_conditioning');
 //Admin
 Route::get('/adminDashboard','PagesController@Admin');
-Route::get('/pendingRequests','AdminController@View_Requests');
+Route::get('/JoinUsRequests','AdminController@View_Requests');
 Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
 Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
+Route::get('/pendingReservations','AdminController@View_Reservations');
+
 
 Auth::routes();
 

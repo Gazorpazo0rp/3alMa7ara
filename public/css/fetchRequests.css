@@ -3,12 +3,13 @@
     position:relative;
     width:60%;
     padding-left:5%;
-    margin-left:10%;
+    margin-left:8%;
     margin-right:10%;
-    margin-top:30px;
+    margin-top:20px;
     font-size:20px;
     font-family: Cairo !important;
     border:1px solid black;
+    margin-bottom:20px;
 }
 .accept-button{
     width:100px;

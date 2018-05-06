@@ -39,7 +39,9 @@
                 <button class="form-navigation-bar-button" onclick="viewTab(2)">Fire Fighting</button>
                 <button class="form-navigation-bar-button" onclick="viewTab(3)">Air Conditioning</button>
             </div>
-            <form id="reservation-form" method="POST" action="/">
+            <form id="reservation-form" method="POST" action="SubmitReservation">
+                    {{ csrf_field() }}
+
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
                 <div class="form-tab" id="refub-tab">
                     <script>  pricesArray=new Array();     lastClickedArray=new Array();</script> 
@@ -47,11 +49,11 @@
                     <script> lastClickedArray["{{$key}}"]="";</script>
                     <div class="radio-options-div">
                         <h3> {{$key}} -</h3> 
-                        <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box">
+                    <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box" name="{{$key.'note'}}">
  
                         @foreach($data[$key] as $value)
                         <label  class="container" id="{{$value->name}}">{{$value->name}}
-                            <input type="radio" name="{{$key}}" waschecked="false">
+                        <input type="radio" name="{{$key}}" waschecked="false" value="{{$value->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$value->name}}"]={{$value->price}};</script>
                         </label>

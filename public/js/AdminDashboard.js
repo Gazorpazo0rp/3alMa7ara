@@ -1,6 +1,6 @@
 function viewTab(idx){
     var url_holder;
-    if(idx==1) url_holder='/pendingRequests'
+    if(idx==1) url_holder='/pendingReservations'
     else if(idx==2) url_holder='/JoinUsRequests'
     else if(idx==3) url_holder='/viewStaff'
     else if(idx==4) url_holder='/viewClients'
@@ -28,28 +28,29 @@ function fetchTab1(response){
 
 }
 function fetchTab2(response){
-    document.getElementById('action-center').innerHTML="1";
+    document.getElementById('action-center').innerHTML=response;
 
 }
 function fetchTab3(response){
-    document.getElementById('action-center').innerHTML="1";
+    document.getElementById('action-center').innerHTML=response;
 
 }
 function fetchTab4(response){
-    document.getElementById('action-center').innerHTML="1";
+    document.getElementById('action-center').innerHTML=response;
 
 }
 function fetchTab5(response){
-    document.getElementById('action-center').innerHTML="1";
+    document.getElementById('action-center').innerHTML=response;
 
 }
 function updateRequests(action,id,buttonObj){
-    console.log($(buttonObj).parent());
+    debugger;
+    //console.log($(buttonObj).parent());
     $(this).parent().fadeOut(1200);
     var url_holder;
     if(action==1) url_holder="/acceptRequest/"+id;
-    if(action==2) url_holder="rejectRequest/"+id;
-    else url_holder="rejectRequest/"+id;
+    if(action==0) url_holder="/rejectRequest/"+id;
+    console.log(url_holder);
     $.ajax({
         method:'GET',
         url: url_holder,

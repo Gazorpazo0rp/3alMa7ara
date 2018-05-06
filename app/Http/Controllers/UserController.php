@@ -13,6 +13,7 @@ use App\Service;
 use App\Form;
 use App\Price;
 use App\Service_option_Price;
+use App\Selected_Service;
 use DB;
 
 class UserController extends Controller
@@ -195,8 +196,34 @@ class UserController extends Controller
             unset( $prices );
 
         }
-        return $data;
         return view('ReservationPage',['data'=>$data]);
+    }
+    public function Submit_Reservation(Request $request){
+        
+        //post the data
+        $reqWithoutToken= $request->except('_token');
+        foreach($reqWithoutToken as $key=>$value){
+            // ِيل ال _ هنا   
+            if(strpos($key,'note')!==false){
+                //store the note 
+            }
+
+            else if(Service::where('descriptions',$key)->get()){
+                $servObj=Service::where('descriptions',$key)->get();
+                //$tester= Service::all();
+                //return $tester[0]['descriptions'];
+                return $key;
+                //return $servObj->count();
+                $servID=$servObj[0]['id'];
+                $selectedService= new Selected_Service;
+                $selectedService->service_id=$servID;
+                $selectedService->price_id=$value;
+                $selectedService->save();
+                
+            }
+            
+        }        
+        return 'success';
     }
     //Logic of the Login of the user
     public function Login()
