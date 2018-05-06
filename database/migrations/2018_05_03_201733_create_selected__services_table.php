@@ -27,6 +27,7 @@ class CreateSelectedServicesTable extends Migration
             ->onUpdate('Cascade');
 
             $table->unique( array('form_id','service_id','price_id') );
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
