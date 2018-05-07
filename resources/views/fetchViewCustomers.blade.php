@@ -1,3 +1,4 @@
+<h1> 3alma7ara Clients</h1>
 
 @foreach($customers as $customer)
 <div class="view-worker-div">

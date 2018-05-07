@@ -5,6 +5,8 @@
 
         <script  type="text/javascript" src="js/ReservationPage.js"></script>
         <link rel="stylesheet" type="text/css" href="css/ReservationPage.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		
@@ -45,15 +47,15 @@
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
                 <div class="form-tab" id="refub-tab">
                     <script>  pricesArray=new Array();     lastClickedArray=new Array();</script> 
-                    @foreach($data as $key=>$value)
+                    @foreach($data['ques'] as $key=>$value)
                     <script> lastClickedArray["{{$key}}"]="";</script>
                     <div class="radio-options-div">
                         <h3> {{$key}} -</h3> 
                     <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box" name="{{$key.'note'}}">
  
-                        @foreach($data[$key] as $value)
+                        @foreach($data['ques'][$key] as $value)
                         <label  class="container" id="{{$value->name}}">{{$value->name}}
-                        <input type="radio" name="{{$key}}" waschecked="false" value="{{$value->id}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$key}}" waschecked="false" value="{{$value->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$value->name}}"]={{$value->price}};</script>
                         </label>
@@ -61,7 +63,21 @@
                         
                     </div>
                     @endforeach
-                    
+                    <?php $cnt=0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط']?>
+                    @foreach ($data['workers'] as $key =>$value)
+                    <div class="radio-options-div-img">
+                        <h3 style="text-align:right"> اختار <?php echo $professionNameArray[$cnt]; $cnt++;?> -</h3> 
+                        @foreach($data['workers'][$key] as $value)
+                        <label  class="container-img" id="{{$value->id}}">
+                        <h4 style="text-align:center">{{$value->name}}</h4>
+                        <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
+                        <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min">
+                        </label>
+                        @endforeach
+                            
+                            
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-tab"> Decor and Atr</div>
                 <div class="form-tab"> Fire Fighting</div>

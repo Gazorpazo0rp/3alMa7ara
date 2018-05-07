@@ -16,7 +16,7 @@ $(document).ready(function(){
         $('#submit-button').removeAttr('disabled');
     });
 
-    $('input[type="radio"]').click(function(){
+    $('.radio-option-has-cost').click(function(){
         debugger;
         modifiedCost=0;
         var thisObj=$(this);

@@ -1,4 +1,5 @@
- 
+<h1> Join 3alma7ara requests</h1>
+
  @foreach($requests as $worker)
 <div class="worker_div">
     <h4> Name: {{$worker->name}}</h4>

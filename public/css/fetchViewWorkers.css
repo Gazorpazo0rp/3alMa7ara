@@ -11,7 +11,7 @@
     font-family: Cairo !important;
     background-color: rgba(226, 228, 229, 0.945);
     border-radius: 30px;
-    float:right;
+    float:left;
 }
 .edit-worker-button{
     position:absolute;
@@ -28,4 +28,12 @@
 .edit-worker-button:hover{
     cursor:pointer;
     background-color:rgba(42, 42, 44, 0.842);
+}
+.worker-img{
+    width:160px;
+    height:210px;
+    position:absolute;
+    right:40px;
+    top:40px;
+
 }

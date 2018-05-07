@@ -136,8 +136,43 @@ body{
     user-select: none;
 }
 
+.container-img {
+    position: relative;
+    display:inline-block;
+    padding-right: 35px;
+    margin-bottom: 12px;
+    margin-left:30px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    float:right;
+    
+    
+}
+.container-img h4{
+    margin-top:0px !important;
+    margin-bottom:0px!important;
+}
+.radio-options-div-img{
+    height:350px;
+}
+.radiobutton-img{
+    width:150px;
+    height:200px;
+}
+.radiobutton-img:hover{
+    opacity:.8;
+}
 /* Hide the browser's default radio button */
 .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.container-img input {
     position: absolute;
     opacity: 0;
     cursor: pointer;

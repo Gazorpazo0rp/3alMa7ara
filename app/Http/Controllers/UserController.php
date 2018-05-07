@@ -12,6 +12,7 @@ use App\Apartments;
 use App\Service;
 use App\Form;
 use App\Price;
+use App\Worker;
 use App\Service_option_Price;
 use App\Selected_Service;
 use DB;
@@ -182,7 +183,7 @@ class UserController extends Controller
         
     }
     public function Reservation(){
-        $data=array();
+        $ques=array();
         $services=Service::all();
         foreach($services as $serv){
             $options= Service_option_Price::where('service_id',$serv->id)->get();
@@ -192,14 +193,20 @@ class UserController extends Controller
                 $prices[]=$price;
             }
            
-            $data[$serv->descriptions]=$prices;
+            $ques[$serv->descriptions]=$prices;
             unset( $prices );
 
         }
+        $workers=array();
+        //$workers = Worker::where('status',0)->orderBy('profession')->get();
+        for($i=0;$i<3;$i++){
+            $workers[$i]=Worker::where('status',0)->where('profession',$i)->get();
+        }
+        $data['ques']=$ques;
+        $data['workers']=$workers;
         return view('ReservationPage',['data'=>$data]);
     }
     public function Submit_Reservation(Request $request){
-        
         //post the data
         $request = $request->except('_token');
         $Form = new Form;
@@ -207,7 +214,7 @@ class UserController extends Controller
         $Form->status = 0; // 0-> Unread.
         $Form->save();
         
-        $Extra;
+        $Extra="";
         foreach($request as $key=>$value)
         {
             $key = str_replace("_"," ",$key); //Removing the _ from the string to get the string formula in the db.
@@ -228,14 +235,15 @@ class UserController extends Controller
                 $SS->save();
             }
         }        
-        return ('success');
+        Session::put('Message','Your order has been submitted successfully');
+
+        return redirect('/');
     }
     //Logic of the Login of the user
     public function Login()
     {
         // getting the user who owns the Email
        $_user = User::where('email',$_POST['Email'])->get(); 
-       
        //check if user exists and whether the password is correct
        if($_user->count() > 0 && password_verify($_POST['password'], $_user[0]['password']))
        {
