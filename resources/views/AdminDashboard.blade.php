@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="css/fetchRequests.css">
         <link rel="stylesheet" type="text/css" href="css/fetchViewWorkers.css">
         <link rel="stylesheet" type="text/css" href="css/fetchEditWorker.css">
+        <link rel="stylesheet" type="text/css" href="css/fetchEditPages.css">
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
                 

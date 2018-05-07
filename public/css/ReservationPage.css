@@ -164,7 +164,6 @@ body{
     height:200px;
 }
 .radiobutton-img:hover{
-    opacity:.8;
 }
 /* Hide the browser's default radio button */
 .container input {

@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+.section-div{
+    width:45%;
+    margin:2%;
+    float:right;
+    font-size:35px;
+    font-family:Cairo;
+    background-color: rgba(42, 42, 44, 0.925);
+    color:rgba(246, 245, 247, 0.966);
+    height: 150px;
+    text-align:center;
+    padding-top:60px;
+    transition:all.2s ease 0s;
+}
+.section-div:hover{
+    background-color: rgba(37, 37, 41, 0.925);
+    cursor:pointer;
+}
+#wrapper{
+    margin-top:50px;
+    margin-bottom:50px;
+}

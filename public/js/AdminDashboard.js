@@ -4,7 +4,7 @@ function viewTab(idx){
     else if(idx==2) url_holder='/JoinUsRequests'
     else if(idx==3) url_holder='/viewStaff'
     else if(idx==4) url_holder='/viewClients'
-    else if(idx==5) url_holder='/editWorkerProfile'
+    else if(idx==5) url_holder='/editPages'
     
     $.ajax({
         method:'GET',
@@ -82,6 +82,20 @@ function BlockClient(id){
     $.ajax({
         method:'GET',
         url: "blockClient/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+function viewSection(idx){
+    $.ajax({
+        method:'GET',
+        url: "viewEditSection/"+idx,
         success: function(response){
             document.getElementById('action-center').innerHTML=response;
 

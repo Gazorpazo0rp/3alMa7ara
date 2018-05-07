@@ -83,7 +83,15 @@ class AdminController extends Controller
         $worker->status = $request->input('status');
         $worker->rate = $request->input('rate');
         $worker->save();
-
+        foreach($request->input('img') as $img){
+            //save img
+            //
+            //
+            //
+            //
+            //
+            //                           متنساااااااااااااااش
+        }
         return redirect('/adminDashboard');
 
     }
@@ -162,6 +170,13 @@ class AdminController extends Controller
         $data= view('ReservationPage',['data'=>$Res])->render();
         return $data; // not tested
     }
+    public function edit_pages(){
 
+        $data= view('fetchEditPages')->render();
+        return $data; 
+    }
+    public function  view_edit_section(){
+        
+    }
 
 }

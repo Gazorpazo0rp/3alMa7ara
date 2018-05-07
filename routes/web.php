@@ -42,6 +42,8 @@ Route::get('/EditWorker/{id}','AdminController@Edit_Staff');
 Route::post('/SubmitEditWorker', 'AdminController@Submit_Edit_worker');
 Route::get('/viewClients','AdminController@view_clients');
 Route::get('/blockClient/{id}','AdminController@block_client');
+Route::get('/editPages','AdminController@edit_pages');
+Route::get('/viewEditSection/{id}','AdminController@view_edit_section');
 
 
 
