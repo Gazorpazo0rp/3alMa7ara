@@ -78,3 +78,17 @@ function EditWorker(id){
         }
     });
 }
+function BlockClient(id){
+    $.ajax({
+        method:'GET',
+        url: "blockClient/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}

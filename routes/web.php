@@ -39,6 +39,10 @@ Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
 Route::get('/pendingReservations','AdminController@View_Reservations');
 Route::get('/viewStaff','AdminController@View_Staff');
 Route::get('/EditWorker/{id}','AdminController@Edit_Staff');
+Route::post('/SubmitEditWorker', 'AdminController@Submit_Edit_worker');
+Route::get('/viewClients','AdminController@view_clients');
+Route::get('/blockClient/{id}','AdminController@block_client');
+
 
 
 

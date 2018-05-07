@@ -22,7 +22,7 @@
                         <button class="navigation-bar-button" onclick="viewTab(2)">Join us Requests</button>
                         <button class="navigation-bar-button" onclick="viewTab(3)">View staff</button>
                         <button class="navigation-bar-button" onclick="viewTab(4)">View clients</button>
-                        <button class="navigation-bar-button" onclick="viewTab(5)">Edit Staff Profiles</button>
+                        <button class="navigation-bar-button" onclick="viewTab(5)">Edit Pages </button>
                         <button class="navigation-bar-button" onclick="viewTab(6)">Edit Reservation info</button>
 
 

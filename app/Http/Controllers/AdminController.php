@@ -72,11 +72,22 @@ class AdminController extends Controller
         return $data;
 
     }
-    public function Show_Worker()
-    {
-        $Req = Worker::find($id);
-        return $Req;
+    public function Submit_Edit_worker(Request $request){
+        $worker= Worker::find($request->input('id'));
+        $worker->name = $request->input('name');
+        $worker->profession = $request->input('profession');
+        $worker->phone = $request->input('phone');
+        $worker->age = $request->input('age');
+        $worker->bio = $request->input('bio');
+        $worker->address = $request->input('address');
+        $worker->status = $request->input('status');
+        $worker->rate = $request->input('rate');
+        $worker->save();
+
+        return redirect('/adminDashboard');
+
     }
+    
 
     //Reservation Part.
     public function View_Reservations($read)  //What should be printed here ?!
@@ -107,11 +118,21 @@ class AdminController extends Controller
         }
                     //return $Customer_Info,$Qus,$Ans. 
     }
-    public function View_Customers()
+    public function view_clients()
     {
-        $Customers = User::orderdBy('id')->get();
+        $Customers = User::all();
 
-        //Ready to be returned.
+        $data = view('fetchViewCustomers',['customers'=>$Customers])->render();
+        return $data;    
+    }
+    public function block_client($id)
+    {
+        $client = User::find($id);
+        $client->delete();
+
+        $Customers = User::all();
+        $data = view('fetchViewCustomers',['customers'=>$Customers])->render();
+        return $data;    
     }
     public function Add_Image($Info)
     {
