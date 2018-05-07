@@ -14,8 +14,19 @@ class Customer extends User
     public $timestamps = false;
     
     public $numberOfApartments;
+    
     public function apartments()
     {
         return $this->hasMany('App\Apartment','customer_id');
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany('App\On_Going_Task' , 'customer_id');
+    }
+
+    public function comment()
+    {
+        return $this->hasMany('App\Comment' , 'customer_id');
     }
 }
