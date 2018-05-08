@@ -11,6 +11,7 @@
 <input type="text" placeholder="bio"name="bio" value="{{$worker['bio']}}">
 <input type="text" placeholder="rate"name="rate" value="{{$worker['rate']}}">
 <input type="text" name="id" value="{{$worker['id']}}" style="display:none">
+<input type="file" name ="img[]" multiple>
 <input type="submit" >
 
 

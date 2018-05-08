@@ -41,3 +41,6 @@ input[type="submit"]:hover{
     cursor:pointer;
     background-color: rgba(42, 42, 44, 0.973);
 }
+input[type="file"]{
+    margin-top:20px;
+}

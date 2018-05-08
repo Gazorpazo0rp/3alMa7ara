@@ -1,0 +1,36 @@
+#images-div{
+    width:90%;
+    margin:5%;
+}
+.image{
+    width:90%;    
+    height:400px;
+}
+.image-div{
+    position:relative;
+
+}
+i{
+    position:absolute;
+    top:5px;
+    right:10.5%;
+   
+    color:white;
+    background-color: rgb(216, 50, 50);
+}
+i:hover{
+    cursor:pointer;
+}
+#add-section-images {
+    width:90%;
+    margin-left:5%;
+}
+input[type="submit"]{
+    position:absolute;
+    left:350px;
+    top:0px;
+    font-size:18px;
+}
+h3{
+    font-family:Cairo;
+}

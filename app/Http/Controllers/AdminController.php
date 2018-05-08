@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Worker;
 use App\WorkerRequest;
 use App\Form;
@@ -12,7 +13,9 @@ use App\User;
 use App\Selected_Service;
 use App\Service;
 use App\Price;
-use App\Image;
+use App\Section_Image;
+use App\Worker_Image;
+
 use DB;
 
 class AdminController extends Controller
@@ -83,7 +86,15 @@ class AdminController extends Controller
         $worker->status = $request->input('status');
         $worker->rate = $request->input('rate');
         $worker->save();
-
+        foreach($request->input('img') as $img){
+            //save img
+            //
+            //
+            //
+            //
+            //
+            //                           متنساااااااااااااااش
+        }
         return redirect('/adminDashboard');
 
     }
@@ -162,6 +173,31 @@ class AdminController extends Controller
         $data= view('ReservationPage',['data'=>$Res])->render();
         return $data; // not tested
     }
+    public function edit_pages(){
 
+        $data= view('fetchEditPages')->render();
+        return $data; 
+    }
+    public function  view_edit_section($id){
+        $images=Section_Image::where('type',$id)->orderBy('created_at')->get();
+        $data= view('fetchViewEditPage',['data'=>$images])->render();
+        return $data;
 
+    }
+    public function delete_section_image($path,$id){
+        Section_Image::where('imagepath',$path)->delete();
+        $path=public_path('storage/Section_Images/'.$path);// the image is still in the folder
+        Storage::delete($path);
+        $images=Section_Image::where('type',$id)->orderBy('created_at')->get();
+        $data= view('fetchViewEditPage',['data'=>$images])->render();
+        return $data;
+
+    }
+    public function add_section_images(Request $request){
+        $images=$request->input('images');
+        
+        foreach($images as $image){
+            
+        }
+    }
 }
