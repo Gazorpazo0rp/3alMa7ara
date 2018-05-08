@@ -111,7 +111,8 @@ function viewSection(idx){
         }
     });
 }
-function deleteImage(path,type){
+function deleteImage(path,type,icon){
+    icon.style.dispaly="none";
     $.ajax({
         method:'GET',
         url: "deleteSectionImage/"+path+"/"+type,

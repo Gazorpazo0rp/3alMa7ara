@@ -186,7 +186,7 @@ class AdminController extends Controller
     }
     public function delete_section_image($path,$id){
         Section_Image::where('imagepath',$path)->delete();
-        $path=public_path('storage/Section_Images/'.$path);// the image is still in the folder
+        $path='public/Section_images/'.$path;
         Storage::delete($path);
         $images=Section_Image::where('type',$id)->orderBy('created_at')->get();
         $data= view('fetchViewEditPage',['data'=>$images])->render();
@@ -194,10 +194,32 @@ class AdminController extends Controller
 
     }
     public function add_section_images(Request $request){
-        $images=$request->input('images');
+        if($request->hasFile('images')) {
+
+            foreach($request->file('images') as $image){
+                $imageObj= new Section_Image;
+                //validation l esm el path hna
+                $destinationPath="public/Section_images";
+                $filename = $image->getClientOriginalName();
+                $image->storeAs('public/Section_images', $filename);
+
+                
+                $imageObj->imagepath=$filename;
+                $imageObj->type=$request->input('section');
+                $imageObj->save();
+            } 
         
-        foreach($images as $image){
-            
-        }
     }
+    return redirect('/adminDashboard');
+
+    /*
+    foreach($request->file('images') as $image)
+    {
+        $destinationPath = 'content_images/';
+        $filename = $image->getClientOriginalName();
+        $image->move($destinationPath, $filename);
+
+    }
+    */
+}
 }
