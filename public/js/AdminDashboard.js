@@ -93,9 +93,28 @@ function BlockClient(id){
     });
 }
 function viewSection(idx){
+    var section;
+    if  (idx==0) section="Decor & art"
+    else if  (idx==1) section="Design"
+    else if  (idx==2) section="Firefighting | Air conditioning"
+    else if   (idx==3) section="Refurbishment"
     $.ajax({
         method:'GET',
-        url: "viewEditSection/"+idx,
+        url: "viewEditSection/"+section,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+function deleteImage(path,type){
+    $.ajax({
+        method:'GET',
+        url: "deleteSectionImage/"+path+"/"+type,
         success: function(response){
             document.getElementById('action-center').innerHTML=response;
 

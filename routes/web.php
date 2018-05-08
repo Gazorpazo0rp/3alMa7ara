@@ -44,6 +44,8 @@ Route::get('/viewClients','AdminController@view_clients');
 Route::get('/blockClient/{id}','AdminController@block_client');
 Route::get('/editPages','AdminController@edit_pages');
 Route::get('/viewEditSection/{id}','AdminController@view_edit_section');
+Route::get('/deleteSectionImage/{path}/{id}','AdminController@delete_section_image');
+Route::post('/AddSectionImages', 'AdminController@add_section_images');
 
 
 
