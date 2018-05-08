@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOnGoingTasksTable extends Migration
+class OnGoingTasks extends Migration
 {
     /**
      * Run the migrations.
@@ -13,6 +13,7 @@ class CreateOnGoingTasksTable extends Migration
      */
     public function up()
     {
+        //
         Schema::create('on_going_tasks', function (Blueprint $table) {
             $table->increments('task_id');
             $table->unsignedInteger('customer_id');
@@ -34,6 +35,6 @@ class CreateOnGoingTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('on__going__tasks');
+        Schema::dropIfExists('on_going_tasks');    
     }
 }
