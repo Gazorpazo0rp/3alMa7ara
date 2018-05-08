@@ -5,6 +5,9 @@ use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\WorkerRequest;
+use App\Worker;
+use App\Worker_Image;
+use App\Comment;
 use DB;
 
 class PagesController extends Controller
@@ -14,9 +17,13 @@ class PagesController extends Controller
         return view('HomePage');
     }
    
-    public function Profile()
+    public function Worker_Profile($id)
     {
-        return ('Your Profile');
+        $Worker = Worker::find($id);
+        $Worker_Images = Worker_Image::where('worker_id',$id);
+        $Comments = DB::select("select name,body from users,comments where worker_id = '$id' ");
+        return view('workerprofile')->with('Worker',$Worker)->with('Worker_Images',$Worker_Images)->with('Comments',$Comments);
+        
     }
     public function Register()
     {        
