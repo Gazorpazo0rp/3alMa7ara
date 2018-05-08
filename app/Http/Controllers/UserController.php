@@ -15,6 +15,7 @@ use App\Price;
 use App\Worker;
 use App\Service_option_Price;
 use App\Selected_Service;
+use App\On_Going_task;
 use DB;
 
 class UserController extends Controller
@@ -207,6 +208,20 @@ class UserController extends Controller
         return view('ReservationPage',['data'=>$data]);
     }
     public function Submit_Reservation(Request $request){
+
+       //insert the worker reservation in the ongoing tasks table with state=0
+        for($i=0;$i<3;$i++){
+            if($request->input((string)$i)) {
+                $taskObj=new On_Going_Task;
+                $taskObj->customer_id=Session::get('ID');
+                $taskObj->state=0;
+                $taskObj->worker_id=$request->input($i);
+                $taskObj->save();
+                
+            }
+        }
+        
+        
         //post the data
         $request = $request->except('_token');
         $Form = new Form;
@@ -236,7 +251,9 @@ class UserController extends Controller
             }
         }        
         Session::put('Message','Your order has been submitted successfully');
-
+        // change the state of the workers
+        // لما حسين يعمل الموديل
+        
         return redirect('/');
     }
     //Logic of the Login of the user

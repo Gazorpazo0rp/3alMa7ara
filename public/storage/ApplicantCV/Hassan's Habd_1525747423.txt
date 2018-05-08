@@ -1,0 +1,33 @@
+// ConsoleApplication2.cpp : Defines the entry point for the console application.
+//
+#include <iostream>
+#include <vector>
+using namespace std;
+struct point
+{
+	int x, y;
+};
+struct piece
+{
+	bool own; int type; point p;
+};
+int Grid[8][8],int cpdGrid[8][8];
+vector<piece>AI, lzbon;
+vector<point> Possible_Moves_For(int t)
+{
+	if()
+}
+void predict(int Future)
+{
+	for (int i = 0; i < AI.size(); ++i)
+	{
+		vector<point> possible = Possible_Moves_For(AI[i].type);
+
+	}
+	return;
+}
+int main()
+{
+    return 0;
+}
+

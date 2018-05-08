@@ -103,15 +103,28 @@ class AdminController extends Controller
     //Reservation Part.
     public function View_Reservations($read)  //What should be printed here ?!
     {
-        $Forms = Form::orderdBy('created_at')->where('status',$read)->get();
-        $FormsID = array();
-        foreach($Forms as $F)
+        $forms = Form::where('status',$read)->get();
+        $res = array();
+        $customerData=array();
+        $cnt=0;
+        foreach($forms as $form)
         {
-            array_push($FormsID,$F['id']);
+            $selectedServices=Selected_Service::where('form_id',$form['id'])->get();
+            $optionsArray=array();
+            foreach($selectedServices as $serv){
+                $op=Price::where('id',$serv['price_id'])->first();
+                array_push($optionsArray,$op);
 
+            }
+
+           // array_push($FormsID,$F['id']);
+            $res[$cnt]=$optionsArray;
+            unset($optionsArray);
+            $customerData[$cnt]=User::where('id',$form['customer_id'])->first();
+            $cnt++;
         }
-        //return $F;
-
+        $data = view('fetchPendingReservations',['reservationServ'=>$res],['customer'=>$customerData])->render();
+        return $data; 
     }
     public function Show_Reservation($id)
     {

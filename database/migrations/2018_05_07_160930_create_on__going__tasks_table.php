@@ -14,11 +14,11 @@ class CreateOnGoingTasksTable extends Migration
     public function up()
     {
         Schema::create('on_going_tasks', function (Blueprint $table) {
-            
+            $table->increments('task_id');
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('Cascade')
             ->onUpdate('Cascade');
-            $table->unsignedInteger('worker_id');
+            $table->unsignedInteger('worker_id')->nullable();
             $table->foreign('worker_id')->references('id')->on('workers')->onDelete('Cascade')
             ->onUpdate('Cascade');
 

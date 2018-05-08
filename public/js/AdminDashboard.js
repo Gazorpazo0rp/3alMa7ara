@@ -1,6 +1,6 @@
 function viewTab(idx){
     var url_holder;
-    if(idx==1) url_holder='/pendingReservations'
+    if(idx==1) url_holder='/pendingReservations/0'
     else if(idx==2) url_holder='/JoinUsRequests'
     else if(idx==3) url_holder='/viewStaff'
     else if(idx==4) url_holder='/viewClients'
@@ -10,11 +10,8 @@ function viewTab(idx){
         method:'GET',
         url: url_holder,
         success: function(response){
-            if(idx==1) fetchTab1(response);
-            if(idx==2) fetchTab1(response);
-            if(idx==3) fetchTab1(response);
-            if(idx==4) fetchTab1(response);
-            if(idx==5) fetchTab1(response);
+            document.getElementById('action-center').innerHTML=response;
+
         },
         error:function(jqXHR, textStatus, errorThrown) { 
             console.log(jqXHR);
@@ -23,26 +20,7 @@ function viewTab(idx){
     });
     
 }
-function fetchTab1(response){
-    document.getElementById('action-center').innerHTML=response;
 
-}
-function fetchTab2(response){
-    document.getElementById('action-center').innerHTML=response;
-
-}
-function fetchTab3(response){
-    document.getElementById('action-center').innerHTML=response;
-
-}
-function fetchTab4(response){
-    document.getElementById('action-center').innerHTML=response;
-
-}
-function fetchTab5(response){
-    document.getElementById('action-center').innerHTML=response;
-
-}
 function updateRequests(action,id,buttonObj){
     debugger;
     //console.log($(buttonObj).parent());

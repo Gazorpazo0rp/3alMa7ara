@@ -10,6 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/fetchEditWorker.css">
         <link rel="stylesheet" type="text/css" href="css/fetchEditPages.css">
         <link rel="stylesheet" type="text/css" href="css/fetchViewEditPage.css">
+        <link rel="stylesheet" type="text/css" href="css/fetchPendingReservations.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
                 
