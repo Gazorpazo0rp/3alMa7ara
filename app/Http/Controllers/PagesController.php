@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\WorkerRequest;
 use DB;
 
@@ -37,16 +38,50 @@ class PagesController extends Controller
 
     public function Submit_Request(Request $request) //Adding a request for the applicant in the database.
     {     
-        $Req = new WorkerRequest;  
-      
-        $Req->email = $request->input('email');
-        $Req->name = $request->input('name');
-        $Req->profession = $request->input('profession');
-        $Req->phone = $request->input('phoneNumber');
-        $Req->age = $request->input('age');
-        $Req->bio = $request->input('bio');
-        $Req->address = $request->input('address');
 
+        $ToBeValidated = array('email'=> $request->input('email'), 'name' => $request->input('name'),
+        'profession' => $request->input('profession'), 'phone'=>$request->input('phoneNumber'),
+        'age' => $request->input('age') , 'bio'=>$request->input('bio'), 
+         'address' => $request->input('address')
+        );
+
+        //the Email should be unique -> in workers and worker requests
+        $validateObj=Validator::make($ToBeValidated, ['email' => 'required|string|email|max:255|unique:worker_requests|unique:workers']);
+        if($validateObj -> fails())
+        {
+            Session::put('Message','Error! This Email is already used.');
+            return redirect('/'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
+        if($validateObj -> fails())
+        {
+            Session::put('Message','Error! Your name should contain only characters');
+            return redirect('/'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated,  ['profession' => ['required', 'regex:/^[a-zA-Z]+$/','min:3','max:50']]);
+        if($validateObj -> fails())
+        {
+            Session::put('Message','Error! Your Profession should contain only characters.');
+            return redirect('/'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Your phone number must be 11 digits.');
+            return redirect('/'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['age' => 'required|integer|min:20|max:60']);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! a Proper age should be a number between 20 and 60');
+            return redirect('/'); 
+        }
+
+    
         //Handle Uploaded File (CV)
         if($request->hasFile('cv'))
         {   
@@ -56,6 +91,14 @@ class PagesController extends Controller
             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             // Get just ext.
             $extension = $request->file('cv')->getClientOriginalExtension();
+            //Check the extension of the file
+            if($extension != 'txt' && $extension != 'doc' && $extension != 'pdf')
+            {
+                Session::put('Message','Error! Invalid Extension for CV file, it should be txt,doc or pdf');
+                return redirect('/'); 
+            }
+            $Req = new WorkerRequest; 
+
             // FileName To store
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
             // Upload File
@@ -63,7 +106,20 @@ class PagesController extends Controller
 
             $Req->filepath = $path;
         }
-       
+        else
+        {
+            Session::put('Message','Error! You should attach your CV file in txt, docs or pdf');
+            return redirect('/');  
+        }
+
+        $Req->email = $request->input('email');
+        $Req->name = $request->input('name');
+        $Req->profession = $request->input('profession');
+        $Req->phone = $request->input('phoneNumber');
+        $Req->age = $request->input('age');
+        $Req->bio = $request->input('bio');
+        $Req->address = $request->input('address');
+
         $Req->save();
         Session::put('Message','Your request has been sent Successfully.');
         return redirect('/');
