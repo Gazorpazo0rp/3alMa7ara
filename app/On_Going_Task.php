@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class On_Going_Task extends Model
 {
     //Table Name
-    protected $table = 'on_going_task';
+    protected $table = 'on_going_tasks';
     //Timestamps
     public $timestamps = true;
 
