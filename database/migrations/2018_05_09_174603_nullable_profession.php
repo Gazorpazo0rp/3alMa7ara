@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddProfessionToTasks extends Migration
+class NullableProfession extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddProfessionToTasks extends Migration
     public function up()
     {
         Schema::table('on_going_tasks' , function($table){
-            $table->string('profession');
+            $table->string('profession')->nullable();
         });
     }
 
