@@ -1,32 +1,27 @@
+<h1> On-Going Tasks</h1>
 <table class="pure-table">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Customer Name</th>
                 <th>Worker Name</th>
+                <th>Customer Name</th>
                 <th>Finished</th>
             </tr>
         </thead>
     
         <tbody>
             <tr class="pure-table-odd">
-                <td>1</td>
-                <td>Honda</td>
-                <td>Accord</td>
-                <td>2009</td>
-            </tr>
-    
-            <tr>
-                <td>2</td>
-                <td>Toyota</td>
-                <td>Camry</td>
-                <td>2012</td>
-            </tr>
+             
+            <?php $i=0;?>
             @foreach($data['tasks'] as $task)
+            <tr <?php if($i%2==0) echo'class="pure-table-odd"';?>>
+
                 <td>{{$task->task_id}}</td>
-                <td>Toyota</td>
-                <td>Camry</td>
-                <td>2012</td>
+                <td>{{$data['workers'][$i]->name}}</td>
+                <td>{{$data['customers'][$i]->name}}</td>
+                <td><button onclick="updateTask({{$task->task_id}})">Done?</button></td>
+            </tr>
+            <?php $i++;?>
             @endforeach
             
         </tbody>

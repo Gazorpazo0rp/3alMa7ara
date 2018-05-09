@@ -123,3 +123,17 @@ function updateReservation(action,customerId,formId){
         }
     });
 }
+function updateTask(id){
+    $.ajax({
+        method:'GET',
+        url: "updateTask/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}

@@ -159,4 +159,7 @@ class PagesController extends Controller
         $Paragraph = "This is Designs page !";
         return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
     }
+    public function admin_auth(){
+        return view('adminAuth');
+    }
 }

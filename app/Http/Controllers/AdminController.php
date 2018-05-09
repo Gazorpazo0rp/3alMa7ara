@@ -283,17 +283,28 @@ class AdminController extends Controller
         foreach($tasks as $task){
             $worker=Worker::find($task->worker_id);
             $customer=User::find($task->customer_id);
-            return $workersData;
             array_push($customersData,$customer);
             array_push($workersData,$worker);
         }
         $variables=array();
-        $variables['Customers']=$customerData;
+        $variables['customers']=$customersData;
         $variables['workers']=$workersData;
         $variables['tasks']=$tasks;
 
         $data= view('fetchTasks',['data'=>$variables])->render();
         return $data;
+    }
+    public function update_task($id){
+        $taskObj=On_Going_Task::where('task_id',$id)->first();
+
+        On_Going_Task::where('task_id',$id)->update(['state'=>3]);
+
+        // make the worker avsilable
+        Worker::where('id',$taskObj->worker_id)->update(['status'=>'Available']);
+        //get the first task without a worker id and assign the worker to it
+
+
+        return redirect('/onGoingTasks');
     }
 
     

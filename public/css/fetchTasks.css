@@ -1,0 +1,16 @@
+table{
+    position:absolute;
+    left:50px;
+    font-family:Cairo;
+}
+table button{
+    color:rgba(246, 245, 247, 0.966);
+    background-color: rgb(126, 33, 33);
+    border:0px;
+    font-size:12px;
+    padding:5px;
+    margin-left:10px;
+}
+table button:hover{
+    cursor:pointer;
+}
