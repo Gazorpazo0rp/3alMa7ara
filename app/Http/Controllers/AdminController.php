@@ -108,7 +108,7 @@ class AdminController extends Controller
         $res = array();
         $customerData=array();
         $selectedWorkers=array();
-
+        $formsIds=array();
         $cnt=0;
         foreach($forms as $form)
         {
@@ -128,7 +128,7 @@ class AdminController extends Controller
             $customerData[$cnt]=User::where('id',$form['customer_id'])->first();
             //get the selected workers
             $workers=array();
-            $tasks=On_Going_Task::where([['customer_id',$form['customer_id']],['form_id',$form['id']]])->get();
+            $tasks=On_Going_Task::where([['customer_id',$form['customer_id']],['form_id',$form['id']],['state',0]])->get();
             foreach($tasks as $task){
                 if($task->worker_id) {
                     $worker=Worker::find($task->worker_id);
@@ -140,13 +140,14 @@ class AdminController extends Controller
             //return  $workers[0]['name'];
             $selectedWorkers[$cnt]=$workers;
             unset($workers);
-
+            $formsIds[$cnt]=$form->id;
             $cnt++;
         }
         $variables=array();
         $variables['reservationServ']=$res;
         $variables['customer']=$customerData;
         $variables['workersData']=$selectedWorkers;
+        $variables['formsIds']=$formsIds;
 
         $data = view('fetchPendingReservations',['data'=>$variables])->render();
         return $data; 
@@ -259,5 +260,41 @@ class AdminController extends Controller
 
     }
     */
-}
+    }
+    public function accept_reservation($cusomerID,$formId){
+        $tasksToUpdate=On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->update(['state'=>1]);
+        Form::where('id',$formId)->update(['status'=>1]);
+        return redirect('pendingReservations/0');
+    }
+    public function reject_reservation($cusomerID,$formId){
+        On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->update(['state'=>2]);
+        $tasksToUpdate=On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->get();
+        Form::where('id',$formId)->update(['status'=>2]);
+        foreach($tasksToUpdate as $task){
+            Worker::where('id',$task->worker_id)->update(['status'=>"Available"]);
+
+        }
+        return redirect('pendingReservations/0');
+    }
+    public function view_tasks(){
+        $tasks=On_Going_Task::where('state',1)->get();
+        $customersData=array();
+        $workersData=array();
+        foreach($tasks as $task){
+            $worker=Worker::find($task->worker_id);
+            $customer=User::find($task->customer_id);
+            return $workersData;
+            array_push($customersData,$customer);
+            array_push($workersData,$worker);
+        }
+        $variables=array();
+        $variables['Customers']=$customerData;
+        $variables['workers']=$workersData;
+        $variables['tasks']=$tasks;
+
+        $data= view('fetchTasks',['data'=>$variables])->render();
+        return $data;
+    }
+
+    
 }

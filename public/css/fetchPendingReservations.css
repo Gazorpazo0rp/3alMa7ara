@@ -37,3 +37,9 @@ hr{
     margin:0px;
     margin-left:20%;
 }
+.accept-button{
+    left:50px;
+}
+.reject-button{
+    left:150px;
+}

@@ -5,6 +5,8 @@ function viewTab(idx){
     else if(idx==3) url_holder='/viewStaff'
     else if(idx==4) url_holder='/viewClients'
     else if(idx==5) url_holder='/editPages'
+    else if(idx==6) url_holder='/onGoingTasks'
+
     
     $.ajax({
         method:'GET',
@@ -94,6 +96,23 @@ function deleteImage(path,type,icon){
     $.ajax({
         method:'GET',
         url: "deleteSectionImage/"+path+"/"+type,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+function updateReservation(action,customerId,formId){
+    var url_holder;
+    if (action==1) url_holder="acceptReservation";
+    else url_holder="rejectReservation";
+    $.ajax({
+        method:'GET',
+        url: url_holder+"/"+customerId+"/"+formId,
         success: function(response){
             document.getElementById('action-center').innerHTML=response;
 

@@ -47,6 +47,9 @@ Route::get('/editPages','AdminController@edit_pages');
 Route::get('/viewEditSection/{id}','AdminController@view_edit_section');
 Route::get('/deleteSectionImage/{path}/{id}','AdminController@delete_section_image');
 Route::post('/AddSectionImages', 'AdminController@add_section_images');
+Route::get('/acceptReservation/{customerId}/{formId}','AdminController@accept_reservation');
+Route::get('/rejectReservation/{customerId}/{formId}','AdminController@reject_reservation');
+Route::get('/onGoingTasks','AdminController@view_tasks');
 
 
 
