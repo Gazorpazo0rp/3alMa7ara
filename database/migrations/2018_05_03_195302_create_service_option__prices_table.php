@@ -36,6 +36,6 @@ class CreateServiceOptionPricesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('service_option__prices');
+        Schema::dropIfExists('service_option_prices');
     }
 }

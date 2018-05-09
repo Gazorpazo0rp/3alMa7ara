@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>profile </title>
+    <title>{{$Worker['name']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/WorkerProfile.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
@@ -81,22 +81,7 @@
 </head>
 <body scrollingeffect()>
         @include('inc.messages')
-    	<nav class="nav-bar" id="Main-nav">
-                <a id ="logoLink"href="#"><img id="logo" src="images/workerprofile_images/logo.png"></a>
-                <a id ="minilogoLink"href="#"><img id="minilogo" src="images/workerprofile_images/minilogo.png"></a>
-
-            <ul>
-                <li> <a href="#" class="active">Home</a></li>
-                <li> <a href="#">Design</a></li>
-                <li> <a href="#">Finishing</a></li>
-                <li> <a href="#">Fire Fighting</a></li>
-                <li> <a href="#">Air Conditioning</a></li>
-                <li ID="Login-nav"> <a  href="#">Login/</a></li>
-                <li ID="Signup-nav"> <a  href="#">Sign up</a></li>
-                <div class="collapse-item" onClick="Showcollapsed()"><span class="collapse-bars"></span> <span class="collapse-bars"></span><span class="collapse-bars"></span></div> 
-                
-            </ul>
-    </nav>
+    	@include('inc.navbar')
     
                  <!-- <a href="#">
                         <span class="glyphicon glyphicon-camera" id="profile-pic-icon"></span>
@@ -113,8 +98,8 @@
                 </a>
             </div>
            <div class="rest-of-info">
-            <h2 id="worker-name">Ashraf Kamal</h2>
-            <h2 id="worker-job">Plumber</h2>
+           <h2 id="worker-name">{{$Worker['name']}}</h2>
+            <h2 id="worker-job">{{$Worker['profession']}}</h2>
             <div class="secondary-data">
                     <div>
                             <img id="salary" src="images/workerprofile_images/salary.png">
@@ -136,8 +121,7 @@
         <div class="profile" id="profile">
             <div class="bio">
                 <h1>Bio</h1>
-                <p id="bio-paragraph">Plumber,34 years old, graduated from faculty of plumbering el3ezba university.I love my job very much that
-                            my mum sometimes brings food to me in the bathroom to have my llunch on my favourite seat which is banio</p>
+                <p id="bio-paragraph">{{$Worker['bio']}}</p>
             </div>
             <div class="line-separator"></div>
             <h1>Know me!</h1>
@@ -148,13 +132,9 @@
             <h1>Latest projects</h1>
             <div class="panel-container">
                 <div class="gallery-slider ">
-                    <img class="slider 	" src="images/workerprofile_images/apartment.jpg">
-                    <img class="slider 	"  src="images/workerprofile_images/apartment2.jpg">
-                    <img class="slider 	" src="images/workerprofile_images/apartment3.jpg">
-                    <img class="slider 	"  src="images/workerprofile_images/apartment2.jpg">
-                    <img class="slider 	"  src="images/workerprofile_images/apartment2.jpg">
-                    <img class="slider 	"  src="images/workerprofile_images/apartment2.jpg">
-                    <img class="slider 	"  src="images/workerprofile_images/apartment2.jpg">
+                        @foreach($Worker_Images as $Image)
+                        <img src="/storage/Section_images/{{$Image->imagepath}}" alt="" class="slider 	">
+                        @endforeach
                     <button class="w3-button w3-display-left " onclick="slideAnimate(-1)" id="left">&#10094;</button>
                     <button class="w3-button w3-display-right " onclick="slideAnimate(1)" id="right">&#10095;</button>
                 </div>
@@ -162,20 +142,10 @@
             <div class="line-separator"></div>
             <div class="reviews" style="margin-bottom:10%;" >
                 <h1  style="margin-bottom:7%;">Reviews</h1>
-                <div id="review1"> <h2>Hamada</h2>
-                    <p>You are a bad worker, you are an asshole motha fucka</p></div>
-                <div><h2>Shireen</h2>
-                    <p>I want this worker once again, he's very hot!</p></div>
-                <div id="review1"> <h2>Sameh</h2>
-                    <p>OMG! you are an amazing worker, ur hands are rolled in silk baby</p></div>
-                <div> <h2>Sameh</h2>
-                    <p>OMG! you are an amazing worker, ur hands are rolled in silk baby</p></div>
-                <div id="review1"><h2>Salma Hayek</h2>
-                    <p>I want this worker once again, he's very hot!</p></div>
-                <div><h2>Vin Diesel</h2>
-                    <p>OMG! you are an amazing worker, ur hands are rolled in silk baby</p></div>
-                <div id="review1"><h2>Sarah</h2>
-                    <p>I want this worker once again, he's very hot!</p></div>
+                @foreach($Comments as $Comment)
+                <div id="review1"> <h2>{{$Comment['name']}}</h2>
+                <p>{{$Comment['body']}}</p></div>
+                 @endforeach
             </div>
         </div>
     </div>

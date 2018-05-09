@@ -26,6 +26,7 @@ Route::get('/Reservation','UserController@Reservation');
 Route::get('/Simulator','PagesController@Simulator');
 Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');
+Route::get('/worker/{id}', 'PagesController@Worker_Profile');
 //Sections.
 Route::get('/Designs','PagesController@Designs');
 Route::get('/Refurbishment','PagesController@Refurbishment');
