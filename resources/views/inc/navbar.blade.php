@@ -2,7 +2,7 @@
 <script type="text/javascript" src="/js/NavBar.js"></script>
 
 <nav class="nav-bar" id="Main-nav">
-    <a id ="logoLink"href="/"><img id="logo" src="images/Homepage_images/logo.png"></a>
+    <a id ="logoLink"href="/"><img id="logo" src="/images/Homepage_images/logo.png"></a>
     <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
 
     <ul>
