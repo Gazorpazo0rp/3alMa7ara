@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsTable extends Migration
+class CommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('Cascade')
             ->onUpdate('Cascade');
             $table->unsignedInteger('worker_id');
-            $table->foreign('worker_id')->references('id')->on('users')->onDelete('Cascade')
+            $table->foreign('worker_id')->references('id')->on('workers')->onDelete('Cascade')
             ->onUpdate('Cascade');
 
             $table->mediumText('body');
