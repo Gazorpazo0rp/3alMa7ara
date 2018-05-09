@@ -1,0 +1,45 @@
+h1{
+    font-family:Cairo;
+    color:rgb(126, 33, 33);
+
+}
+h2{
+    font-family:Cairo;
+
+}
+.reservation-div{
+    padding:30px;
+    background-color: rgba(246, 245, 247, 0.966);
+    width:80%;
+    margin-left:10%;
+    position:relative;
+    height:400px;
+}
+.client-info{
+    width:45%;
+    position:absolute;
+    left:0;
+    padding:20px;
+}
+.reservation-info{
+    position:absolute;
+    width:45%;
+    right:0;
+    text-align:right;
+    padding:20px;
+
+}
+.clear{
+    clear:both;
+}
+hr{
+    width:60%;
+    margin:0px;
+    margin-left:20%;
+}
+.accept-button{
+    left:50px;
+}
+.reject-button{
+    left:150px;
+}

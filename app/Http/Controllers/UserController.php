@@ -15,6 +15,7 @@ use App\Price;
 use App\Worker;
 use App\Service_option_Price;
 use App\Selected_Service;
+use App\On_Going_task;
 use DB;
 
 class UserController extends Controller
@@ -200,19 +201,50 @@ class UserController extends Controller
         $workers=array();
         //$workers = Worker::where('status',0)->orderBy('profession')->get();
         for($i=0;$i<3;$i++){
-            $workers[$i]=Worker::where('status',0)->where('profession',$i)->get();
+            $workers[$i]=Worker::where('status','Available')->where('profession',$i)->get();
         }
         $data['ques']=$ques;
         $data['workers']=$workers;
         return view('ReservationPage',['data'=>$data]);
     }
     public function Submit_Reservation(Request $request){
-        //post the data
-        $request = $request->except('_token');
+        
         $Form = new Form;
         $Form->customer_id = Session::get('ID');
         $Form->status = 0; // 0-> Unread.
         $Form->save();
+       //insert the worker reservation in the ongoing tasks table with state=0
+        for($i=0;$i<3;$i++){
+            if($request->input((string)$i)) {
+                //create a task
+                $taskObj=new On_Going_Task;
+                $taskObj->customer_id=Session::get('ID');
+                $taskObj->state=0;
+                $taskObj->form_id=$Form->id;
+                $taskObj->worker_id=$request->input($i);
+                $taskObj->save();
+                // change the selected worker status
+                $selectedWorker=Worker::find($request->input($i));
+                $selectedWorker->status="busy";
+                $selectedWorker->save();
+            }
+        }
+        
+        // لو الصنايعية خلصو هنشوف هل هو حابب نختارله ولا عايز services بس
+        for ($i=0;$i<3;$i++){
+            if ($request->input('pick'.$i)){
+                // create a task without a worker to be filled with a worker of the same profession when ready
+                $taskObj=new On_Going_Task;
+                $taskObj->customer_id=Session::get('ID');
+                $taskObj->form_id=$Form->id;
+                $taskObj->state=0;
+                $taskObj->save();
+                
+            }
+        }
+        //post the data
+        $request = $request->except('_token');
+       
         
         $Extra="";
         foreach($request as $key=>$value)
@@ -225,18 +257,23 @@ class UserController extends Controller
                 if($Extra == null) $Extra = "";
             }
             else 
-            {
-                $SS = new Selected_Service;
-                $SS->form_id = $Form->id;
-                $tmp = Service::where('descriptions',$key)->get();
-                $SS->service_id =  $tmp[0]['id'];
-                $SS->price_id = $value;
-                $SS->note = $Extra;
-                $SS->save();
+            {   
+                if(strpos($key,'pick')==false&&$key!='0'&&$key!='1'&&$key!='2'){
+                    $SS = new Selected_Service;
+                    $SS->form_id = $Form->id;
+                    $tmp = Service::where('descriptions',$key)->first();
+                    $SS->service_id =  $tmp['id'];
+                    $SS->price_id = $value;
+                    
+                    $SS->note = $Extra;
+                    $SS->save();
+                }
             }
         }        
         Session::put('Message','Your order has been submitted successfully');
-
+        // change the state of the workers
+        // لما حسين يعمل الموديل
+        
         return redirect('/');
     }
     //Logic of the Login of the user

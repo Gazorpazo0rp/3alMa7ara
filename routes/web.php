@@ -37,7 +37,7 @@ Route::get('/adminDashboard','PagesController@Admin');
 Route::get('/JoinUsRequests','AdminController@View_Requests');
 Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
 Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
-Route::get('/pendingReservations','AdminController@View_Reservations');
+Route::get('/pendingReservations/{read}','AdminController@View_Reservations');
 Route::get('/viewStaff','AdminController@View_Staff');
 Route::get('/EditWorker/{id}','AdminController@Edit_Staff');
 Route::post('/SubmitEditWorker', 'AdminController@Submit_Edit_worker');
@@ -47,6 +47,9 @@ Route::get('/editPages','AdminController@edit_pages');
 Route::get('/viewEditSection/{id}','AdminController@view_edit_section');
 Route::get('/deleteSectionImage/{path}/{id}','AdminController@delete_section_image');
 Route::post('/AddSectionImages', 'AdminController@add_section_images');
+Route::get('/acceptReservation/{customerId}/{formId}','AdminController@accept_reservation');
+Route::get('/rejectReservation/{customerId}/{formId}','AdminController@reject_reservation');
+Route::get('/onGoingTasks','AdminController@view_tasks');
 
 
 

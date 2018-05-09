@@ -17,7 +17,7 @@ $(document).ready(function(){
     });
 
     $('.radio-option-has-cost').click(function(){
-        debugger;
+        //debugger;
         modifiedCost=0;
         var thisObj=$(this);
         var radioName=$(this).attr('name');
@@ -58,7 +58,19 @@ $(document).ready(function(){
                 $(this).attr('waschecked','false');
             }
         });
-
+        /*
+        $('#toggle').click(function(){
+            debugger;
+            if($(this).attr('waschecked')=='true'){
+                $(this).prop('checked',false);
+                $(this).attr('waschecked','false');
+            }
+            else{
+                $(this).attr('waschecked','true');
+            }
+           
+        });
+        */
     });
     // radio button toggle 
     /*$('input[type="radio"]').click(function(){
