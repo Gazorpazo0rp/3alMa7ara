@@ -1,5 +1,11 @@
+h1{
+    font-family:Cairo;
+    color:rgb(126, 33, 33);
+
+}
 h2{
     font-family:Cairo;
+
 }
 .reservation-div{
     padding:30px;

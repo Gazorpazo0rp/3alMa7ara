@@ -66,13 +66,15 @@
                     @foreach ($data['workers'] as $key =>$value)
                     <div class="radio-options-div-img">
                         <h3 style="text-align:right"> اختار <?php echo $professionNameArray[$cnt]; ?> -</h3> 
-                        <?php if (sizeof($data['workers'][$cnt])==0) echo'<label class="container" ><h4 style="text-align:right"> كل الصنايعية ف المجال دا مشغولين دلوقتى..تحب نختارلك صنايعى لما حد منهم يفضا؟</h4><input type="radio" name="pick'.$professionNameArray[$cnt].'" waschecked="false" > <span class="checkmark"></span></label>'; $cnt++;?>
+                        <?php if (sizeof($data['workers'][$cnt])==0) echo'<label class="container" ><h4 style="text-align:right">كل الصنايعية ف المجال دا مشغولين دلوقتى..تحب نختارلك صنايعى لما حد منهم يفضا؟ </h4><input type="radio" name="pick'.$cnt.'" waschecked="false" > <span id="toggle"class="checkmark"></span></label>'; $cnt++;?>
                         @foreach($data['workers'][$key] as $value)
                         
                         <label  class="container-img" id="{{$value->id}}">
                         <h4 style="text-align:center">{{$value->name}}</h4>
                         <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
                         <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min">
+                        <h4>rate:{{$value->rate}}</h4>
+                        <a target="_blank" href="/" class="show-profile">show profile</a>
                         </label>
                         @endforeach
                             

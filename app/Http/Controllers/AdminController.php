@@ -15,6 +15,7 @@ use App\Service;
 use App\Price;
 use App\Section_Image;
 use App\Worker_Image;
+use App\On_Going_Task;
 
 use DB;
 
@@ -106,9 +107,12 @@ class AdminController extends Controller
         $forms = Form::where('status',$read)->get();
         $res = array();
         $customerData=array();
+        $selectedWorkers=array();
+
         $cnt=0;
         foreach($forms as $form)
         {
+            //get the selected services options
             $selectedServices=Selected_Service::where('form_id',$form['id'])->get();
             $optionsArray=array();
             foreach($selectedServices as $serv){
@@ -120,10 +124,31 @@ class AdminController extends Controller
            // array_push($FormsID,$F['id']);
             $res[$cnt]=$optionsArray;
             unset($optionsArray);
+            // get the customer data
             $customerData[$cnt]=User::where('id',$form['customer_id'])->first();
+            //get the selected workers
+            $workers=array();
+            $tasks=On_Going_Task::where([['customer_id',$form['customer_id']],['form_id',$form['id']]])->get();
+            foreach($tasks as $task){
+                if($task->worker_id) {
+                    $worker=Worker::find($task->worker_id);
+                    
+                    array_push($workers,$worker);
+                }
+            }
+           // $workers=array_unique($workers, SORT_REGULAR);
+            //return  $workers[0]['name'];
+            $selectedWorkers[$cnt]=$workers;
+            unset($workers);
+
             $cnt++;
         }
-        $data = view('fetchPendingReservations',['reservationServ'=>$res],['customer'=>$customerData])->render();
+        $variables=array();
+        $variables['reservationServ']=$res;
+        $variables['customer']=$customerData;
+        $variables['workersData']=$selectedWorkers;
+
+        $data = view('fetchPendingReservations',['data'=>$variables])->render();
         return $data; 
     }
     public function Show_Reservation($id)
