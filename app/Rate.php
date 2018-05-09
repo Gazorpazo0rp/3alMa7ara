@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rate extends Model
 {
     //Table Name
-    protected $table = 'Rates';
+    protected $table = 'rates';
     //Timestamps
     public $timestamps = true;
 

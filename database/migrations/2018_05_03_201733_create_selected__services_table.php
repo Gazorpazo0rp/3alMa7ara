@@ -39,6 +39,6 @@ class CreateSelectedServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selected__services');
+        Schema::dropIfExists('selected_services');
     }
 }

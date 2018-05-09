@@ -30,6 +30,6 @@ class CreateSectionImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section__images');
+        Schema::dropIfExists('section_images');
     }
 }
