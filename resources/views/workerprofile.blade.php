@@ -91,7 +91,7 @@
     <div class="main-container">
         <div class="info" id="info">
             <div class="profile-pic">
-                 <img id="worker-image" src="/storage/Worker_images/{{$Worker_Images[0]->imagepath}}">
+                 <img id="worker-image" src="/storage/Worker_images/{{$Worker->imagepath}}">
                  <a href="#" class="profile-pic-overlay">
                    <div class="profile-pic-text">
                         <span class="glyphicon glyphicon-camera" id="camera-icon"></span>
@@ -135,20 +135,32 @@
             <div class="panel-container">
                 <div class="gallery-slider ">
                         @foreach($Worker_Images as $Image)
-                        <img src="/storage/Section_images/{{$Image->imagepath}}" alt="" class="slider 	">
+                        <img src="/storage/Worker_images/{{$Worker->imagepath}}" alt="" class="slider 	">
                         @endforeach
                     <button class="w3-button w3-display-left " onclick="slideAnimate(-1)" id="left">&#10094;</button>
                     <button class="w3-button w3-display-right " onclick="slideAnimate(1)" id="right">&#10095;</button>
                 </div>
             </div>
             <div class="line-separator"></div>
+            <?php $cnt=0;?>
             <div class="reviews" style="margin-bottom:10%;" >
                 <h1  style="margin-bottom:7%;">Reviews</h1>
-                @foreach($Comments as $Comment)
-                <div id="review1"> <h2>{{$Comment['name']}}</h2>
+                @foreach($Comments['commentBody'] as $Comment)
+                <div id="review1"> <h2>{{$Comments['CommentersData'][$cnt]['name']}}</h2>
                 <p>{{$Comment['body']}}</p></div>
+                <?php $cnt++;?>
                  @endforeach
+                 
             </div>
+            <form id="comment-form" method="POST" action="/SubmitComment">
+                    {{ csrf_field() }}
+
+                <h2>Add a comment </h2>
+                <input name="comment" type="text" placeholder="Add a comment on this workers artworks">
+                <input name="workerId" style="display:none;" value={{$Worker['id']}}>
+
+                <input type="submit">
+             </form>
         </div>
     </div>
 

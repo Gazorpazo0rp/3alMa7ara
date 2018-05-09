@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Comment;
 use App\Customer;
 use App\Apartments;
 use App\Service;
@@ -182,6 +183,20 @@ class UserController extends Controller
         }
 
         
+    }
+    public function Submit_comment(Request $request){
+        if (Session::get('ID')){
+        $comment= new Comment;
+        $comment->worker_id=$request->input('workerId');
+        $comment->customer_id=Session::get('ID');
+        $comment->body=$request->input('comment');
+        $comment->save();
+        }
+        else {
+            Session::put('Message','You must be logged in to add a comment');
+
+        }
+        return redirect('/worker/'.$request->input('workerId'));
     }
     public function Reservation(){
         $ques=array();

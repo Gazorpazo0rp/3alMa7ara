@@ -8,6 +8,8 @@ use App\WorkerRequest;
 use App\Worker;
 use App\Worker_Image;
 use App\Comment;
+use App\User;
+
 use DB;
 
 class PagesController extends Controller
@@ -21,8 +23,16 @@ class PagesController extends Controller
     {
         $Worker = Worker::find($id);
         $Worker_Images = Worker_Image::where('worker_id',$id)->get();
-        $Comments = DB::select("select name,body from users,comments where worker_id = '$id' ");
-        return view('workerprofile')->with('Worker',$Worker)->with('Worker_Images',$Worker_Images)->with('Comments',$Comments);
+        $comments=array();
+        $commenters=array();
+        $CommentsData = Comment::where('worker_id',$id)->get();
+        foreach($CommentsData as $comment){
+            $customer=User::where('id',$comment->customer_id)->first();
+            array_push($commenters,$customer);
+        }
+        $comment['commentBody']=$CommentsData;
+        $comment['CommentersData']=$commenters;
+        return view('workerprofile')->with('Worker',$Worker)->with('Worker_Images',$Worker_Images)->with('Comments',$comment);
         
     }
     public function Register()

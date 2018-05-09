@@ -20,6 +20,7 @@ Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'PagesController@Submit_Request');
 Route::post('/SubmitReservation', 'UserController@Submit_Reservation');
+Route::post('/SubmitComment', 'UserController@Submit_comment');
 
 //URL
 Route::get('/Reservation','UserController@Reservation');
