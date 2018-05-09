@@ -320,6 +320,7 @@ class ComposerStaticInitfd360fb2f4aa682e5e1641a30e04cd1b
     );
 
     public static $classMap = array (
+        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Apartments' => __DIR__ . '/../..' . '/app/Apartment.php',
         'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
