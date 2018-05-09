@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function admin_auth(Request $request){
         $admin= Admin::where('email',$request->input('email'))->get();
         if($admin->count()>0&&password_verify($request->input('password'), $admin[0]['password']))
-            return redirect('/adminDashboard');
+            return view('AdminDashboard');
         else {
             Session::put('Message','Error! Wrong auth please try again.');
             return redirect('/admin');
