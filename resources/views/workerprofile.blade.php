@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{$Worker['name']}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/WorkerProfile.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/WorkerProfile.css" />
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nova+Flat|Titillium+Web" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Amaranth|Patua+One" rel="stylesheet">
@@ -79,6 +79,8 @@
             
             </script>
 </head>
+<?php $cnt=0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط']?>
+
 <body scrollingeffect()>
         @include('inc.messages')
     	@include('inc.navbar')
@@ -89,7 +91,7 @@
     <div class="main-container">
         <div class="info" id="info">
             <div class="profile-pic">
-                 <img id="worker-image" src="images/workerprofile_images/plumber.jpg">
+                 <img id="worker-image" src="/storage/Worker_images/{{$Worker_Images[0]->imagepath}}">
                  <a href="#" class="profile-pic-overlay">
                    <div class="profile-pic-text">
                         <span class="glyphicon glyphicon-camera" id="camera-icon"></span>
@@ -99,14 +101,14 @@
             </div>
            <div class="rest-of-info">
            <h2 id="worker-name">{{$Worker['name']}}</h2>
-            <h2 id="worker-job">{{$Worker['profession']}}</h2>
+            <h2 id="worker-job">{{$professionNameArray[$Worker['profession']]}}</h2>
             <div class="secondary-data">
                     <div>
-                            <img id="salary" src="images/workerprofile_images/salary.png">
+                            <img id="salary" src="/images/workerprofile_images/salary.png">
                             <h2 id="salary-value">250 L.E./day</h2> 
                     </div>
                     <div>
-                            <img id="rate" src="images/workerprofile_images/rate.png">
+                            <img id="rate" src="/images/workerprofile_images/rate.png">
                             <div class="rating-stars">
                                     <span class="fa fa-star checked"></span>
                                     <span class="fa fa-star checked"></span>
@@ -126,7 +128,7 @@
             <div class="line-separator"></div>
             <h1>Know me!</h1>
             <video  class="video" controls>
-                    <source src="images/workerprofile_images/worker.mp4" type="video/mp4">
+                    <source src="/images/workerprofile_images/worker.mp4" type="video/mp4">
                   </video>
             <div class="line-separator"></div>
             <h1>Latest projects</h1>

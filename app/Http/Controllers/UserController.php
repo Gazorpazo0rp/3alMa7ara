@@ -176,8 +176,8 @@ class UserController extends Controller
             $Ap = Apartments::where('customer_id', Session::get('ID'))->get();
         return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
         }
-        else if(Customer::find(Session::get('ID'))){
-            return view('/WorkerProfile',['User_Data' => $Data]);
+        else {
+            return redirect('/');
 
         }
 
