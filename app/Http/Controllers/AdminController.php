@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Worker;
@@ -16,6 +17,7 @@ use App\Price;
 use App\Section_Image;
 use App\Worker_Image;
 use App\On_Going_Task;
+use App\Admin;
 
 use DB;
 
@@ -25,6 +27,15 @@ class AdminController extends Controller
     The function below is called when the admin accepts an applicant request.
     The request now will be deleted from the DB and the info will added as a new worker.
     */
+    public function admin_auth(Request $request){
+        $admin= Admin::where('email',$request->input('email'))->get();
+        if($admin->count()>0&&password_verify($request->input('password'), $admin[0]['password']))
+            return redirect('/adminDashboard');
+        else {
+            Session::put('Message','Error! Wrong auth please try again.');
+            return redirect('/admin');
+        }
+    }
     public function Accept_Request($id) 
     {
         $request = WorkerRequest::find($id);
