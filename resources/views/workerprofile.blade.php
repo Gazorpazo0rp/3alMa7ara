@@ -79,6 +79,8 @@
             
             </script>
 </head>
+<?php $cnt=0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط']?>
+
 <body scrollingeffect()>
         @include('inc.messages')
     	@include('inc.navbar')
@@ -89,7 +91,7 @@
     <div class="main-container">
         <div class="info" id="info">
             <div class="profile-pic">
-                 <img id="worker-image" src="/images/workerprofile_images/plumber.jpg">
+                 <img id="worker-image" src="/storage/Worker_images/{{$Worker_Images[0]->imagepath}}">
                  <a href="#" class="profile-pic-overlay">
                    <div class="profile-pic-text">
                         <span class="glyphicon glyphicon-camera" id="camera-icon"></span>
@@ -99,7 +101,7 @@
             </div>
            <div class="rest-of-info">
            <h2 id="worker-name">{{$Worker['name']}}</h2>
-            <h2 id="worker-job">{{$Worker['profession']}}</h2>
+            <h2 id="worker-job">{{$professionNameArray[$Worker['profession']]}}</h2>
             <div class="secondary-data">
                     <div>
                             <img id="salary" src="/images/workerprofile_images/salary.png">

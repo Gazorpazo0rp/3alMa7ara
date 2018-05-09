@@ -20,7 +20,7 @@ class PagesController extends Controller
     public function Worker_Profile($id)
     {
         $Worker = Worker::find($id);
-        $Worker_Images = Worker_Image::where('worker_id',$id);
+        $Worker_Images = Worker_Image::where('worker_id',$id)->get();
         $Comments = DB::select("select name,body from users,comments where worker_id = '$id' ");
         return view('workerprofile')->with('Worker',$Worker)->with('Worker_Images',$Worker_Images)->with('Comments',$Comments);
         
