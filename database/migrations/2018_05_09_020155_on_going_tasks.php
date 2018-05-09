@@ -16,6 +16,9 @@ class OnGoingTasks extends Migration
         //
         Schema::create('on_going_tasks', function (Blueprint $table) {
             $table->increments('task_id');
+            $table->unsignedInteger('form_id');
+            $table->foreign('form_id')->references('id')->on('forms')->onDelete('Cascade')
+            ->onUpdate('Cascade');
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('Cascade')
             ->onUpdate('Cascade');
