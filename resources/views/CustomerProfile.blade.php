@@ -90,7 +90,7 @@
                         </div>
                         <div class="info-panels">
                                 <i class="fa fa-envelope"  id="mail-icon"></i>
-                            <div class="email-textbox"> <input type="text" name="email" id="email-input" required/></div>
+                            <div class="email-textbox"> <input type="email" name="email" id="email-input" required/></div>
                         </div>
                         <div class="info-panels">
                             <i class="fa fa-mobile-phone" id="mobile-icon"></i> 

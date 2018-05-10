@@ -74,7 +74,7 @@
                         <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
                         <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min">
                         <h4>rate:{{$value->rate}}</h4>
-                        <a target="_blank" href="/" class="show-profile">show profile</a>
+                        <a target="_blank" href="/worker/{{$value->id}}" class="show-profile">show profile</a>
                         </label>
                         @endforeach
                             
