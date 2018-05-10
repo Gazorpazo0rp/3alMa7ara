@@ -112,11 +112,9 @@
                     <div>
                             <img id="rate" src="/images/workerprofile_images/rate.png">
                             <div class="rating-stars">
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+
+                            {{$Worker->rate}}<span class="fa fa-star checked"></span>
+                                    
                             </div>
                      </div>
             </div>

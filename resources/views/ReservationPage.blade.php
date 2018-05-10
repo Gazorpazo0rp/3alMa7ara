@@ -73,7 +73,7 @@
                         <label  class="container-img" id="{{$value->id}}">
                         <h4 >{{$value->name}}</h4>
                         <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
-                        <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min">
+                        <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min" alt="failed to load image">
                         <h4>rate:{{$value->rate}}</h4>
                         <a target="_blank" href="/worker/{{$value->id}}" class="show-profile">show profile</a>
                         </label>
