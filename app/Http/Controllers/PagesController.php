@@ -77,10 +77,10 @@ class PagesController extends Controller
             return redirect('/'); 
         }
 
-        $validateObj=Validator::make($ToBeValidated,  ['profession' => ['required', 'regex:/^[a-zA-Z]+$/','min:3','max:50']]);
+        $validateObj=Validator::make($ToBeValidated,  ['profession' => 'required|integer|min:0|max:2']);
         if($validateObj -> fails())
         {
-            Session::put('Message','Error! Your Profession should contain only characters.');
+            Session::put('Message','Error! Your Profession should be a number between 0 and 2.');
             return redirect('/'); 
         }
 
