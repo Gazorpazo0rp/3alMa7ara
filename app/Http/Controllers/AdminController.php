@@ -6,6 +6,7 @@ use Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Worker;
 use App\WorkerRequest;
@@ -18,7 +19,7 @@ use App\Section_Image;
 use App\Worker_Image;
 use App\On_Going_Task;
 use App\Admin;
-
+use File;
 use DB;
 
 class AdminController extends Controller
@@ -88,6 +89,68 @@ class AdminController extends Controller
 
     }
     public function Submit_Edit_worker(Request $request){
+
+        $ToBeValidated = array('name'=> $request->input('name'), 'age'=>$request->input('age'),
+        'phone' => $request->input('phone') , 'email' => $request->input('email') ,
+        'profession'=>$request->input('profession') , 'status'=>$request->input('status'),
+        'rate'=>$request->input('rate')
+        );
+
+        $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Name must contain letters only');
+            return redirect('/adminDashboard');
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['age' => 'required|integer|min:20|max:60']);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! a Proper age should be a number between 20 and 60');
+            return redirect('/adminDashboard'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Phone number must be 11 digits.');
+            return redirect('/adminDashboard'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated,  ['profession' => ['required', 'regex:/^[a-zA-Z]+$/','min:3','max:50']]);
+        if($validateObj -> fails())
+        {
+            Session::put('Message','Error! Profession should contain only characters.');
+            return redirect('/adminDashboard'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated,  ['status' => ['required', 'regex:/^[a-zA-Z]+$/','min:4','max:50']]);
+        if($validateObj -> fails() || ($request->input('status') != 'Busy' && $request->input('status') != 'Available'))
+        {
+            Session::put('Message','Error! Status should be Busy or Available.');
+            return redirect('/adminDashboard'); 
+        }
+
+        $validateObj=Validator::make($ToBeValidated, ['rate' => 'required|integer|min:0|max:5']);
+        if( $validateObj->fails()) 
+        { 
+            Session::put('Message','Error! Rate should be between 0 and 5.');
+            return redirect('/adminDashboard'); 
+        }
+      
+        if($request->hasFile('img'))
+        {   
+            foreach($request->file('img') as $img)
+            {
+                $extension = $img->getClientOriginalExtension(); 
+                if($extension != 'jpg' && $extension != 'png')
+                {
+                    Session::put('Message','Error! Images uploaded have wrong extensions only jpg , png allowed.');
+                    return redirect('/adminDashboard'); 
+                }
+            }
+        }
+        
         $worker= Worker::find($request->input('id'));
         $worker->name = $request->input('name');
         $worker->profession = $request->input('profession');
@@ -98,17 +161,30 @@ class AdminController extends Controller
         $worker->status = $request->input('status');
         $worker->rate = $request->input('rate');
         $worker->save();
-        foreach($request->input('img') as $img){
-            //save img
-            //
-            //
-            //
-            //
-            //
-            //                           متنساااااااااااااااش
-        }
-        return redirect('/adminDashboard');
 
+        if($request->hasFile('img')) 
+        {
+            foreach($request->file('img') as $image)
+            {
+                $imageObj= new Worker_Image;
+                
+                $fileNameWithExt = $image->getClientOriginalName();
+                // Get just filename
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+                $extension = $image->getClientOriginalExtension();
+
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+                $path = $image->storeAs('public/Worker_images', $fileNameToStore);
+            
+                $imageObj->imagepath = $fileNameToStore;
+                $imageObj->worker_id = $request->input('id');
+                $imageObj->save();
+            }   
+        }
+
+        return redirect('/adminDashboard');
     }
     
 
@@ -245,7 +321,7 @@ class AdminController extends Controller
     }
     public function add_section_images(Request $request){
         if($request->hasFile('images')) {
-
+        
             foreach($request->file('images') as $image){
                 $imageObj= new Section_Image;
                 //validation l esm el path hna

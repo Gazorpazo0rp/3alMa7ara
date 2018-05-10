@@ -1,5 +1,5 @@
 <h1 >Edit Worker Info and Images</h1>
-<form id="EditWorkersForm"method="POST"action="/SubmitEditWorker">
+<form enctype="multipart/form-data"id="EditWorkersForm" method="POST" action="/SubmitEditWorker">
     {{ csrf_field() }}
 
 <input type="text" placeholder="name"name="name" value="{{$worker['name']}}">
@@ -11,7 +11,7 @@
 <input type="text" placeholder="bio"name="bio" value="{{$worker['bio']}}">
 <input type="text" placeholder="rate"name="rate" value="{{$worker['rate']}}">
 <input type="text" name="id" value="{{$worker['id']}}" style="display:none">
-<input type="file" name ="img[]" multiple>
+<input type="file" name="img[]" multiple="multiple">
 <input type="submit" >
 
 

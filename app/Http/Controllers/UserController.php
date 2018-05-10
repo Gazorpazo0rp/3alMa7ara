@@ -121,14 +121,14 @@ class UserController extends Controller
         if( $validateObj->fails()) 
         { 
             Session::put('Message','Error! Your name must contain letters only');
-            return view('CustomerProfile');
+            return redirect('/profile');
         }
 
         $validateObj=Validator::make($ToBeValidated, ['phone' => 'required|digits:11']);
         if( $validateObj->fails()) 
         { 
             Session::put('Message','Error! Your phone number must be 11 digits.');
-            return view('CustomerProfile');
+            return redirect('/profile');
         }
                     //---------
         
@@ -140,7 +140,7 @@ class UserController extends Controller
         if($test->count() > 0 && $test[0]['id'] != $user->id)
         {
             Session::put('Message','Error! The email you entered is already exist.');
-            return view('CustomerProfile');
+            return redirect('/profile');
         }
         
         $user->name = $request->input('name');
@@ -149,7 +149,7 @@ class UserController extends Controller
         $user->gender = 'male';
         
         $user->save();
-
+        Session::put('Message','Your data has been changed successfully.');
         return redirect('/');   
     }
 

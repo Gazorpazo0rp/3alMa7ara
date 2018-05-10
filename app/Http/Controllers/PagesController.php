@@ -109,7 +109,7 @@ class PagesController extends Controller
             // Get just ext.
             $extension = $request->file('cv')->getClientOriginalExtension();
             //Check the extension of the file
-            if($extension != 'txt' && $extension != 'doc' && $extension != 'pdf')
+            if($extension != 'txt' && $extension != 'doc' && $extension != 'pdf' && $extension != 'docx')
             {
                 Session::put('Message','Error! Invalid Extension for CV file, it should be txt,doc or pdf');
                 return redirect('/'); 
