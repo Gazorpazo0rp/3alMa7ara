@@ -3,7 +3,7 @@
     {{ csrf_field() }}
 
     <h3>Upload Images</h3>
-    <input type="file" name="images[]" multiple="multuple">
+    <input type="file" name="images[]" multiple="multiple">
     <input style="display:none"type="text" value="{{$data[0]['type']}}" name="section">
 
     <input type="submit" >
