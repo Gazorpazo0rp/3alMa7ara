@@ -31,6 +31,8 @@
                         <button class="navigation-bar-button" onclick="viewTab(4)">View clients</button>
                         <button class="navigation-bar-button" onclick="viewTab(5)">Edit Pages </button>
                         <button class="navigation-bar-button" onclick="viewTab(6)">On-Going Tasks</button>
+                        <a href="/adminLogout" style="text-decoration: none;"><button class="navigation-bar-button" >Log out</button></a>
+
 
 
                 </div>

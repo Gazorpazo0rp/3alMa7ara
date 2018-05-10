@@ -25,8 +25,8 @@
     <h3> السعر الكلى : {{$cost}} جنيه</h3>
     </div>
     <br class="clear"/>
-    <button class="accept-button"onclick="updateReservation(1,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})">Accept</button>
-    <button class="reject-button"onclick="updateReservation(0,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})">Decline</button>
+    <button class="accept-button"onclick="updateReservation(1,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})" id="accept">Accept</button>
+    <button class="reject-button"onclick="updateReservation(0,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})" id="reject">Decline</button>
 </div>
 <hr>
 

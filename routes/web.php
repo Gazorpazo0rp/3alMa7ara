@@ -37,7 +37,7 @@ Route::get('/FireFighting_Air_Conditioning','PagesController@Firefighting_and_ai
 //Admin
 Route::post('/adminLogin', 'AdminController@admin_auth');
 Route::get('/admin','PagesController@admin_auth');
-Route::get('/adminDashboard','PagesController@Admin');
+Route::get('/adminDashboard','AdminController@Admin');
 Route::get('/JoinUsRequests','AdminController@View_Requests');
 Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
 Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
@@ -55,6 +55,7 @@ Route::get('/acceptReservation/{customerId}/{formId}','AdminController@accept_re
 Route::get('/rejectReservation/{customerId}/{formId}','AdminController@reject_reservation');
 Route::get('/onGoingTasks','AdminController@view_tasks');
 Route::get('/updateTask/{id}','AdminController@update_task');
+Route::get('/adminLogout','AdminController@logout');
 
 
 

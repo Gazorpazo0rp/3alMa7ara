@@ -30,11 +30,25 @@ class AdminController extends Controller
     */
     public function admin_auth(Request $request){
         $admin= Admin::where('email',$request->input('email'))->get();
-        if($admin->count()>0&&password_verify($request->input('password'), $admin[0]['password']))
-            return view('AdminDashboard');
+        if($admin->count()>0&&password_verify($request->input('password'), $admin[0]['password'])){
+            Session::put('admin','1');
+            return redirect('adminDashboard');
+
+        }
         else {
             Session::put('Message','Error! Wrong auth please try again.');
+            Session::put('admin','0');
+
             return redirect('/admin');
+        }
+    }
+    public function Admin(){
+        if( Session::get('admin')==1){
+            return view('AdminDashboard');
+        }
+        else {
+        Session::put('Message','Error! Wrong auth please try again.');
+        return redirect('/admin');
         }
     }
     public function Accept_Request($id) 
@@ -403,7 +417,7 @@ class AdminController extends Controller
 
         // make the worker avsilable
         Worker::where('id',$taskObj->worker_id)->update(['status'=>'Available']);
-        /*
+        
         // get the worker
         $worker=Worker::find($taskObj->worker_id);
         //get the first task without a worker id and assign the worker to it
@@ -411,15 +425,37 @@ class AdminController extends Controller
 
         if($customerTaskCount>0){
             $customerTask=On_Going_Task::whereNull('worker_id')->where('profession',$worker->profession)->orderBy('created_at')->first();
-            $customerTask->update(['worker_id'=>$worker->id]);
-            $customerTask->update(['state'=>1]);
+            $newTask=new On_Going_Task;
+            $newTask->customer_id=$customerTask->customer_id;
+            $newTask->worker_id=$worker->id;
+            $newTask->form_id=$customerTask->form_id;
+            $newTask->state=1;
+            $newTask->save();
+            /*
+            DB::table('on_going_tasks')
+            ->whereNull('worker_id')
+            ->oldest()->first()->delete();
+            return's';
 
+
+
+            /*$customerTask->state=1;
+            $customerTask->save();
+            */
+            
+            //$task->update(['state' => 1]);
+
+            //$customerTask->update(['worker_id'=>$worker->id]);
+            
             Worker::where('id',$customerTask->worker_id)->update(['status'=>'busy']);
-
+            return 's';
         }
-        */
+        
         return redirect('/onGoingTasks');
     }
 
-    
+    public function logout(){
+        Session::put('admin','0');
+        return redirect('/');
+    }
 }

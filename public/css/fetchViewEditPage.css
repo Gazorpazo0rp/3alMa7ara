@@ -25,7 +25,7 @@ i:hover{
     width:90%;
     margin-left:5%;
 }
-input[type="submit"]{
+#sub{
     position:absolute;
     left:350px;
     top:0px;

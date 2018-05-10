@@ -8,6 +8,8 @@ class On_Going_Task extends Model
 {
     //Table Name
     protected $table = 'on_going_tasks';
+
+    protected $fillable = ['state','worker_id'];
     //Timestamps
     public $timestamps = true;
 

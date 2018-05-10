@@ -43,10 +43,7 @@ class PagesController extends Controller
     {        
         return view('SimulatorPage');
     }
-    public function Admin()
-    {        
-        return view('AdminDashboard');
-    }
+  
     public function ajaxTest()
     {   
 

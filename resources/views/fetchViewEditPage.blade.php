@@ -6,7 +6,7 @@
     <input type="file" name="images[]" multiple="multiple">
     <input style="display:none"type="text" value="{{$data[0]['type']}}" name="section">
 
-    <input type="submit" >
+    <input id="sub"type="submit">
 </form>
 <div id="images-div">
     @foreach($data as  $image)

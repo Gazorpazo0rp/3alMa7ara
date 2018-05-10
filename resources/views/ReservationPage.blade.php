@@ -5,6 +5,7 @@
 
         <script  type="text/javascript" src="js/ReservationPage.js"></script>
         <link rel="stylesheet" type="text/css" href="css/ReservationPage.css">
+        <link rel="stylesheet" type="text/css" href="css/NavBar.css">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -40,7 +41,7 @@
                 <button class="form-navigation-bar-button" onclick="viewTab(2)">Fire Fighting</button>
                 <button class="form-navigation-bar-button" onclick="viewTab(3)">Air Conditioning</button>
             </div>
-            <form id="reservation-form" method="POST" action="SubmitReservation">
+            <form id="reservation-form" method="POST" action="SubmitReservation" class="clearfix">
                     {{ csrf_field() }}
 
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
@@ -70,7 +71,7 @@
                         @foreach($data['workers'][$key] as $value)
                         
                         <label  class="container-img" id="{{$value->id}}">
-                        <h4 style="text-align:center">{{$value->name}}</h4>
+                        <h4 >{{$value->name}}</h4>
                         <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
                         <img src="/storage/Worker_images/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min">
                         <h4>rate:{{$value->rate}}</h4>
