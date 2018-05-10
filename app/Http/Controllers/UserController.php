@@ -12,6 +12,7 @@ use App\Customer;
 use App\Apartments;
 use App\Service;
 use App\Form;
+use App\Rate;
 use App\Price;
 use App\Worker;
 use App\Service_option_Price;
@@ -197,6 +198,23 @@ class UserController extends Controller
 
         }
         return redirect('/worker/'.$request->input('workerId'));
+    }
+    public function rate($rating,$workerId){
+       if(Rate::where([['worker_id',$workerId],['customer_id',Session::get('ID')]])->count()>0){
+        return 'You already rated that worker before';
+       }
+
+        $workerObj=Worker::find($workerId);
+        $numOfRatings=Rate::where('worker_id',$workerId)->count();
+        $currentRate=$workerObj['rate'];
+        $newRate=($rating+($currentRate*$numOfRatings)/($numOfRatings+1));
+        $workerObj->rate=$newRate;
+        $workerObj->save();
+        $rateObj=new Rate;
+        $rateObj->customer_id=Session::get('ID');
+        $rateObj->worker_id=$workerId;
+        $rateObj->save();
+        return "";
     }
     public function Reservation(){
         $ques=array();
