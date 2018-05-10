@@ -13,7 +13,14 @@ $(document).ready(function(){
 
     // event listner radio button click
     $('.container').click(function(){
+        console.log(cost);
+        if(cost!==0){
         $('#submit-button').removeAttr('disabled');
+        }
+        else{
+            $('#submit-button').attr('disabled',true);
+
+        }
     });
 
     $('.radio-option-has-cost').click(function(){

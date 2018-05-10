@@ -403,9 +403,21 @@ class AdminController extends Controller
 
         // make the worker avsilable
         Worker::where('id',$taskObj->worker_id)->update(['status'=>'Available']);
+        /*
+        // get the worker
+        $worker=Worker::find($taskObj->worker_id);
         //get the first task without a worker id and assign the worker to it
+        $customerTaskCount=On_Going_Task::whereNull('worker_id')->where('profession',$worker->profession)->orderBy('created_at')->count();
 
+        if($customerTaskCount>0){
+            $customerTask=On_Going_Task::whereNull('worker_id')->where('profession',$worker->profession)->orderBy('created_at')->first();
+            $customerTask->update(['worker_id'=>$worker->id]);
+            $customerTask->update(['state'=>1]);
 
+            Worker::where('id',$customerTask->worker_id)->update(['status'=>'busy']);
+
+        }
+        */
         return redirect('/onGoingTasks');
     }
 

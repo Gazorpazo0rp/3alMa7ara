@@ -176,7 +176,7 @@ class UserController extends Controller
         $Data = User::find(Session::get('ID'));
         if(Customer::find(Session::get('ID'))){
             $Ap = Apartments::where('customer_id', Session::get('ID'))->get();
-        return view('/CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
+        return view('CustomerProfile',['User_Data' => $Data,'Apartment_Data' => $Ap ]);
         }
         else {
             return redirect('/');
@@ -217,6 +217,7 @@ class UserController extends Controller
         return "";
     }
     public function Reservation(){
+        if(Session::get('loggedIn')==2){
         $ques=array();
         $services=Service::all();
         foreach($services as $serv){
@@ -239,6 +240,12 @@ class UserController extends Controller
         $data['ques']=$ques;
         $data['workers']=$workers;
         return view('ReservationPage',['data'=>$data]);
+    }
+    else {
+        Session::put('Message','You must be logged in to open a reservation');
+        return redirect('/');
+
+    }
     }
     public function Submit_Reservation(Request $request){
         
@@ -270,6 +277,7 @@ class UserController extends Controller
                 $taskObj=new On_Going_Task;
                 $taskObj->customer_id=Session::get('ID');
                 $taskObj->form_id=$Form->id;
+                $taskObj->profession=$i;
                 $taskObj->state=0;
                 $taskObj->save();
                 
@@ -291,7 +299,7 @@ class UserController extends Controller
             }
             else 
             {   
-                if(strpos($key,'pick')==false&&$key!='0'&&$key!='1'&&$key!='2'){
+                if(strpos($key,'pick')===FALSE && $key!='0' && $key!='1' && $key!='2'){
                     $SS = new Selected_Service;
                     $SS->form_id = $Form->id;
                     $tmp = Service::where('descriptions',$key)->first();
