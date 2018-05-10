@@ -117,10 +117,10 @@ class AdminController extends Controller
             return redirect('/adminDashboard'); 
         }
 
-        $validateObj=Validator::make($ToBeValidated,  ['profession' => ['required', 'regex:/^[a-zA-Z]+$/','min:3','max:50']]);
+        $validateObj=Validator::make($ToBeValidated,  ['profession' => 'required|integer|min:0|max:2']);
         if($validateObj -> fails())
         {
-            Session::put('Message','Error! Profession should contain only characters.');
+            Session::put('Message','Error! Profession should be a number between 0 and 2.');
             return redirect('/adminDashboard'); 
         }
 
