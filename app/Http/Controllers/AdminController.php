@@ -319,35 +319,50 @@ class AdminController extends Controller
         return $data;
 
     }
-    public function add_section_images(Request $request){
-        if($request->hasFile('images')) {
-        
-            foreach($request->file('images') as $image){
-                $imageObj= new Section_Image;
-                //validation l esm el path hna
-                $destinationPath="public/Section_images";
-                $filename = $image->getClientOriginalName();
-                $image->storeAs('public/Section_images', $filename);
-
+    //Admin can add images to different sections
+    public function add_section_images(Request $request)
+    {
+        if($request->hasFile('images'))
+        {
+            foreach($request->file('images') as $image)
+            {                
+                //Extention of the file
+                $extension = $image->getClientOriginalExtension();
                 
-                $imageObj->imagepath=$filename;
+                if($extension != 'jpg' && $extension != 'png')
+                {
+                    Session::put('Message','Error! Images have invalid extensions.');
+                    return redirect('/adminDashboard'); 
+                }
+            } 
+        }
+
+        if($request->hasFile('images')) 
+        {     
+            foreach($request->file('images') as $image)
+            {
+                $imageObj= new Section_Image;
+                
+                //Name with Extention
+                $fileNameWithExt = $image->getClientOriginalName();
+                //Only Name
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+                //Extention of the file
+                $extension = $image->getClientOriginalExtension();
+
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+                $image->storeAs('public/Section_images', $fileNameToStore);
+
+                $imageObj->imagepath=$fileNameToStore;
                 $imageObj->type=$request->input('section');
                 $imageObj->save();
-            } 
-        
-    }
-    return redirect('/adminDashboard');
+            }       
+        }
 
-    /*
-    foreach($request->file('images') as $image)
-    {
-        $destinationPath = 'content_images/';
-        $filename = $image->getClientOriginalName();
-        $image->move($destinationPath, $filename);
+        return redirect('/adminDashboard');
+    }
 
-    }
-    */
-    }
     public function accept_reservation($cusomerID,$formId){
         $tasksToUpdate=On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->update(['state'=>1]);
         Form::where('id',$formId)->update(['status'=>1]);
