@@ -143,7 +143,7 @@ class AdminController extends Controller
             foreach($request->file('img') as $img)
             {
                 $extension = $img->getClientOriginalExtension(); 
-                if($extension != 'jpg' && $extension != 'png')
+                if($extension != 'jpg' && $extension != 'JPG' && $extension != 'PNG' && $extension != 'png')
                 {
                     Session::put('Message','Error! Images uploaded have wrong extensions only jpg , png allowed.');
                     return redirect('/adminDashboard'); 
@@ -329,7 +329,7 @@ class AdminController extends Controller
                 //Extention of the file
                 $extension = $image->getClientOriginalExtension();
                 
-                if($extension != 'jpg' && $extension != 'png')
+                if($extension != 'jpg' && $extension != 'JPG' && $extension != 'PNG' && $extension != 'png')
                 {
                     Session::put('Message','Error! Images have invalid extensions.');
                     return redirect('/adminDashboard'); 

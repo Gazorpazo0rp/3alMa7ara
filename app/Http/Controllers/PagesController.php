@@ -77,10 +77,10 @@ class PagesController extends Controller
             return redirect('/'); 
         }
 
-        $validateObj=Validator::make($ToBeValidated,  ['profession' => ['required', 'regex:/^[a-zA-Z]+$/','min:3','max:50']]);
+        $validateObj=Validator::make($ToBeValidated,  ['profession' => 'required|integer|min:0|max:2']);
         if($validateObj -> fails())
         {
-            Session::put('Message','Error! Your Profession should contain only characters.');
+            Session::put('Message','Error! Your Profession should be a number between 0 and 2.');
             return redirect('/'); 
         }
 
@@ -109,7 +109,7 @@ class PagesController extends Controller
             // Get just ext.
             $extension = $request->file('cv')->getClientOriginalExtension();
             //Check the extension of the file
-            if($extension != 'txt' && $extension != 'doc' && $extension != 'pdf' && $extension != 'docx')
+            if($extension != 'txt' && $extension != 'doc' && $extension != 'pdf' && $extension != 'docx' && $extension != 'TXT' && $extension != 'DOC' && $extension != 'DOCX' && $extension != 'PDF')
             {
                 Session::put('Message','Error! Invalid Extension for CV file, it should be txt,doc or pdf');
                 return redirect('/'); 
