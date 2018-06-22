@@ -68,14 +68,27 @@
                         </span>
                     @endif
             <br>
-            
             <input type="text" name='name' placeholder="Full name" required>
-            <input type="text" name='profession' placeholder="Profession" required>
+            <label class="profession"> نجار
+
+            <input type="radio" name='profession' placeholder="Profession" value="0" checked>
+            </label>
+            <label class="profession"> محار
+
+            <input type="radio" name='profession' placeholder="Profession" value="1">
+            </label>
+            <label class="profession"> مبلط
+
+            <input type="radio" name='profession' placeholder="Profession" value="2">
+            </label>
+
             <input type="text" name='phoneNumber' placeholder="Phone number" required>
             <input type="text" name='age' placeholder="Age" required>
             <input type="bio" name='bio' placeholder="Bio" >
             <input type="text" name='address' placeholder="Address" >
-            <input type="file" name='cv'>
+            <lable>upload CV<input type="file" name='cv'></label>
+            <lable>upload Image<input type="file" name='image'></label>
+
             <input type="submit" value="Submit" id="JoinUs_button" class="Form_submit">
             
     </form>	

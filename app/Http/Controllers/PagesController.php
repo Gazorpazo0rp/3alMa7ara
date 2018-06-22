@@ -118,7 +118,7 @@ class PagesController extends Controller
             // Upload File
             $path = $request->file('cv')->storeAs('public/ApplicantCV', $fileNameToStore);
 
-            $Req->CvFile = $path;
+            $Req->CvFile = $fileNameToStore;
         }
         else
         {

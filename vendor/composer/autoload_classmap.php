@@ -43,6 +43,7 @@ return array(
     'App\\Service_option_Price' => $baseDir . '/app/Service_option_Price.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Worker' => $baseDir . '/app/Worker.php',
+    'App\\WorkerProfilePictures' => $baseDir . '/app/WorkerProfilePictures.php',
     'App\\WorkerRequest' => $baseDir . '/app/WorkerRequest.php',
     'App\\Worker_Image' => $baseDir . '/app/Worker_Image.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

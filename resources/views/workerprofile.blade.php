@@ -93,7 +93,7 @@
     <div class="main-container">
         <div class="info" id="info">
             <div class="profile-pic">
-                 <img id="worker-image" src="/storage/Worker_images/{{$Worker->imagepath}}">
+                 <img id="worker-image" src="/storage/WorkerProfilePictures/{{$Worker->imagepath}}">
                  <a href="#" class="profile-pic-overlay">
                    <div class="profile-pic-text">
                         <span class="glyphicon glyphicon-camera" id="camera-icon"></span>
@@ -107,7 +107,6 @@
             <div class="secondary-data">
                     <div>
                             <img id="salary" src="/images/workerprofile_images/salary.png">
-                            <h2 id="salary-value">250 L.E./day</h2> 
                     </div>
                     <div>
                             <img id="rate" src="/images/workerprofile_images/rate.png">
@@ -127,15 +126,13 @@
             </div>
             <div class="line-separator"></div>
             <h1>Know me!</h1>
-            <video  class="video" controls>
-                    <source src="/images/workerprofile_images/worker.mp4" type="video/mp4">
-                  </video>
+            
             <div class="line-separator"></div>
             <h1>Latest projects</h1>
             <div class="panel-container">
                 <div class="gallery-slider ">
                         @foreach($Worker_Images as $Image)
-                        <img src="/storage/Worker_images/{{$Worker->imagepath}}" alt="" class="slider 	">
+                        <img src="/storage/Worker_images/{{$Image->imagepath}}" alt="" class="slider ">
                         @endforeach
                     <button class="w3-button w3-display-left " onclick="slideAnimate(-1)" id="left">&#10094;</button>
                     <button class="w3-button w3-display-right " onclick="slideAnimate(1)" id="right">&#10095;</button>

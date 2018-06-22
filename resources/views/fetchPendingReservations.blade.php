@@ -15,6 +15,7 @@
         <h1> Reservation Info</h1>
     @foreach($data['reservationServ'][$key] as $op)
         <h3>{{$op['name']}}:{{$op['price']}} جنيه</h3> 
+        
         <?php $cost+=$op['price'];?>
     @endforeach
     <h1>الصنايعية اللى اختارهم ال client</h1>

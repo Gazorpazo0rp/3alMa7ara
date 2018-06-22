@@ -139,7 +139,7 @@ class AdminController extends Controller
         }
 
         $validateObj=Validator::make($ToBeValidated,  ['status' => ['required', 'regex:/^[a-zA-Z]+$/','min:4','max:50']]);
-        if($validateObj -> fails() || ($request->input('status') != 'Busy' && $request->input('status') != 'Available'))
+        if($validateObj -> fails() || ($request->input('status') != 'busy' && $request->input('status') != 'Available'))
         {
             Session::put('Message','Error! Status should be Busy or Available.');
             return redirect('/adminDashboard'); 
@@ -393,7 +393,7 @@ class AdminController extends Controller
         return redirect('pendingReservations/0');
     }
     public function view_tasks(){
-        $tasks=On_Going_Task::where('state',1)->get();
+        $tasks=On_Going_Task::whereNotNull('worker_id')->where('state',1)->get();
         $customersData=array();
         $workersData=array();
         foreach($tasks as $task){
@@ -411,6 +411,7 @@ class AdminController extends Controller
         return $data;
     }
     public function update_task($id){
+        
         $taskObj=On_Going_Task::where('task_id',$id)->first();
 
         On_Going_Task::where('task_id',$id)->update(['state'=>3]);
@@ -424,18 +425,25 @@ class AdminController extends Controller
         $customerTaskCount=On_Going_Task::whereNull('worker_id')->where('profession',$worker->profession)->orderBy('created_at')->count();
 
         if($customerTaskCount>0){
-            $customerTask=On_Going_Task::whereNull('worker_id')->where('profession',$worker->profession)->orderBy('created_at')->first();
+            $customerTask=On_Going_Task::whereNull('worker_id')->where('state',1)->where('profession',$worker->profession)->orderBy('created_at')->first();
+            $customerTask['worker_id'] = $worker['id'];
+            $customerTask['state']= 1;
+            $customerTask->save();
+            
+           /* return ('Success!');
             $newTask=new On_Going_Task;
             $newTask->customer_id=$customerTask->customer_id;
             $newTask->worker_id=$worker->id;
             $newTask->form_id=$customerTask->form_id;
             $newTask->state=1;
             $newTask->save();
-            /*
+            
+            
             DB::table('on_going_tasks')
             ->whereNull('worker_id')
             ->oldest()->first()->delete();
             return's';
+            
 
 
 
@@ -448,7 +456,7 @@ class AdminController extends Controller
             //$customerTask->update(['worker_id'=>$worker->id]);
             
             Worker::where('id',$customerTask->worker_id)->update(['status'=>'busy']);
-            return 's';
+            //return 's';
         }
         
         return redirect('/onGoingTasks');

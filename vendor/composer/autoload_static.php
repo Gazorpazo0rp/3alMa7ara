@@ -357,6 +357,7 @@ class ComposerStaticInitfd360fb2f4aa682e5e1641a30e04cd1b
         'App\\Service_option_Price' => __DIR__ . '/../..' . '/app/Service_option_Price.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\Worker' => __DIR__ . '/../..' . '/app/Worker.php',
+        'App\\WorkerProfilePictures' => __DIR__ . '/../..' . '/app/WorkerProfilePictures.php',
         'App\\WorkerRequest' => __DIR__ . '/../..' . '/app/WorkerRequest.php',
         'App\\Worker_Image' => __DIR__ . '/../..' . '/app/Worker_Image.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
