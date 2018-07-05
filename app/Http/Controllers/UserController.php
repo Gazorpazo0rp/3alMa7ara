@@ -235,7 +235,7 @@ class UserController extends Controller
         $workers=array();
         //$workers = Worker::where('status',0)->orderBy('profession')->get();
         for($i=0;$i<3;$i++){
-            $workers[$i]=Worker::where('status','Available')->where('profession',$i)->get();
+            $workers[$i]=Worker::where('profession',$i)->get();
         }
         $data['ques']=$ques;
         $data['workers']=$workers;

@@ -19,6 +19,7 @@ use App\Section_Image;
 use App\Worker_Image;
 use App\On_Going_Task;
 use App\Admin;
+use App\Service_option_Price;
 use File;
 use DB;
 
@@ -253,22 +254,6 @@ class AdminController extends Controller
         $data = view('fetchPendingReservations',['data'=>$variables])->render();
         return $data; 
     }
-    public function Show_Reservation($id)
-    {
-        $Res = Form::find($id);
-        $Customer_Info = User::find($Res['customer_id']);
-        $IDS = Selected_Service::find($id);
-        $Qus = array();
-        $Ans = array();
-        foreach($IDS as $tmp)
-        {
-            $Q = Service::find($tmp['service_id']);
-            $A = Price::find($tmp['price_id']);
-            array_push($Qus,$Q['descriptions']);
-            array_push($Ans,$A['name']);
-        }
-                    //return $Customer_Info,$Qus,$Ans. 
-    }
     public function view_clients()
     {
         $Customers = User::all();
@@ -465,5 +450,47 @@ class AdminController extends Controller
     public function logout(){
         Session::put('admin','0');
         return redirect('/');
+    }
+
+    public function Add_Question(Request $request)
+    {
+        $Question  = new Service;
+        $Question->descriptions = $request->input('QuesName');
+        $Question->type = $request->input('category');
+        $Question->save();
+        //Now The question is saved.
+
+
+        $Options = array (); $Prices = array ();
+        //Push all options.
+        foreach($_POST as $key=>$value)
+        {
+          if(strpos($key,'op')!==false&&$value!="")
+          {
+              array_push($Options,$value);
+          }
+        }
+        //Push all prices.
+        foreach($_POST as $key=>$value)
+        {
+          if(strpos($key,'pr')!==false&&$value!="")
+          {
+              array_push($Prices,$value);
+          }
+        }
+        for($idx = 0;$idx<sizeof($Options);$idx++)
+        {
+            $Price = new Price;     
+            $Price->name = $Options[$idx];
+            $Price->price = $Prices[$idx];
+            $Price->save();
+            //Now The choice is saved.
+
+            $Relation = new Service_option_Price;
+            $Relation->service_id = $Question->id;
+            $Relation->price_id = $Price->id;
+            $Relation->save();
+        }
+
     }
 }
