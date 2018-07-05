@@ -145,11 +145,11 @@ class PagesController extends Controller
         $Images = DB::select('select imagepath from section_images where type = "Refurbishment"');
         return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
     }
-    public function Decor_and_art()   //names of variables.
+    public function Decor_and_furniture()   //names of variables.
     {
-        $Address = "Decor And Art";
-        $Paragraph = "This is Decor_and_art page !";
-        $Images = DB::select('select imagepath from section_images where type = "Decor & art"');
+        $Address = "Decor And Furniture";
+        $Paragraph = "This is Decor_and_furniture page !";
+        $Images = DB::select('select imagepath from section_images where type = "Decor & furniture"');
         return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
     }
     public function Firefighting_and_air_conditioning()   //names of variables.
