@@ -32,7 +32,7 @@ Route::get('/worker/{id}', 'PagesController@Worker_Profile');
 //Sections.
 Route::get('/Designs','PagesController@Designs');
 Route::get('/Refurbishment','PagesController@Refurbishment');
-Route::get('/Decor&Art','PagesController@Decor_and_art');
+Route::get('/Decor&Furniture','PagesController@Decor_and_furniture');
 Route::get('/FireFighting_Air_Conditioning','PagesController@Firefighting_and_air_conditioning');
 //Admin
 Route::post('/adminLogin', 'AdminController@admin_auth');
