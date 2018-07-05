@@ -12,6 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/fetchEditPages.css">
         <link rel="stylesheet" type="text/css" href="css/fetchViewEditPage.css">
         <link rel="stylesheet" type="text/css" href="css/fetchPendingReservations.css">
+        <link rel="stylesheet" type="text/css" href="css/fetchQuestions.css">
         <link rel="stylesheet" type="text/css" href="css/fetchTasks.css">
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,6 +32,7 @@
                         <button class="navigation-bar-button" onclick="viewTab(4)">View clients</button>
                         <button class="navigation-bar-button" onclick="viewTab(5)">Edit Pages </button>
                         <button class="navigation-bar-button" onclick="viewTab(6)">On-Going Tasks</button>
+                        <button class="navigation-bar-button" onclick="viewTab(7)">Edit form questions</button>
                         <a href="/adminLogout" style="text-decoration: none;"><button class="navigation-bar-button" >Log out</button></a>
 
 
