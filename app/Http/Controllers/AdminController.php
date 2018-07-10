@@ -13,6 +13,7 @@ use App\WorkerRequest;
 use App\Form;
 use App\User;
 use App\Selected_Service;
+use App\Service_option_Price;
 use App\Service;
 use App\Price;
 use App\Section_Image;
@@ -446,7 +447,27 @@ class AdminController extends Controller
         
         return redirect('/onGoingTasks');
     }
+    
+    public function viewQuestions(){
+        $ques=array();
+        $services=Service::all();
+        foreach($services as $serv){
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $prices=array();
+            foreach($options as $op){
+                $price=Price::find($op->price_id);
+                $prices[]=$price;
+            }
+           
+            $ques[$serv->descriptions]=$prices;
+            unset( $prices );
 
+        }
+        
+        $data['ques']=$ques;
+        $fetch=  view('fetchQuestions',['data'=>$data])->render();
+        return $fetch;
+    }
     public function logout(){
         Session::put('admin','0');
         return redirect('/');

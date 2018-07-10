@@ -6,6 +6,7 @@ function viewTab(idx){
     else if(idx==4) url_holder='/viewClients'
     else if(idx==5) url_holder='/editPages'
     else if(idx==6) url_holder='/onGoingTasks'
+    else if(idx==7) url_holder='/questions'
 
     
     $.ajax({
