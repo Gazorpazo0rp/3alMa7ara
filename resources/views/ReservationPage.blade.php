@@ -46,41 +46,42 @@
 
                 <h1 style="text-align:center">  Choose the services and make a reservation</h1>
                 <div class="form-tab" id="refub-tab">
-                    <script>  pricesArray=new Array();     lastClickedArray=new Array();</script> 
-                    @foreach($data['ques'] as $key=>$value)
-                    <script> lastClickedArray["{{$key}}"]="";</script>
+                    
+                    <?php $idx=0;?><script>  pricesArray=new Array();     lastClickedArray=new Array();</script> 
+                    @foreach($Questions as $Q)
+                    <script> lastClickedArray["{{$Q->id}}"]="";</script>
                     <div class="radio-options-div">
-                        <h3> {{$key}} -</h3> 
-                    <input type="textarea" placeholder="تفاصيل لو حابب" class="add-note-box" name="{{$key.'note'}}">
+                        <h3> {{$Q->descriptions}} -</h3> 
  
-                        @foreach($data['ques'][$key] as $value)
-                        <label  class="container" id="{{$value->name}}">{{$value->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$key}}" waschecked="false" value="{{$value->id}}">
+                        @foreach($Answers[$idx] as $Ans)
+                        <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
+                        <input class="radio-option-has-cost" type="radio" name="{{$Ans->id}}" waschecked="false" value="{{$Ans->name}}">
                             <span class="checkmark"></span>
-                            <script> pricesArray["{{$value->name}}"]={{$value->price}};</script>
+                            <script> pricesArray["{{$Ans->id}}"]={{$Ans->price}};</script>
                         </label>
                         @endforeach
                         
                     </div>
+                    <?php $idx++;?>
+
                     @endforeach
-                    <?php $cnt=0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط']?>
-                    @foreach ($data['workers'] as $key =>$value)
+                    <?php $idx = 0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط'] //This line will be hard coded ?> 
+                    @foreach ($Professions as $Prof)
                     <div class="radio-options-div-img">
-                        <h3 style="text-align:right"> اختار <?php echo $professionNameArray[$cnt]; ?> -</h3> 
-                        <?php if (sizeof($data['workers'][$cnt])==0) echo'<label class="container" ><h4 style="text-align:right">كل الصنايعية ف المجال دا مشغولين دلوقتى..تحب نختارلك صنايعى لما حد منهم يفضا؟ </h4><input type="radio" name="pick'.$cnt.'" waschecked="false" > <span id="toggle"class="checkmark"></span></label>'; $cnt++;?>
-                        @foreach($data['workers'][$key] as $value)
-                        
-                        <label  class="container-img" id="{{$value->id}}">
-                        <h4 >{{$value->name}}</h4>
-                        <input type="radio" name="{{$value['profession']}}" waschecked="false" value="{{$value->id}}">
-                        <img src="/storage/WorkerProfilePictures/{{$value->imagepath}}" class="radiobutton-img w3-grayscale-min" alt="failed to load image">
-                        <h4>rate:{{$value->rate}}</h4>
-                        <a target="_blank" href="/worker/{{$value->id}}" class="show-profile">show profile</a>
+                        <h3 style="text-align:right"> اختار <?php echo $professionNameArray[$Prof]; ?> -</h3> 
+                        @foreach($Workers[$idx] as $worker)
+                        <label  class="container-img" id="{{$worker->id}}">
+                        <h4 >{{$worker->name}}</h4>
+                        <input type="radio" name="{{$worker['profession']}}" waschecked="false" value="{{$worker->id}}">
+                        <img src="/storage/WorkerProfilePictures/{{$worker->imagepath}}" class="radiobutton-img w3-grayscale-min" alt="failed to load image">
+                        <h4>rate:{{$worker->rate}}</h4>
+                        <a target="_blank" href="/worker/{{$worker->id}}" class="show-profile">show profile</a>
                         </label>
                         @endforeach
                             
                             
                         </div>
+                        <?php $idx++;?>
                     @endforeach
                 </div>
                 <div class="form-tab"> Decor and Atr</div>
