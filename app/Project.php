@@ -12,10 +12,9 @@ class Project extends Model
     //Timestamps
     public $timestamps = true;
 
-    //Table has -besides the id and timestamps 
-    // att(name) -> name of the Project
-    // att(designers) -> names of the designers
-    // att(period) -> how long the project took to be finished
-    // att(thumbnail) -> path to an image that will represent the gallery of the project
-    // att(location) -> where the project is
+    // each project may have many images in its Gallery
+    public function image()
+    {
+        return $this->hasMany('App\Image' , 'project_id');
+    }
 }

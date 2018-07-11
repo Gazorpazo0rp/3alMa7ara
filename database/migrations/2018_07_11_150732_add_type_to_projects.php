@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSectionImagesTable extends Migration
+class AddTypeToProjects extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateSectionImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('section_images', function (Blueprint $table) {
-            
-            $table->string('type');
-            $table->string('imagepath');
-
-            $table->unique( array('type','imagepath') );
-            $table->timestamps();
+        Schema::table('projects' , function($table){
+            $table->unsignedInteger('type');
         });
     }
 
@@ -30,6 +25,8 @@ class CreateSectionImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('section_images');
+        Schema::table('projects' , function($table){
+            $table->dropColumn('type');
+        });
     }
 }
