@@ -342,5 +342,62 @@ class UserController extends Controller
         // auth::user()->status = 0;
         return redirect('/');
     }
+    public function New_Way_To_View_Reservation()
+    {
+        if(Session::get('loggedIn')!=2)
+        {
+            Session::put('Message','You must be logged in to open a reservation');
+            return redirect('/');
+        }
+        
+        $Questions = array(); //Array contains the available questions.
+        $Answers = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $services = Service::all();
+        foreach($services as $serv)
+        {
+            array_push($Questions,$serv);
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $temp = array();
+            foreach($options as $op){
+                $price=Price::find($op->price_id);
+                array_push($temp,$price);
+            }
+            array_push($Answers,$temp);
+            unset($temp);
+        }
+        $Professions = array();
+        $Workers = array(); 
+        $idx = 0;
+        for($ProfID = 0;$ProfID<20;$ProfID++)
+        {
+            $WorkersDB = Worker::where('profession',$ProfID)->get();
+            if(sizeof($WorkersDB) == 0)
+                continue;
+            array_push($Professions,$ProfID);
+            $Workers[$idx] = array();
+            foreach($WorkersDB as $worker)
+                array_push($Workers[$idx],$worker);
+            $idx++;
+        }
+            
+        /*for($idx = 0;$idx<3;$idx++)
+        {
+            echo $idx." : ";
+            for($idx2 = 0;$idx2<sizeof($Workers[$idx]);$idx2++)
+                echo $Workers[$idx][$idx2]->name." ";
+            echo"<br>";
+        }*/
+
+
+        return view('ReservationPage',['Questions'=>$Questions,'Answers'=>$Answers,'Professions'=>$Professions,'Workers'=>$Workers]);
+        /*for($idx = 0;$idx<sizeof($Questions);$idx++)
+        {
+            echo $Questions[$idx]->descriptions." : ";
+            for($idx2 = 0;$idx2<sizeof($Answers[$idx]);$idx2++)
+                echo $Answers[$idx][$idx2]->name." ";
+            echo"<br>";
+        }*/
+    
+    }
     
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddIdToSectionImages extends Migration
+class AddTypeToProjects extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class AddIdToSectionImages extends Migration
      */
     public function up()
     {
-        Schema::table('section_images' , function($table){
-            $table->increments('id');
+        Schema::table('projects' , function($table){
+            $table->unsignedInteger('type');
         });
-
     }
 
     /**
@@ -26,8 +25,8 @@ class AddIdToSectionImages extends Migration
      */
     public function down()
     {
-        Schema::table('section_images' , function($table){
-            $table->dropColumn('id');
+        Schema::table('projects' , function($table){
+            $table->dropColumn('type');
         });
     }
 }
