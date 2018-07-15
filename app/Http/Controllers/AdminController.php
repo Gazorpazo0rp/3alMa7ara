@@ -13,7 +13,6 @@ use App\WorkerRequest;
 use App\Form;
 use App\User;
 use App\Selected_Service;
-use App\Service_option_Price;
 use App\Service;
 use App\Price;
 use App\Section_Image;
@@ -451,7 +450,9 @@ class AdminController extends Controller
     public function viewQuestions(){
         $ques=array();
         $services=Service::all();
+    //    $servicesObjs=array();
         foreach($services as $serv){
+           // array_push($servicesObjs)
             $options= Service_option_Price::where('service_id',$serv->id)->get();
             $prices=array();
             foreach($options as $op){
@@ -512,6 +513,6 @@ class AdminController extends Controller
             $Relation->price_id = $Price->id;
             $Relation->save();
         }
-
+        viewQuestions();
     }
 }
