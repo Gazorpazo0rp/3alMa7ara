@@ -56,6 +56,7 @@ Route::get('/rejectReservation/{customerId}/{formId}','AdminController@reject_re
 Route::get('/onGoingTasks','AdminController@view_tasks');
 Route::get('/updateTask/{id}','AdminController@update_task');
 Route::get('/questions','AdminController@viewQuestions');
+Route::get('/editQues/{name}','AdminController@edit_Ques');
 
 Route::get('/adminLogout','AdminController@logout');
 

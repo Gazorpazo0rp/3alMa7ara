@@ -4,6 +4,8 @@
 <i class="fa fa-times"  style="position:absolute;width:23px!important;left:5px!important;font-size:30px;"id="close" onclick=""></i>
 <div class="ques_div">
 <input type="text" class="ques_name"value="{{$key}}">
+</php ?>
+<input style="display:none;" name=
 </div>
 @foreach($data['ques'][$key] as $value)
 <div class="option_box">
@@ -13,6 +15,7 @@
 <input type="text" class="op_input" value="{{$value->price}}">
 </div>
 @endforeach
+<a href="editQues/{{$key}}"><button class="submitQues">Submit changes</button></a>
 </div>
 <hr>
 @endforeach
