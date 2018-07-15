@@ -24,7 +24,7 @@ Route::post('/SubmitComment', 'UserController@Submit_comment');
 Route::get('/rate/{rating}/{id}', 'UserController@rate');
 
 //URL
-Route::get('/Reservation','UserController@New_Way_To_View_Reservation');
+Route::get('/Reservation','UserController@Reservation');
 Route::get('/Simulator','PagesController@Simulator');
 Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');

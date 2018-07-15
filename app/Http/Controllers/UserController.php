@@ -18,6 +18,7 @@ use App\Worker;
 use App\Service_option_Price;
 use App\Selected_Service;
 use App\On_Going_task;
+use App\Project;
 use DB;
 
 class UserController extends Controller
@@ -216,37 +217,6 @@ class UserController extends Controller
         $rateObj->save();
         return "";
     }
-    public function Reservation(){
-        if(Session::get('loggedIn')==2){
-        $ques=array();
-        $services=Service::all();
-        foreach($services as $serv){
-            $options= Service_option_Price::where('service_id',$serv->id)->get();
-            $prices=array();
-            foreach($options as $op){
-                $price=Price::find($op->price_id);
-                $prices[]=$price;
-            }
-           
-            $ques[$serv->descriptions]=$prices;
-            unset( $prices );
-
-        }
-        $workers=array();
-        //$workers = Worker::where('status',0)->orderBy('profession')->get();
-        for($i=0;$i<3;$i++){
-            $workers[$i]=Worker::where('profession',$i)->get();
-        }
-        $data['ques']=$ques;
-        $data['workers']=$workers;
-        return view('ReservationPage',['data'=>$data]);
-    }
-    else {
-        Session::put('Message','You must be logged in to open a reservation');
-        return redirect('/');
-
-    }
-    }
     public function Submit_Reservation(Request $request){
         
         $Form = new Form;
@@ -270,7 +240,6 @@ class UserController extends Controller
             }
         }
         
-        // لو الصنايعية خلصو هنشوف هل هو حابب نختارله ولا عايز services بس
         for ($i=0;$i<3;$i++){
             if ($request->input('pick'.$i)){
                 // create a task without a worker to be filled with a worker of the same profession when ready
@@ -284,7 +253,7 @@ class UserController extends Controller
             }
         }
         //post the data
-        $request = $request->except('_token');
+        //$request = $request->except('_token');
        
         
         $Extra="";
@@ -312,9 +281,6 @@ class UserController extends Controller
             }
         }        
         Session::put('Message','Your order has been submitted successfully');
-        // change the state of the workers
-        // لما حسين يعمل الموديل
-        
         return redirect('/');
     }
     //Logic of the Login of the user
@@ -342,7 +308,7 @@ class UserController extends Controller
         // auth::user()->status = 0;
         return redirect('/');
     }
-    public function New_Way_To_View_Reservation()
+    public function Reservationn()
     {
         if(Session::get('loggedIn')!=2)
         {
@@ -352,18 +318,19 @@ class UserController extends Controller
         
         $Questions = array(); //Array contains the available questions.
         $Answers = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
         $services = Service::all();
         foreach($services as $serv)
         {
             array_push($Questions,$serv);
             $options= Service_option_Price::where('service_id',$serv->id)->get();
-            $temp = array();
-            foreach($options as $op){
+            $Answers[$idx] = array();
+            foreach($options as $op)
+            {
                 $price=Price::find($op->price_id);
-                array_push($temp,$price);
+                array_push($Answers[$idx],$price);
             }
-            array_push($Answers,$temp);
-            unset($temp);
+            $idx++;
         }
         $Professions = array();
         $Workers = array(); 
@@ -379,25 +346,17 @@ class UserController extends Controller
                 array_push($Workers[$idx],$worker);
             $idx++;
         }
-            
-        /*for($idx = 0;$idx<3;$idx++)
-        {
-            echo $idx." : ";
-            for($idx2 = 0;$idx2<sizeof($Workers[$idx]);$idx2++)
-                echo $Workers[$idx][$idx2]->name." ";
-            echo"<br>";
-        }*/
-
-
         return view('ReservationPage',['Questions'=>$Questions,'Answers'=>$Answers,'Professions'=>$Professions,'Workers'=>$Workers]);
-        /*for($idx = 0;$idx<sizeof($Questions);$idx++)
-        {
-            echo $Questions[$idx]->descriptions." : ";
-            for($idx2 = 0;$idx2<sizeof($Answers[$idx]);$idx2++)
-                echo $Answers[$idx][$idx2]->name." ";
-            echo"<br>";
-        }*/
-    
+    }
+    public function View_all_Projects($section)
+    {
+        $Projects = Project::where('type',$section)->get();
+        return view('blabla')->with('Projects',$Projects);  //What is the view name !!!
+    }
+    public function View_Project($id)
+    {
+        $Project_Images = Image::where('project_id',$id)->get();
+        return view('blabla')->with('Images',$Project_Images);  //What is the view name !!!
     }
     
 }
