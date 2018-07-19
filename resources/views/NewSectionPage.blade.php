@@ -18,7 +18,7 @@
     <div class="responsive">
         <div class="gallery">
         <a target="_blank" href="/viewProject/{{$pr->id}}">
-            <img src="/images/Section/{{$pr->thumbnail}}" alt="Cinque Terre" width="600" height="400">
+        <img src="/storage/Projects/{{$pr->thumbnail}}" alt="{{$pr->name}}" width="600" height="400">
             </a>
         </div>
     </div>

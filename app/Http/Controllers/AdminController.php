@@ -517,14 +517,14 @@ class AdminController extends Controller
         }
         viewQuestions();
     }
-    public function Add_Project($Info)
+    public function Add_Project(Request $request)
     {
         $New_Project = new Project;
-        $New_Project->name = $Info->name;
-        $New_Project->designers = $Info->designers;
-        $New_Project->period = $Info->period;
-        $New_Project->location = $Info->location;
-        $New_Project->type = $Info->type;
+        $New_Project->name = $request->name;
+        $New_Project->designers = $request->designers;
+        $New_Project->period = $request->period;
+        $New_Project->location = $request->location;
+        $New_Project->type = 0;
         //Add the thumbnail.
         if($request->hasFile('thumbnail'))
         {            
@@ -536,8 +536,8 @@ class AdminController extends Controller
             //Extention of the file
             $extension = $image->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-            $image->storeAs('public/Projects_thumbnails', $fileNameToStore);
-            $New_Project->thumbnail=$fileNameToStore;
+            $image->storeAs('/storage/Projects', $fileNameToStore);
+            $New_Project->thumbnail = $fileNameToStore;
         }
         $New_Project->save();
 
@@ -573,10 +573,10 @@ class AdminController extends Controller
 
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-                $image->storeAs('public/Projects_Images', $fileNameToStore);
+                $image->storeAs('/storage/Projects', $fileNameToStore);
 
                 $imageObj->imagepath=$fileNameToStore;
-                $imageObj->type=$New_Project->id;
+                $imageObj->project_id=$New_Project->id;
                 $imageObj->save();
             }       
         }

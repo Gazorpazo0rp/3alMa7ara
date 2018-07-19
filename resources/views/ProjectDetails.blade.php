@@ -145,8 +145,8 @@
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:600px;overflow:hidden;">
             @foreach($Images as $image)
             <div>
-            <img data-u="image" src="/images/Section/{{$image->imagepath}}"/>
-                <img data-u="thumb" src="/images/Section/{{$image->imagepath}}"/>
+            <img data-u="image" src="/storage/Projects/{{$image->imagepath}}"/>
+                <img data-u="thumb" src="/storage/Projects/{{$image->imagepath}}"/>
             </div>
             @endforeach
         </div>
