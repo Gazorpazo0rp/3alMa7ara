@@ -20,6 +20,8 @@ use App\Worker_Image;
 use App\On_Going_Task;
 use App\Admin;
 use App\Service_option_Price;
+use App\Project;
+use App\Image;
 use File;
 use DB;
 
@@ -515,4 +517,78 @@ class AdminController extends Controller
         }
         viewQuestions();
     }
+    public function Add_Project($Info)
+    {
+        $New_Project = new Project;
+        $New_Project->name = $Info->name;
+        $New_Project->designers = $Info->designers;
+        $New_Project->period = $Info->period;
+        $New_Project->location = $Info->location;
+        $New_Project->type = $Info->type;
+        //Add the thumbnail.
+        if($request->hasFile('thumbnail'))
+        {            
+            $image = $request->file('thumbnail');
+           //Name with Extention
+            $fileNameWithExt = $image->getClientOriginalName();
+            //Only Name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Extention of the file
+            $extension = $image->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            $image->storeAs('public/Projects_thumbnails', $fileNameToStore);
+            $New_Project->thumbnail=$fileNameToStore;
+        }
+        $New_Project->save();
+
+        //Add the images attached to the project.
+
+        if($request->hasFile('images'))
+        {
+            foreach($request->file('images') as $image)
+            {                
+                //Extention of the file
+                $extension = $image->getClientOriginalExtension();
+                
+                if($extension != 'jpg' && $extension != 'JPG' && $extension != 'PNG' && $extension != 'png')
+                {
+                    Session::put('Message','Error! Images have invalid extensions.');
+                    return redirect('/adminDashboard'); 
+                }
+            } 
+        }
+
+        if($request->hasFile('images')) 
+        {     
+            foreach($request->file('images') as $image)
+            {
+                $imageObj= new Image;
+                
+                //Name with Extention
+                $fileNameWithExt = $image->getClientOriginalName();
+                //Only Name
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+                //Extention of the file
+                $extension = $image->getClientOriginalExtension();
+
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+                $image->storeAs('public/Projects_Images', $fileNameToStore);
+
+                $imageObj->imagepath=$fileNameToStore;
+                $imageObj->type=$New_Project->id;
+                $imageObj->save();
+            }       
+        }
+
+        return redirect('/adminDashboard');
+    }
+    
+    public function delete_project($id)
+    {
+        DB::table('projects')->where('id', $id)->delete();
+        return redirect('/adminDashboard');
+    }
+
+    
 }
