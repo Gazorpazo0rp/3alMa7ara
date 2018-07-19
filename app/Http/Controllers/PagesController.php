@@ -141,30 +141,26 @@ class PagesController extends Controller
     public function Refurbishment()   //names of variables.
     {
         $Address = "Refurbishment";
-        $Paragraph = "This is Refurbishment page !";
         $Images = DB::select('select imagepath from section_images where type = "Refurbishment"');
-        return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
+        return view('NewSectionPage')->with('Images',$Images)->with('Address',$Address);
     }
     public function Decor_and_furniture()   //names of variables.
     {
         $Address = "Decor And Furniture";
-        $Paragraph = "This is Decor_and_furniture page !";
         $Images = DB::select('select imagepath from section_images where type = "Decor & furniture"');
-        return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
+        return view('NewSectionPage')->with('Images',$Images)->with('Address',$Address);
     }
     public function Firefighting_and_air_conditioning()   //names of variables.
     {
         $Address = "Firefighting | Air Conditioning";
-        $Paragraph = "This is Firefighting_and_air_conditioning page !";
         $Images = DB::select('select imagepath from section_images where type = "Firefighting | Air conditioning"');
-        return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
+        return view('NewSectionPage')->with('Images',$Images)->with('Address',$Address);
     }
     public function Designs()   //names of variables.
     {
         $Address = "Designs";
         $Images = DB::select('select imagepath from section_images where type = "Design"');
-        $Paragraph = "This is Designs page !";
-        return view('SectionPage')->with('Images',$Images)->with('Paragraph',$Paragraph)->with('Address',$Address);
+        return view('NewSectionPage')->with('Images',$Images)->with('Address',$Address);
     }
     public function admin_auth(){
         return view('adminAuth');

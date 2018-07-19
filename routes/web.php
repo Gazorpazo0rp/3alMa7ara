@@ -30,10 +30,7 @@ Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');
 Route::get('/worker/{id}', 'PagesController@Worker_Profile');
 //Sections.
-Route::get('/Designs','PagesController@Designs');
-Route::get('/Refurbishment','PagesController@Refurbishment');
-Route::get('/Decor&Furniture','PagesController@Decor_and_furniture');
-Route::get('/FireFighting_Air_Conditioning','PagesController@Firefighting_and_air_conditioning');
+Route::get('/Section/{id}','UserController@View_all_Projects');
 //Admin
 Route::post('/adminLogin', 'AdminController@admin_auth');
 Route::get('/admin','PagesController@admin_auth');

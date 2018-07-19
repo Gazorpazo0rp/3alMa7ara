@@ -308,7 +308,7 @@ class UserController extends Controller
         // auth::user()->status = 0;
         return redirect('/');
     }
-    public function Reservationn()
+    public function Reservation()
     {
         if(Session::get('loggedIn')!=2)
         {
@@ -351,7 +351,13 @@ class UserController extends Controller
     public function View_all_Projects($section)
     {
         $Projects = Project::where('type',$section)->get();
-        return view('blabla')->with('Projects',$Projects);  //What is the view name !!!
+        $sectionsNames=array();
+        $sectionsNames[0]="Refubrishment";
+        $sectionsNames[1]="Design ";
+        $sectionsNames[2]="Decor and Furniture";
+        $sectionsNames[3]="Firefighting and Airconditioning";
+        $header="3alma7ara ".$sectionsNames[$section]." projects";
+        return view('NewSectionPage')->with('Projects',$Projects)->with('Header',$header);  //What is the view name !!!
     }
     public function View_Project($id)
     {
