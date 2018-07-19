@@ -10,7 +10,7 @@
         <li> <a href="/Section/0">Refurbishment</a></li>
         <li> <a href="/Section/1">Design</a></li>
         <li> <a href="/Section/2">Decor & Furniture</a></li>
-        <li> <a href="Section/3">FireFighting | Air Conditioning</a></li>
+        <li> <a href="/Section/3">FireFighting | Air Conditioning</a></li>
         <li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>
         <?php
         if(Session::get('loggedIn') == 2)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="/logout"><b>Log out</b></a></li>';

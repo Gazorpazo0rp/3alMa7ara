@@ -17,7 +17,7 @@
     @foreach ($Projects as $pr)
     <div class="responsive">
         <div class="gallery">
-            <a target="_blank" href="#">
+        <a target="_blank" href="/viewProject/{{$pr->id}}">
             <img src="/images/Section/{{$pr->thumbnail}}" alt="Cinque Terre" width="600" height="400">
             </a>
         </div>

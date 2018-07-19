@@ -19,6 +19,7 @@ use App\Service_option_Price;
 use App\Selected_Service;
 use App\On_Going_task;
 use App\Project;
+use App\Image;
 use DB;
 
 class UserController extends Controller
@@ -362,7 +363,8 @@ class UserController extends Controller
     public function View_Project($id)
     {
         $Project_Images = Image::where('project_id',$id)->get();
-        return view('blabla')->with('Images',$Project_Images);  //What is the view name !!!
+        $Project_Data= Project::where('id',$id)->get();
+        return view('projectDetails')->with('Images',$Project_Images)->with('Data',$Project_Data[0]); 
     }
     
 }

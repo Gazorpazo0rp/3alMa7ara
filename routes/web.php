@@ -31,6 +31,7 @@ Route::get('/Register', 'PagesController@Register');
 Route::get('/worker/{id}', 'PagesController@Worker_Profile');
 //Sections.
 Route::get('/Section/{id}','UserController@View_all_Projects');
+Route::get('/viewProject/{id}','UserController@View_Project');
 //Admin
 Route::post('/adminLogin', 'AdminController@admin_auth');
 Route::get('/admin','PagesController@admin_auth');
@@ -54,6 +55,10 @@ Route::get('/onGoingTasks','AdminController@view_tasks');
 Route::get('/updateTask/{id}','AdminController@update_task');
 Route::get('/questions','AdminController@viewQuestions');
 Route::get('/editQues/{name}','AdminController@edit_Ques');
+Route::post('/AddProject', 'AdminController@Add_Project');
+
+
+
 
 Route::get('/adminLogout','AdminController@logout');
 

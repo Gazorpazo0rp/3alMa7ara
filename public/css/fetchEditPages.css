@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
-.section-div{
-    width:45%;
-    margin:2%;
-    float:right;
-    font-size:35px;
-    font-family:Cairo;
-    background-color: rgba(42, 42, 44, 0.925);
-    color:rgba(246, 245, 247, 0.966);
-    height: 150px;
-    text-align:center;
-    padding-top:60px;
-    transition:all.2s ease 0s;
+#Add-new-project{
+width:70%;
+margin-left:5%;
+padding:30px;
+margin-top:40px;
+background-color: rgba(201, 199, 202, 0.966);
 }
-.section-div:hover{
-    background-color: rgba(37, 37, 41, 0.925);
-    cursor:pointer;
+#Add-new-project input[type="submit"]{
+    margin-right:360px !important;
+    margin-top:270px !important;
+    width:100px!important;
+    height:30px !important;
 }
-#wrapper{
-    margin-top:50px;
-    margin-bottom:50px;
+#thumb{
+    position:absolute;
+    top:250px;
+    left:120px;
+}
+#images{
+    position:absolute;
+    top:290px;
+    left:120px;
 }
