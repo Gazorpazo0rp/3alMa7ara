@@ -7,6 +7,7 @@ function viewTab(idx){
     else if(idx==5) url_holder='/editPages'
     else if(idx==6) url_holder='/onGoingTasks'
     else if(idx==7) url_holder='/questions'
+    else if(idx==8) url_holder='/homepageSlider'
 
     
     $.ajax({
@@ -128,6 +129,20 @@ function updateTask(id){
     $.ajax({
         method:'GET',
         url: "updateTask/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+function deleteProject(id){
+    $.ajax({
+        method:'GET',
+        url: "deleteProject/"+id,
         success: function(response){
             document.getElementById('action-center').innerHTML=response;
 

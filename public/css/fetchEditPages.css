@@ -4,7 +4,7 @@ width:70%;
 margin-left:5%;
 padding:30px;
 margin-top:40px;
-background-color: rgba(201, 199, 202, 0.966);
+background-color: rgba(236, 235, 235, 0.966);
 }
 #Add-new-project input[type="submit"]{
     margin-right:360px !important;
@@ -21,4 +21,13 @@ background-color: rgba(201, 199, 202, 0.966);
     position:absolute;
     top:290px;
     left:120px;
+}
+.project{
+    position:relative;
+    padding:25px;
+    width:70%;
+    margin-left:5%;
+    background-color: rgba(248, 248, 248, 0.966);
+margin-top:25px;
+margin-bottom:10px;
 }

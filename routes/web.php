@@ -56,6 +56,10 @@ Route::get('/updateTask/{id}','AdminController@update_task');
 Route::get('/questions','AdminController@viewQuestions');
 Route::get('/editQues/{name}','AdminController@edit_Ques');
 Route::post('/AddProject', 'AdminController@Add_Project');
+Route::get('/deleteProject/{id}', 'AdminController@delete_project');
+Route::get('/homepageSlider', 'AdminController@edit_Slider');
+Route::post('/addHomepageSliderImage', 'AdminController@Homepage_slider_image');
+
 
 
 

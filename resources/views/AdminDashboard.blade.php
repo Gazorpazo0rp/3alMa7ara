@@ -31,8 +31,11 @@
                         <button class="navigation-bar-button" onclick="viewTab(3)">View staff</button>
                         <button class="navigation-bar-button" onclick="viewTab(4)">View clients</button>
                         <button class="navigation-bar-button" onclick="viewTab(5)">Edit projects </button>
+
                         <button class="navigation-bar-button" onclick="viewTab(6)">On-Going Tasks</button>
                         <button class="navigation-bar-button" onclick="viewTab(7)">Edit form questions</button>
+                        <button class="navigation-bar-button" onclick="viewTab(8)">Homepage Slider</button>
+
                         <a href="/adminLogout" style="text-decoration: none;"><button class="navigation-bar-button" >Log out</button></a>
 
 

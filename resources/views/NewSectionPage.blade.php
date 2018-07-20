@@ -18,8 +18,8 @@
     <div class="responsive">
         <div class="gallery">
         <a target="_blank" href="/viewProject/{{$pr->id}}">
-        <img src="/storage/Projects/{{$pr->thumbnail}}" alt="{{$pr->name}}" width="600" height="400">
-            </a>
+            <img src="/storage/Projects/{{$pr->thumbnail}}" alt="{{$pr->name}}" width="600" height="400">
+        </a>
         </div>
     </div>
     @endforeach

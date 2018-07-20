@@ -16,7 +16,22 @@
         </form>
 
     </div>
+    
+    @foreach ($projects as $pr)
 
+        <div class="project">
+        <a target="_blank" href="/viewProject/{{$pr->id}}">        </a>
+
+            <i class="fa fa-times"  style="position:absolute;width:23px!important;left:5px!important;font-size:30px;"id="close" onclick="deleteProject({{$pr->id}})"></i>
+
+            <img src="/storage/Projects/{{$pr->thumbnail}}" alt="{{$pr->name}}" width="600" height="400">
+        <h3> Project name: {{$pr->name}}</h3>
+        <h3> Project Designer{{$pr->designers}}</h3>
+        <h3> Location{{$pr->location}}</h3>
+
+
+        </div>
+    @endforeach
 
 
 </div>

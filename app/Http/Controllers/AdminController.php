@@ -22,8 +22,10 @@ use App\Admin;
 use App\Service_option_Price;
 use App\Project;
 use App\Image;
+use App\HomePageSliderImages;
 use File;
 use DB;
+
 
 class AdminController extends Controller
 {
@@ -301,8 +303,8 @@ class AdminController extends Controller
         return $data; // not tested
     }
     public function edit_pages(){
-
-        $data= view('fetchEditPages')->render();
+        $projects=Project::all();
+        $data= view('fetchEditPages')->with('projects',$projects)->render();
         return $data; 
     }
     public function  view_edit_section($id){
@@ -517,6 +519,7 @@ class AdminController extends Controller
         }
         viewQuestions();
     }
+    /*
     public function Add_Project(Request $request)
     {
         $New_Project = new Project;
@@ -539,7 +542,7 @@ class AdminController extends Controller
             $image->storeAs('/storage/Projects', $fileNameToStore);
             $New_Project->thumbnail = $fileNameToStore;
         }
-        $New_Project->save();
+        $New_Project->save();      y
 
         //Add the images attached to the project.
 
@@ -583,12 +586,59 @@ class AdminController extends Controller
 
         return redirect('/adminDashboard');
     }
-    
+    */
     public function delete_project($id)
     {
         DB::table('projects')->where('id', $id)->delete();
-        return redirect('/adminDashboard');
+        $projects=Project::all();
+        $data= view('fetchEditPages')->with('projects',$projects)->render();
+        return $data; 
     }
 
-    
+    function edit_Slider(){
+        $images=HomePageSliderImages::all();
+        $data=  view('fetchHomepageSlider',['images'=>$images])->render();
+        return $data;
+    }
+}
+
+function Homepage_slider_image(Request $request){
+    if($request->hasFile('images'))
+    {
+        foreach($request->file('images') as $image)
+        {                
+            //Extention of the file
+            $extension = $image->getClientOriginalExtension();
+            
+            if($extension != 'jpg' && $extension != 'JPG' && $extension != 'PNG' && $extension != 'png')
+            {
+                Session::put('Message','Error! Images have invalid extensions.');
+                return redirect('/adminDashboard'); 
+            }
+        } 
+    }
+
+    if($request->hasFile('images')) 
+    {     
+        foreach($request->file('images') as $image)
+        {
+            $imageObj= new HomePageSliderImages;
+            
+            //Name with Extention
+            $fileNameWithExt = $image->getClientOriginalName();
+            //Only Name
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Extention of the file
+            $extension = $image->getClientOriginalExtension();
+
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+            $image->storeAs('/storage/homepageImages', $fileNameToStore);
+
+            $imageObj->imagepath=$fileNameToStore;
+            $imageObj->save();
+        }       
+    }
+
+    return redirect('/adminDashboard');
 }
