@@ -536,7 +536,8 @@ class AdminController extends Controller
             //Extention of the file
             $extension = $image->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-            $image->storeAs('/storage/Projects', $fileNameToStore);
+            
+            $image->storeAs('public/Projects', $fileNameToStore);
             $New_Project->thumbnail = $fileNameToStore;
         }
         $New_Project->save();
@@ -573,7 +574,7 @@ class AdminController extends Controller
 
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-                $image->storeAs('/storage/Projects', $fileNameToStore);
+                $image->storeAs('public/Projects', $fileNameToStore);
 
                 $imageObj->imagepath=$fileNameToStore;
                 $imageObj->project_id=$New_Project->id;

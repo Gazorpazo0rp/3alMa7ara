@@ -184,8 +184,6 @@ class UserController extends Controller
             return redirect('/');
 
         }
-
-        
     }
     public function Submit_comment(Request $request){
         if (Session::get('ID')){
@@ -206,7 +204,7 @@ class UserController extends Controller
         return 'You already rated that worker before';
        }
 
-        $workerObj=Worker::find($workerId);
+        $workerObj = Worker::find($workerId);
         $numOfRatings=Rate::where('worker_id',$workerId)->count();
         $currentRate=$workerObj['rate'];
         $newRate=($rating+($currentRate*$numOfRatings)/($numOfRatings+1));
@@ -223,64 +221,34 @@ class UserController extends Controller
         $Form = new Form;
         $Form->customer_id = Session::get('ID');
         $Form->status = 0; // 0-> Unread.
-        $Form->save();
-       //insert the worker reservation in the ongoing tasks table with state=0
-        for($i=0;$i<3;$i++){
+        $Prof = [0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"];
+        $Choosen_Workers = "";
+        $Choosen_Services = "";
+
+        for($i=0;$i<20;$i++)  //Iterate for the choosen profesiions.
+        {
             if($request->input((string)$i)) {
-                //create a task
-                $taskObj=new On_Going_Task;
-                $taskObj->customer_id=Session::get('ID');
-                $taskObj->state=0;
-                $taskObj->form_id=$Form->id;
-                $taskObj->worker_id=$request->input($i);
-                $taskObj->save();
-                // change the selected worker status
-                $selectedWorker=Worker::find($request->input($i));
-                $selectedWorker->status="busy";
-                $selectedWorker->save();
+                $Name = $request->input((string)$i);
+                $Name = str_replace("_"," ",$Name);
+                $Choosen_Workers+=$Prof[$i];
+                $Choosen_Workers+=' ';
+                $Choosen_Workers+=$Name;
             }
         }
-        
-        for ($i=0;$i<3;$i++){
-            if ($request->input('pick'.$i)){
-                // create a task without a worker to be filled with a worker of the same profession when ready
-                $taskObj=new On_Going_Task;
-                $taskObj->customer_id=Session::get('ID');
-                $taskObj->form_id=$Form->id;
-                $taskObj->profession=$i;
-                $taskObj->state=0;
-                $taskObj->save();
-                
-            }
-        }
-        //post the data
-        //$request = $request->except('_token');
-       
-        
-        $Extra="";
         foreach($request as $key=>$value)
         {
-            $key = str_replace("_"," ",$key); //Removing the _ from the string to get the string formula in the db.
-            //The concept of Extra depends on that the value is overwritten, 
-            //if the user fill a text & didn't choose anything the value will not be added in the db and will be overwritten.
-            if(strpos($key,'note')!==false){
-                $Extra = $value;
-                if($Extra == null) $Extra = "";
+            $key = str_replace("_"," ",$key);
+            if($key>='0' && $key<='20') continue;
+            if(strpos($key,'pick')===FALSE)
+            {
+                $Choosen_Services+=$key;
+                $Choosen_Services+=' : ';
+                $Choosen_Services+=$value;
             }
-            else 
-            {   
-                if(strpos($key,'pick')===FALSE && $key!='0' && $key!='1' && $key!='2'){
-                    $SS = new Selected_Service;
-                    $SS->form_id = $Form->id;
-                    $tmp = Service::where('descriptions',$key)->first();
-                    $SS->service_id =  $tmp['id'];
-                    $SS->price_id = $value;
-                    
-                    $SS->note = $Extra;
-                    $SS->save();
-                }
-            }
-        }        
+        }
+        $Form->workers = $Choosen_Workers;
+        $Form->services = $Choosen_Services;
+        $Form->save();
         Session::put('Message','Your order has been submitted successfully');
         return redirect('/');
     }
