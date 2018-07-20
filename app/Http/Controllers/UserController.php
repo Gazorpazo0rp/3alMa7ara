@@ -242,8 +242,12 @@ class UserController extends Controller
             if(strpos($key,'pick')===FALSE)
             {
                 $Choosen_Services+=$key;
-                $Choosen_Services+=' : ';
-                $Choosen_Services+=$value;
+                $Choosen_Services+='[';
+                $Ans = Price::where('id',$value)->get();
+                $Choosen_Services+=$Ans->name;
+                $Choosen_Services+='-';
+                $Choosen_Services+=(string)($Ans->price);
+                $Choosen_Services+='] ';
             }
         }
         $Form->workers = $Choosen_Workers;
