@@ -627,9 +627,15 @@ class AdminController extends Controller
         $data = view('fetchPendingReservations',['data'=>$variables])->render();
         return $data; 
     }
-    public function Edit_Questions()
+    public function Delete_Question($id)
     {
-        
+        DB::table('services')->where('id', $id)->delete();
+        return redirect('/adminDashboard');
+    }
+    public function Delete_Answer($id)
+    {
+        DB::table('prices')->where('id', $id)->delete();
+        return redirect('/adminDashboard');
     }
     
 }
