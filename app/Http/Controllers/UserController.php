@@ -222,7 +222,7 @@ class UserController extends Controller
         $Form->customer_id = Session::get('ID');
         $Form->status = 0; // 0-> Unread.
         $Prof = [0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"];
-        $Choosen_Workers = "";
+        $Choosen_Workers = ""; $total_cost=0;
         $Choosen_Services = "";
 
         for($i=0;$i<20;$i++)  //Iterate for the choosen profesiions.
@@ -230,9 +230,7 @@ class UserController extends Controller
             if($request->input((string)$i)) {
                 $Name = $request->input((string)$i);
                 $Name = str_replace("_"," ",$Name);
-                $Choosen_Workers+=$Prof[$i];
-                $Choosen_Workers+=' ';
-                $Choosen_Workers+=$Name;
+                $Choosen_Workers = $Choosen_Workers.'['.$Prof[$i].' : '.$Name.'] ';
             }
         }
         foreach($request as $key=>$value)
@@ -241,17 +239,15 @@ class UserController extends Controller
             if($key>='0' && $key<='20') continue;
             if(strpos($key,'pick')===FALSE)
             {
-                $Choosen_Services+=$key;
-                $Choosen_Services+='[';
                 $Ans = Price::where('id',$value)->get();
-                $Choosen_Services+=$Ans->name;
-                $Choosen_Services+='-';
-                $Choosen_Services+=(string)($Ans->price);
-                $Choosen_Services+='] ';
+                $Choosen_Services = $Choosen_Services.$key.'['.$Ans->name.'-'.__toString(($Ans->price)).'] ';
+                $total_cost+=$Ans->price;
+                
             }
         }
         $Form->workers = $Choosen_Workers;
         $Form->services = $Choosen_Services;
+        $Form->totalcost = $total_cost;
         $Form->save();
         Session::put('Message','Your order has been submitted successfully');
         return redirect('/');

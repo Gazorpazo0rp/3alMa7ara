@@ -1,5 +1,5 @@
 <h1 style="font-size:35px;text-align:center;">Pending Reservations</h1>
-<?php $cnt=0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط']?>
+<?php $cnt=0; $professionNameArray=[0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"]?>
 
 @foreach($data['reservationServ'] as $key=>$value)
     <div class="reservation-div">

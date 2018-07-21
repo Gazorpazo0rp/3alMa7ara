@@ -211,8 +211,8 @@ class AdminController extends Controller
         $forms = Form::where('status',$read)->get();
         $res = array();
         $customerData=array();
-        $selectedWorkers=array();
         $formsIds=array();
+        $selectedWorkers=array();
         $cnt=0;
         foreach($forms as $form)
         {
@@ -291,7 +291,7 @@ class AdminController extends Controller
             foreach($options as $op){
                 $price=Price::find($op->price_id);
                 $prices[]=$price;
-            }
+            } 
            
             $Res[$serv->descriptions]=$prices;
             unset( $prices );
@@ -452,7 +452,7 @@ class AdminController extends Controller
     public function viewQuestions(){
         $ques=array();
         $services=Service::all();
-    //    $servicesObjs=array();
+        //    $servicesObjs=array();
         foreach($services as $serv){
            // array_push($servicesObjs)
             $options= Service_option_Price::where('service_id',$serv->id)->get();
@@ -590,6 +590,46 @@ class AdminController extends Controller
         DB::table('projects')->where('id', $id)->delete();
         return redirect('/adminDashboard');
     }
-
+    //Here is the new part.
+    //Call these functions Ya Magdy.
+    public function View_Pending_Reservations()
+    {
+        $Pending_Forms = Form::where('status',0)->get();   //0 -> means that the form is not accepted or rejected.
+        $customerData=array();
+        $forms=array();
+        $idx = 0;
+        foreach($Pending_Forms as $form)
+        {
+            $customerData[$idx]=User::where('id',$form['customer_id'])->first();
+            $forms[$idx]=$form;
+            $idx++;
+        }
+        $variables['customer']=$customerData;
+        $variables['forms']=$forms;
+        $data = view('fetchPendingReservations',['data'=>$variables])->render();
+        return $data; 
+    }
+    public function View_Old_Reservations()
+    {
+        $Pending_Forms = Form::all();   //0 -> means that the form is not accepted or rejected.
+        $customerData=array();
+        $forms=array();
+        $idx = 0;
+        foreach($Pending_Forms as $form)
+        {
+            if($form->status == 0) continue;
+            $customerData[$idx]=User::where('id',$form['customer_id'])->first();
+            $forms[$idx]=$form;
+            $idx++;
+        }
+        $variables['customer']=$customerData;
+        $variables['forms']=$forms;
+        $data = view('fetchPendingReservations',['data'=>$variables])->render();
+        return $data; 
+    }
+    public function Edit_Questions()
+    {
+        
+    }
     
 }
