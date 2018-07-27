@@ -22,6 +22,8 @@ Route::post('/JoinUs', 'PagesController@Submit_Request');
 Route::post('/SubmitReservation', 'UserController@Submit_Reservation');
 Route::post('/SubmitComment', 'UserController@Submit_comment');
 Route::get('/rate/{rating}/{id}', 'UserController@rate');
+Route::get('/changeLang/{lang}', 'PagesController@change_Language');
+
 
 //URL
 Route::get('/Reservation','UserController@Reservation');

@@ -19,7 +19,7 @@ a{
     background-attachment: fixed;	
 	background-repeat:no-repeat;
 	background-size:cover;
-	margin-top:70px;
+	margin-top:150px;
 }
 .Homepage-main-panel{
 	
@@ -238,6 +238,9 @@ border-bottom:1px #FFD200 solid;
 		height:250px;
 		cursor:pointer;
 	}
+	#how-it-works-container{
+		height:1000px;
+	}
 	.how-it-works-exp-container p{
 		display:block;
 		line-height:20px;
@@ -253,7 +256,7 @@ border-bottom:1px #FFD200 solid;
 		
 		width:70%;
 		right:15%;
-		top:60%;
+		top:70%;
 	}
 	.how-it-works-exp-container {
 		width:94%;
@@ -276,11 +279,12 @@ border-bottom:1px #FFD200 solid;
 		margin:0;
 	}
 	.how-it-works-explantion img{
-		top:45%;
+		top:55%;
 		width:70%;
 		left:15%;
 		height:40%;
 	}
+
 	}
 	  
 

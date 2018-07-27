@@ -9,6 +9,7 @@ use App\Worker;
 use App\Worker_Image;
 use App\Comment;
 use App\User;
+use App\HomePageSliderImages;
 
 use DB;
 
@@ -16,9 +17,16 @@ class PagesController extends Controller
 {
     public function Home()
     {
-        return view('HomePage');
+        $images=HomePageSliderImages::all();
+        return view('HomePage')->with('images',$images);
     }
    
+
+    public function change_Language($lang){
+        Session::put('lang',$lang);
+        return redirect('/');
+
+    }
     public function Worker_Profile($id)
     {
         $Worker = Worker::find($id);

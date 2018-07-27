@@ -9,7 +9,7 @@
     <div id="images-div">
         @foreach($images as  $image)
         <div class="image-div">
-            <img src="/storage/Section_images/{{$image->imagepath}}" alt="" class="image">
+            <img src="/storage/homepageImages/{{$image->imagepath}}" alt="" class="image">
             <i class="fa fa-times"  id="close" onclick="deleteImage('{{$image['imagepath']}}','{{$image['type']}}',this)"></i>
         </div> 
         @endforeach

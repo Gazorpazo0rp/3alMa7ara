@@ -316,23 +316,91 @@ class UserController extends Controller
             Session::put('Message','You must be logged in to open a reservation');
             return redirect('/');
         }
-        
-        $Questions = array(); //Array contains the available questions.
-        $Answers = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $ngara = array(); //Array contains the available questions.
+        $ngaraOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.
         $idx = 0;
-        $services = Service::all();
+        $services = Service::where('type','0')->get();
         foreach($services as $serv)
         {
-            array_push($Questions,$serv);
+            array_push($ngara,$serv);
             $options= Service_option_Price::where('service_id',$serv->id)->get();
-            $Answers[$idx] = array();
+            $ngaraOp[$idx] = array();
             foreach($options as $op)
             {
                 $price=Price::find($op->price_id);
-                array_push($Answers[$idx],$price);
+                array_push($ngaraOp[$idx],$price);
             }
             $idx++;
         }
+        $mahara = array(); //Array contains the available questions.
+        $maharaOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
+        $services = Service::where('type','1')->get();
+        foreach($services as $serv)
+        {
+            array_push($mahara,$serv);
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $maharaOp[$idx] = array();
+            foreach($options as $op)
+            {
+                $price=Price::find($op->price_id);
+                array_push($maharaOp[$idx],$price);
+            }
+            $idx++;
+        }
+        $nekasha = array(); //Array contains the available questions.
+        $nekashaOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
+        $services = Service::where('type','2')->get();
+        foreach($services as $serv)
+        {
+            array_push($nekasha,$serv);
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $nekashaOp[$idx] = array();
+            foreach($options as $op)
+            {
+                $price=Price::find($op->price_id);
+                array_push($nekashaOp[$idx],$price);
+            }
+            $idx++;
+        }
+        $kahraba = array(); //Array contains the available questions.
+        $kahrabaOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
+        $services = Service::where('type','3')->get();
+        foreach($services as $serv)
+        {
+            array_push($kahraba,$serv);
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $kahrabaOp[$idx] = array();
+            foreach($options as $op)
+            {
+                $price=Price::find($op->price_id);
+                array_push($kahrabaOp[$idx],$price);
+            }
+            $idx++;
+        }
+        $sebaka = array(); //Array contains the available questions.
+        $sebakaOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
+        $services = Service::where('type','4')->get();
+        foreach($services as $serv)
+        {
+            array_push($sebaka,$serv);
+            $options= Service_option_Price::where('service_id',$serv->id)->get();
+            $sebakaOp[$idx] = array();
+            foreach($options as $op)
+            {
+                $price=Price::find($op->price_id);
+                array_push($sebakaOp[$idx],$price);
+            }
+            $idx++;
+        }
+
+
+
+
+        //workers
         $Professions = array();
         $Workers = array(); 
         $idx = 0;
@@ -347,7 +415,7 @@ class UserController extends Controller
                 array_push($Workers[$idx],$worker);
             $idx++;
         }
-        return view('ReservationPage',['Questions'=>$Questions,'Answers'=>$Answers,'Professions'=>$Professions,'Workers'=>$Workers]);
+        return view('ReservationPage',['ngara'=>$ngara,'ngaraOp'=>$ngaraOp,'mahara'=>$mahara,'maharaOp'=>$maharaOp,'nekasha'=>$nekasha,'nekashaOp'=>$nekashaOp,'kahraba'=>$kahraba,'kahrabaOp'=>$kahrabaOp,'sebaka'=>$sebaka,'sebakaOp'=>$sebakaOp,'Professions'=>$Professions,'Workers'=>$Workers]);
     }
     public function View_all_Projects($section)
     {

@@ -519,7 +519,7 @@ class AdminController extends Controller
         }
         viewQuestions();
     }
-    /*
+    
     public function Add_Project(Request $request)
     {
         $New_Project = new Project;
@@ -543,7 +543,7 @@ class AdminController extends Controller
             
             $New_Project->thumbnail = $fileNameToStore;
         }
-        $New_Project->save();      y
+        $New_Project->save();      
 
         //Add the images attached to the project.
 
@@ -587,7 +587,7 @@ class AdminController extends Controller
 
         return redirect('/adminDashboard');
     }
-    */
+    
     public function delete_project($id)
     {
         DB::table('projects')->where('id', $id)->delete();
@@ -596,14 +596,14 @@ class AdminController extends Controller
         return $data; 
     }
 
-    function edit_Slider(){
+    public function edit_Slider(){
         $images=HomePageSliderImages::all();
         $data=  view('fetchHomepageSlider',['images'=>$images])->render();
         return $data;
     }
-}
 
-function Homepage_slider_image(Request $request){
+
+    public function Homepage_slider_image(Request $request){
     if($request->hasFile('images'))
     {
         foreach($request->file('images') as $image)
@@ -634,7 +634,7 @@ function Homepage_slider_image(Request $request){
 
             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
 
-            $image->storeAs('/storage/homepageImages', $fileNameToStore);
+            $image->storeAs('public/homepageImages', $fileNameToStore);
 
             $imageObj->imagepath=$fileNameToStore;
             $imageObj->save();
@@ -642,4 +642,5 @@ function Homepage_slider_image(Request $request){
     }
 
     return redirect('/adminDashboard');
+}
 }

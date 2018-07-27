@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/homepageStyle.css">
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -113,18 +114,11 @@
             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="img/spin.svg" />
         </div>
         <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:980px;height:380px;overflow:hidden;">
+            @foreach($images as $image)
             <div>
-                <img data-u="image" src="images/Homepage_images/apartment.jpg" />
+                <img data-u="image" src="storage/homepageImages/{{$image->imagepath}}" />
             </div>
-            <div>
-                <img data-u="image" src="images/Homepage_images/apartment.jpg" />
-            </div>
-            <div>
-                <img data-u="image" src="images/Homepage_images/apartment.jpg" />
-            </div>
-            <div>
-                <img data-u="image" src="images/Homepage_images/apartment.jpg" />
-            </div>
+            @endforeach
            
         </div>
         <!-- Bullet Navigator -->
@@ -171,8 +165,8 @@
 			</div>
 			-->
 			<div id="how-it-works-container">
-			<h1 style=" width:100%;margin-left:-5%!important ;text-align:center; margin-top:0px; padding-top:50px; padding-bottom:50px;" >How it works</h1>
-			<div class="how-it-works" onclick="howItWorks(0)"><img src="images/Homepage_images/PickYourDesign.png"><h4 style="text-align:center">Customize your own design</h4></div>
+			    <h1 style=" width:100%;margin-left:-5%!important ;text-align:center; margin-top:0px; padding-top:50px; padding-bottom:50px;" >How it works</h1>
+			    <div class="how-it-works" onclick="howItWorks(0)"><img src="images/Homepage_images/PickYourDesign.png"><h4 style="text-align:center">Customize your own design</h4></div>
 				<div  class="how-it-works"  onclick="howItWorks(1)"><img src="images/Homepage_images/formLogo2.png"><h4 style="text-align:center">Open a reservation form</h4></div>
 				<div  class="how-it-works" onclick="howItWorks(2)"><img src="images/Homepage_images/pickWorker.png"><h4 style="text-align:center">Pick your worker or designer</h4></div>
 				<div  class="how-it-works" onclick="howItWorks(3)"><img src="images/Homepage_images/money.png"><h4 style="text-align:center">Review the estimated cost </h4></div>
@@ -180,10 +174,16 @@
 			</div>
 			<div class="how-it-works-exp-container">
 				<div class="how-it-works-explantion left-panel">
-					<h1 style="font-size:45px;color:#FFD200;">Personalize your own design</h1>
+                    <?php if(Session::get('lang') == 0)echo'<h1 style="font-size:45px;color:#FFD200;">Personalize your own design</h1>
 					<p>Use the simulation to pick the colors for the floor,the walls, the roof and the furniture for Your appartment.</p>
-					<p>You Don't have to go through this step. It's optional.</p>
-					<p>Click this link to Try the simulation <a href="/Simulator" style="color:#FFD200">Try Now</a></p>
+					<p>You Don\'t have to go through this step. It\'s optional.</p>
+					<p>Click this link to Try the simulation <a href="/Simulator" style="color:#FFD200">Try Now</a></p>';
+                    else echo'<h1 style="font-family:Cairo!important;font-size:45px;color:#FFD200;text-align:right">اختار الديزاين اللى انت عايزه</h1>
+					<p style="font-family:Cairo!important;text-align:right">.السيميوليشن هيساعدك تختار ألوان حيطان و سقف و ألوان الاثاث فى شقتك</p>
+					<p style="font-family:Cairo!important;text-align:right">لو مقرر الألوان ف الخطوة دى مش الزامية</p>
+					<p style="font-family:Cairo!important;text-align:right">لينك السيميوليشن .. ادخل جرب ! <a href="/Simulator" style="color:#FFD200">جرب السيميوليشن</a></p>';
+                    ?>
+					
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
 				<div class="how-it-works-explantion right-panel">

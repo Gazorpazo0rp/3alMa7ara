@@ -13,7 +13,7 @@ $(document).ready(function(){
 
     // event listner radio button click
     $('.container').click(function(){
-        console.log(cost);
+        //console.log(cost);
         if(cost!==0){
         $('#submit-button').removeAttr('disabled');
         }
@@ -24,7 +24,7 @@ $(document).ready(function(){
     });
 
     $('.radio-option-has-cost').click(function(){
-        //debugger;
+        debugger;
         modifiedCost=0;
         var thisObj=$(this);
         var radioName=$(this).attr('name');
@@ -35,19 +35,21 @@ $(document).ready(function(){
         var clickedCost=pricesArray[radioId];
         if($(thisObj).attr('waschecked')=="false"){
             modifiedCost+=clickedCost;
-            if(lastClickedArray[radioName]!="") {
+            if(lastClickedArray[radioName]!=-1) {
                 modifiedCost-=pricesArray[lastClickedArray[radioName]];
-                console.log(lastClickedArray[radioName]);
+
+                //console.log(lastClickedArray[radioName]);
             }
            // console.log(radioName);
+
             lastClickedArray[radioName]=radioId;
 
         }
         else{
             modifiedCost-=clickedCost;
-            lastClickedArray[radioName]="";
+            lastClickedArray[radioName]=-1;
             //console.log(radioName); 
-            console.log(lastClickedArray[radioName]);
+            //console.log(lastClickedArray[radioName]);
         }
         cost=modifiedCost+currentCost;
         document.getElementById('cost-value').innerHTML=cost.toString();
@@ -59,10 +61,12 @@ $(document).ready(function(){
         else{
             $(this).attr('waschecked','true');
         }
+
         $('input[name="'+radioName+'"]').each(function(){
-           
+            console.log(11);
             if(!$(this).is(thisObj)){
                 $(this).attr('waschecked','false');
+                console.log(12);
             }
         });
         
@@ -135,7 +139,6 @@ function viewRefubrishmentTabs(){
         $('#refubrishment-categories-list').slideUp();
         refubTabsToggleFlag=0;
     }
-    viewTab(0);
    
 }
 //خخخخخخخخ
