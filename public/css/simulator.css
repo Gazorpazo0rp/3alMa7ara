@@ -5,16 +5,13 @@ body, html {
     position: relative;
 }
 
-.bkg {
+.bk{
+    position: relative;
     width: 100%; 
     height:100%;
-    position: absolute;
-    top:0;
-    bottom:0;
-    right: 0;
-    left: 0;
     z-index:0;
 }
+
 
 #floor {
     width: 100%; 
@@ -119,14 +116,49 @@ body, html {
     margin-left:15px;
 }
 
-#wall-input{
+
+#Layer_1{
+    width: 100%;  
+    position: absolute;
+    top:0;
+    z-index:1;
+}
+#wall1-svg{
+    position: absolute;
+    z-index: 2;
+    fill-opacity: 0.7;
+}
+#wall2-svg{
+    position: absolute;
+    z-index: 2;
+    fill-opacity: 0.7;
+}
+#wall3-svg{
+    position: absolute;
+    z-index: 2;
+    fill-opacity: 0.7;
+}
+#wall4-svg{
+    position: absolute;
+    z-index: 2;
+    fill-opacity: 0.7;
+}
+.ceiling{
+    position: absolute;
+    z-index: 2;
+    fill-opacity: 0.7;
+}
+
+
+
+#wall1-input{
     z-index:3;
     position: absolute;
-    top: 70%;
-    left: 96%;
+    top: 81%;
+    left: 97%;
     transition: none;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 10px;
     user-select: none;
     -moz-user-select: none;
@@ -135,6 +167,71 @@ body, html {
     -o-user-select: none;
     cursor: pointer;
 }
+#wall2-input{
+    z-index:3;
+    position: absolute;
+    top: 78%;
+    left: 89%;
+    transition: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+#wall3-input{
+    z-index:3;
+    position: absolute;
+    top: 65%;
+    left: 28%;
+    transition: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+#wall4-input{
+    z-index:3;
+    position: absolute;
+    top: 78%;
+    left: 1.5%;
+    transition: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+#ceiling-input{
+    z-index:3;
+    position: absolute;
+    top: 17%;
+    left: 68%;
+    transition: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    cursor: pointer;
+}
+
 
 
 .arrow,
@@ -448,4 +545,150 @@ body, html {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+  
 }
+
+@media screen and (max-width: 1850px) {
+   
+#wall1-input{
+    top: 70%;
+    left: 97%;
+}
+#wall2-input{
+    top: 68%;
+    left: 89%;
+}
+#wall3-input{
+    top: 58%;
+    left: 28%;
+}
+#wall4-input{
+    top: 70%;
+    left: 1.5%;
+}
+#ceiling-input{
+    top: 15%;
+    left: 68%;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+   
+    #wall1-input{
+        top: 60%;
+        left: 97%;
+    }
+    #wall2-input{
+        top: 58%;
+        left: 89%;
+    }
+    #wall3-input{
+        top: 48%;
+        left: 28%;
+    }
+    #wall4-input{
+        top: 60%;
+        left: 1.5%;
+    }
+    #ceiling-input{
+        top: 10%;
+        left: 68%;
+        }
+    }
+
+    
+@media screen and (max-width: 1450px) {
+   
+    #wall1-input{
+        top: 50%;
+        left: 97%;
+    }
+    #wall2-input{
+        top: 48%;
+        left: 89%;
+    }
+    #wall3-input{
+        top: 38%;
+        left: 28%;
+    }
+    #wall4-input{
+        top: 50%;
+        left: 1.5%;
+    }
+    #ceiling-input{
+        top: 8%;
+        left: 68%;
+        }
+    }
+
+    @media screen and (max-width: 1450px) {
+   
+        #wall1-input{
+            top: 40%;
+            left: 97%;
+        }
+        #wall2-input{
+            top: 38%;
+            left: 89%;
+        }
+        #wall3-input{
+            top: 28%;
+            left: 28%;
+        }
+        #wall4-input{
+            top: 40%;
+            left: 1.5%;
+        }
+        #ceiling-input{
+            top: 6%;
+            left: 68%;
+            }
+        }
+
+        @media screen and (max-width: 1250px) {
+   
+            #wall1-input{
+                top: 35%;
+                left: 96%;
+            }
+            #wall2-input{
+                top: 29%;
+                left: 88%;
+            }
+            #wall3-input{
+                top: 20%;
+                left: 28%;
+            }
+            #wall4-input{
+                top: 30%;
+                left: 1.5%;
+            }
+            #ceiling-input{
+                top: 6%;
+                left: 68%;
+                }
+            }
+
+            @media screen and (max-width: 1000px) {
+   
+                #wall1-input{
+                    top: 30%;
+                    left: 95%;
+                }
+                #wall2-input{
+                    top: 22%;
+                    left: 88%;
+                }
+                #wall3-input{
+                    top: 20%;
+                    left: 28%;
+                }
+                #wall4-input{
+                    top: 30%;
+                    left: 1.5%;
+                }
+                #ceiling-input{
+                    top: 6%;
+                    left: 68%;
+                    }
+                }

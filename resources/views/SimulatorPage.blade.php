@@ -15,11 +15,35 @@
 	    @include('inc.messages')
         
         <!--background-->
-        <img class="bkg" src="/images/simulator/background.jpg"></img>
-        <input type="color" name="wallin" id="wall-input">
-        <div id="wall-color"></div>
-        <img id="floor" src="/images/simulator/floor.png"></img>
+        <div class="bk">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 1920 1043" style="enable-background:new 0 0 1920 1043;" xml:space="preserve">
+        <style type="text/css">
+            .wall4-svg{opacity:0.47;fill:#352BBF;}
+            .wall3-svg{opacity:0.47;fill:#F22A2A;}
+            .wall2-svg{opacity:0.47;fill:#2B6312;}
+            .wall1-svg{opacity:0.47;fill:#0000;}
+            .ceiling-svg{opacity:0.47;fill:#FFFFFF;}
+        </style>
         
+        <image style="overflow:visible;" width="100%" height="100%" xlink:href="/images/simulator/background.jpg" >
+        </image>
+        
+        <polygon id="wall4-svg" points="0,818 82,792 83,152 216,209 215,729 288,730 374,702 374,276 421,296 421,673 474,673 484,669 
+            493,669 493,221 153,0 0,0 "/>
+        <polygon id="wall3-svg" points="493,221 1358,222 1358,337 1451,337 1451,668 493,668 "/>
+        <polygon id="wall2-svg" points="1775,0 1650,0 1358,222 1358,337 1451,294 1451,699 1775,814 "/>
+        <rect x="1775" y="0" id="wall1-svg" width="145" height="814"/>
+        <polygon class="ceiling-svg" points="153,0 1650,0 1358,222 493,221 "/>
+        <polygon class="ceiling-svg" points="1358,337 1451,294 1451,337 "/>
+        </svg>
+        <input type="color" name="wall1in" id="wall1-input">
+        <input type="color" name="wall2in" id="wall2-input">
+        <input type="color" name="wall3in" id="wall3-input">
+        <input type="color" name="wall4in" id="wall4-input">
+        <input type="color" name="ceilingin" id="ceiling-input">
+        </div>
+
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a onclick="showsofa()"><img id="sofa-part" src="/images/simulator/sofa.png" alt="Sofa"></a>
@@ -30,7 +54,7 @@
         
         <div id="opener" onclick="openNav()">&#9776; Pick a part !</div>
 
-        <div class="arrow"></div>
+        <!--<div class="arrow"></div>-->
 
         <div class="sofa">
             <a href="javascript:void(0)" id="sofa-closebtn" onclick="hidesofa()">&times;</a>
@@ -81,11 +105,26 @@
 
         // WALL
 
-         $("input[name='wallin']").change(function() {
-            $("#wall-color").css("background-color",$("input[name='wallin']").val());
-            $("#wall-color").show();
-
+         $("input[name='wall1in']").change(function() {
+            $("#wall1-svg").css("fill",$("input[name='wall1in']").val());
         });
+
+ $("input[name='wall2in']").change(function() {
+            $("#wall2-svg").css("fill",$("input[name='wall2in']").val());
+        });
+
+ $("input[name='wall3in']").change(function() {
+            $("#wall3-svg").css("fill",$("input[name='wall3in']").val());
+        });
+
+ $("input[name='wall4in']").change(function() {
+            $("#wall4-svg").css("fill",$("input[name='wall4in']").val());
+        });
+
+ $("input[name='ceilingin']").change(function() {
+            $(".ceiling-svg").css("fill",$("input[name='ceilingin']").val());
+        });
+
 
 
 

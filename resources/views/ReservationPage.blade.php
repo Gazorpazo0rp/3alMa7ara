@@ -166,7 +166,7 @@
                 <div class="form-tab"> Decor and Atr</div>
 
                 <div id="workers_div">
-                    <?php $idx = 0; $professionNameArray=[0=>'نجار',1=>'محار',2=>'مبلط'] //This line will be hard coded ?> 
+                    <?php $idx = 0; $professionNameArray=[0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"]; //This line will be hard coded ?> 
                     @foreach ($Professions as $Prof)
                         <div class="radio-options-div-img">
                         <h3 style="text-align:right"> اختار <?php echo $professionNameArray[$Prof]; ?> -</h3> 
