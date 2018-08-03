@@ -452,25 +452,23 @@ class AdminController extends Controller
     }
     
     public function viewQuestions(){
-        $ques=array();
-        $services=Service::all();
-        //    $servicesObjs=array();
-        foreach($services as $serv){
-           // array_push($servicesObjs)
+        $Ques = array(); //Array contains the available questions.
+        $Answers = array(); //Array of Arrays, every child array contains the answers of question of the same index.
+        $idx = 0;
+        $services = Service::all();
+        foreach($services as $serv)
+        {
+            array_push($Ques,$serv);
             $options= Service_option_Price::where('service_id',$serv->id)->get();
-            $prices=array();
-            foreach($options as $op){
+            $Answers[$idx] = array();
+            foreach($options as $op)
+            {
                 $price=Price::find($op->price_id);
-                $prices[]=$price;
+                array_push($Answers[$idx],$price);
             }
-           
-            $ques[$serv->descriptions]=$prices;
-            unset( $prices );
-
+            $idx++;
         }
-        
-        $data['ques']=$ques;
-        $fetch=  view('fetchQuestions',['data'=>$data])->render();
+        $fetch=  view('fetchQuestions',['Ques'=>$Ques],['Answers'=>$Answers])->render();
         return $fetch;
     }
     public function logout(){
@@ -527,7 +525,7 @@ class AdminController extends Controller
         $New_Project->designers = $request->designers;
         $New_Project->period = $request->period;
         $New_Project->location = $request->location;
-        $New_Project->type = 0;
+        $New_Project->type = $request->type;
         //Add the thumbnail.
         if($request->hasFile('thumbnail'))
         {            
@@ -683,12 +681,12 @@ class AdminController extends Controller
     public function Delete_Question($id)
     {
         DB::table('services')->where('id', $id)->delete();
-        return redirect('/adminDashboard');
+        viewQuestions();
     }
     public function Delete_Answer($id)
     {
         DB::table('prices')->where('id', $id)->delete();
-        return redirect('/adminDashboard');
+        viewQuestions();
     }
     
 }

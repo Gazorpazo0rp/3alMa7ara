@@ -233,17 +233,17 @@ class UserController extends Controller
                 $Choosen_Workers = $Choosen_Workers.'['.$Prof[$i].' : '.$Name.'] ';
             }
         }
-        foreach($request as $key=>$value)
+        foreach($_POST as $key=>$value)
         {
             $key = str_replace("_"," ",$key);
-            if($key>='0' && $key<='20') continue;
-            if(strpos($key,'pick')===FALSE)
-            {
-                $Ans = Price::where('id',$value)->get();
-                $Choosen_Services = $Choosen_Services.$key.'['.$Ans->name.'-'.__toString(($Ans->price)).'] ';
-                $total_cost+=$Ans->price;
+            
+            if(($key >= '0' && $key <= '20') || $key ==' token') continue;
                 
-            }
+                
+                $Ans = Price::where('id',$value)->first();
+                $Choosen_Services = $Choosen_Services.$key.'['.$Ans->name.'-'.(string)$Ans->price.'] ';
+                $total_cost+=$Ans->price;
+                            
         }
         $Form->workers = $Choosen_Workers;
         $Form->services = $Choosen_Services;

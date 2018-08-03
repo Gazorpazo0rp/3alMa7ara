@@ -7,6 +7,10 @@
         <link rel="stylesheet" href="css/simulator.css">
         <script src="js/jquery-3.3.1.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        
 	</head>
     
     <body>

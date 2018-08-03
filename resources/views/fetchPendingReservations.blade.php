@@ -1,34 +1,30 @@
 <h1 style="font-size:35px;text-align:center;">Pending Reservations</h1>
 <?php $cnt=0; $professionNameArray=[0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"]?>
 
-@foreach($data['reservationServ'] as $key=>$value)
+@foreach($data['customer'] as $cust)
     <div class="reservation-div">
-        <?php $cost=0?>
+        
         <div class="client-info">
         <h1> Client Info</h1>
-        <h2>Client Name :{{$data['customer'][$key]['name']}}</h2>
-        <h2>Client Age :{{$data['customer'][$key]['age']}}</h2>
-        <h2>Client phone :{{$data['customer'][$key]['phone']}}</h2>
-        <h2>Client Email :{{$data['customer'][$key]['email']}}</h2>
+        <h2>Client Name :{{$cust['name']}}</h2>
+        <h2>Client Age :{{$cust['age']}}</h2>
+        <h2>Client phone :{{$cust['phone']}}</h2>
+        <h2>Client Email :{{$cust['email']}}</h2>
         </div>
         <div class="reservation-info">
         <h1> Reservation Info</h1>
-    @foreach($data['reservationServ'][$key] as $op)
-        <h3>{{$op['name']}}:{{$op['price']}} جنيه</h3> 
+        <h3>{{$data['forms'][$cnt]['services']}}</h3> 
         
-        <?php $cost+=$op['price'];?>
-    @endforeach
-    <h1>الصنايعية اللى اختارهم ال client</h1>
-    @foreach($data['workersData'][$key] as $worker)
+        <h1>الصنايعية اللى اختارهم ال client</h1>
+    
             
-        <h3>{{$professionNameArray[$worker['profession']]}} : {{$worker->name}} </h3>
-    @endforeach
-    <h3> السعر الكلى : {{$cost}} جنيه</h3>
+        <h3> {{$data['forms'][$cnt]['workers']}}</h3>
+    <h3> السعر الكلى : {{$data['forms'][$cnt]['totalcost']}} جنيه</h3>
     </div>
     <br class="clear"/>
-    <button class="accept-button"onclick="updateReservation(1,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})" id="accept">Accept</button>
-    <button class="reject-button"onclick="updateReservation(0,{{$data['customer'][$key]['id']}},{{$data['formsIds'][$key]}})" id="reject">Decline</button>
+    <button class="accept-button"onclick="updateReservation(1,{{$data['customer'][$cnt]['id']}},{{$data['forms'][$cnt]['id']}})" id="accept">Accept</button>
+    <button class="reject-button"onclick="updateReservation(0,{{$data['customer'][$cnt]['id']}},{{$data['forms'][$cnt]['id']}})" id="reject">Decline</button>
 </div>
 <hr>
-
+<?php $cnt++;?>
 @endforeach

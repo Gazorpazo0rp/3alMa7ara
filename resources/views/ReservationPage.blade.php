@@ -32,9 +32,9 @@
             <div id="form-navigation-bar">
                 <button class="form-navigation-bar-button" onclick="viewRefubrishmentTabs()">تشطيبات</button>
                     
-                <button class="form-navigation-bar-button" onclick="viewTab(8)">Decor and Art</button>
-                <button class="form-navigation-bar-button" onclick="viewTab(9)">Fire Fighting</button>
-                <button class="form-navigation-bar-button" onclick="viewTab(10)">Air Conditioning</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(8)">Design</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(9)"></button>
+                <button style="font-size:18px;" class="form-navigation-bar-button" onclick="viewTab(10)">Fire Fighting & Air Conditioning</button>
                 <div id="refubrishment-categories-list">
                         <button class="refubrishment-button" onclick="viewTab(0)">نجارة</button>
                         <button class="refubrishment-button" onclick="viewTab(1)">محارة</button>
@@ -43,7 +43,9 @@
                         <button class="refubrishment-button" onclick="viewTab(4)">سباكة</button>
                         <button class="refubrishment-button" onclick="viewTab(5)">جبس</button>
                         <button class="refubrishment-button" onclick="viewTab(6)">سيراميك</button>
-                        <button class="refubrishment-button" onclick="viewTab(7)">تيست</button>
+                        <button class="refubrishment-button" onclick="viewTab(7)">جيبسون بورد</button>
+                        <button class="refubrishment-button" onclick="viewTab(7)">MDF </button>
+
 
                 </div>
             </div>
@@ -62,7 +64,7 @@
  
                         @foreach($ngaraOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->name}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                         </label>
@@ -83,7 +85,7 @@
     
                         @foreach($maharaOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->name}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                         </label>
@@ -107,7 +109,7 @@
     
                         @foreach($nekashaOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->name}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                         </label>
@@ -128,7 +130,7 @@
     
                         @foreach($kahrabaOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->name}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                         </label>
@@ -149,7 +151,7 @@
     
                         @foreach($sebakaOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->name}}">
+                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
                             <span class="checkmark"></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                         </label>

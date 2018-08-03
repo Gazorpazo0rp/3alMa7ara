@@ -1,6 +1,6 @@
 function viewTab(idx){
     var url_holder;
-    if(idx==1) url_holder='/pendingReservations/0'
+    if(idx==1) url_holder='/pendingReservations'
     else if(idx==2) url_holder='/JoinUsRequests'
     else if(idx==3) url_holder='/viewStaff'
     else if(idx==4) url_holder='/viewClients'
@@ -143,6 +143,36 @@ function deleteProject(id){
     $.ajax({
         method:'GET',
         url: "deleteProject/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+
+function deleteQues(id){
+    $.ajax({
+        method:'GET',
+        url: "deleteQues/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+
+function deleteOp(id){
+    $.ajax({
+        method:'GET',
+        url: "deleteOp/"+id,
         success: function(response){
             document.getElementById('action-center').innerHTML=response;
 

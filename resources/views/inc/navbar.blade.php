@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="css/NavBar.css">
-<script type="text/javascript" src="js/NavBar.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/NavBar.css">
+<script type="text/javascript" src="/js/NavBar.js"></script>
 
 <nav class="nav-bar" id="Main-nav">
     <a id ="logoLink"href="/"><img id="logo" src="/images/Homepage_images/logo.png"></a>
@@ -45,14 +45,10 @@
                         </span>
                     @endif
             <br> 
-            <label>
-                <input type="checkbox"  id = "Remember_Me_Check" name="remember" {{ old('remember') ? 'checked' : '' }}> 
-                {{ __('Remember me') }}
-            </label>
+            
             <br>
             <input type="submit" value="Login" id="Login_submit" class="Form_submit">
             <br><br>
-            <a href="{{ route('password.request') }}" >forgot password? </a>
     </form>
     
 </div>

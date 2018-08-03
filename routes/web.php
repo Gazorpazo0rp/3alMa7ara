@@ -41,7 +41,7 @@ Route::get('/adminDashboard','AdminController@Admin');
 Route::get('/JoinUsRequests','AdminController@View_Requests');
 Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
 Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
-Route::get('/pendingReservations/{read}','AdminController@View_Reservations');
+Route::get('/pendingReservations','AdminController@View_Pending_Reservations');
 Route::get('/viewStaff','AdminController@View_Staff');
 Route::get('/EditWorker/{id}','AdminController@Edit_Staff');
 Route::post('/SubmitEditWorker', 'AdminController@Submit_Edit_worker');
@@ -61,6 +61,8 @@ Route::post('/AddProject', 'AdminController@Add_Project');
 Route::get('/deleteProject/{id}', 'AdminController@delete_project');
 Route::get('/homepageSlider', 'AdminController@edit_Slider');
 Route::post('/addHomepageSliderImage', 'AdminController@Homepage_slider_image');
+Route::get('/deleteQues/{id}', 'AdminController@Delete_Question');
+Route::get('/deleteOp/{id}', 'AdminController@Delete_Answer');
 
 
 

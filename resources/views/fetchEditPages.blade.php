@@ -7,6 +7,8 @@
         <input type="text" placeholder="Project Duration" name="period" >
         <input type="text" placeholder="Designer" name="designers" >
         <input type="text" placeholder="Project Location" name="location" >
+        <input type="text" placeholder="Project type" name="type" >
+
         <h4 id="thumb">Thumbnail:</h4>
         <br><input type="file" name="thumbnail" style="margin-left:150px;">
         <h4 id="images">Images:</h4>
