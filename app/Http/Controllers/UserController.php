@@ -402,7 +402,7 @@ class UserController extends Controller
     {
         $Project_Images = Image::where('project_id',$id)->get();
         $Project_Data= Project::where('id',$id)->get();
-        return view('projectDetails')->with('Images',$Project_Images)->with('Data',$Project_Data[0]); 
+        return view('ProjectDetails')->with('Images',$Project_Images)->with('Data',$Project_Data[0]); 
     }
     
 }
