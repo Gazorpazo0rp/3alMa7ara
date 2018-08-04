@@ -17,7 +17,7 @@
         else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login|</a></li>
         <li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
         if(Session::get('lang') == 0)echo'<li> <a href="changeLang/1">بالعربية</a></li>';
-        else echo'<li> <a href="changeLang/0">ُEnglish</a></li>';
+        else echo'<li> <a href="changeLang/0">English</a></li>';
         ?>
         
         <div class="collapse-item" onClick="Showcollapsed()"><span></span> <span></span> <span></span></div> 
@@ -67,18 +67,6 @@
                     @endif
             <br>
             <input type="text" name='name' placeholder="Full name" required>
-            <label class="profession"> نجار
-
-            <input type="radio" name='profession' placeholder="Profession" value="0" checked>
-            </label>
-            <label class="profession"> محار
-
-            <input type="radio" name='profession' placeholder="Profession" value="1">
-            </label>
-            <label class="profession"> مبلط
-
-            <input type="radio" name='profession' placeholder="Profession" value="2">
-            </label>
 
             <input type="text" name='phoneNumber' placeholder="Phone number" required>
             <input type="text" name='age' placeholder="Age" required>

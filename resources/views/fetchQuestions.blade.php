@@ -15,7 +15,7 @@
 <i class="fa fa-times"  style="left:5px!important;width:13px;"id="close" onclick="deleteOp({{$ans->id}})"></i>
 
 <h4>{{$ans->name}}</h4>
-<input type="text" class="op_input" value="{{$ans->price}}">
+<input type="text" class="op_input" value="{{$ans->price}}" id = "{{$ans->price}}">
 </div>
 @endforeach
 </div>

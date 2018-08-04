@@ -515,7 +515,7 @@ class AdminController extends Controller
             $Relation->price_id = $Price->id;
             $Relation->save();
         }
-        viewQuestions();
+        AdminController::viewQuestions();
     }
     
     public function Add_Project(Request $request)
@@ -685,12 +685,21 @@ class AdminController extends Controller
     public function Delete_Question($id)
     {
         DB::table('services')->where('id', $id)->delete();
-        viewQuestions();
+        AdminController::viewQuestions();
     }
     public function Delete_Answer($id)
     {
         DB::table('prices')->where('id', $id)->delete();
-        viewQuestions();
+        AdminController::viewQuestions();
     }
-    
+    public function EditPrice(Request $request)
+    {
+        foreach($_POST as $key=>$value)
+        {
+            $Ans = Price::find($key); //Get the Object and then edit its data.
+            $Ans->price = $value;
+            $Ans->save();
+        }
+        AdminController::viewQuestions();
+    }
 }
