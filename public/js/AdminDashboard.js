@@ -1,13 +1,14 @@
 function viewTab(idx){
     var url_holder;
-    if(idx==1) url_holder='/pendingReservations'
-    else if(idx==2) url_holder='/JoinUsRequests'
-    else if(idx==3) url_holder='/viewStaff'
-    else if(idx==4) url_holder='/viewClients'
-    else if(idx==5) url_holder='/editPages'
-    else if(idx==6) url_holder='/onGoingTasks'
-    else if(idx==7) url_holder='/questions'
-    else if(idx==8) url_holder='/homepageSlider'
+    if(idx==1) url_holder='/pendingReservations/'+idx
+    else if(idx==2) url_holder='/pendingReservations/'+idx
+    else if(idx==3) url_holder='/JoinUsRequests'
+    else if(idx==4) url_holder='/viewStaff'
+    else if(idx==5) url_holder='/viewClients'
+    else if(idx==6) url_holder='/editPages'
+    else if(idx==7) url_holder='/onGoingTasks'
+    else if(idx==8) url_holder='/questions'
+    else if(idx==9) url_holder='/homepageSlider'
 
     
     $.ajax({

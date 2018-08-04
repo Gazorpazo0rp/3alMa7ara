@@ -369,7 +369,7 @@ class AdminController extends Controller
     public function accept_reservation($cusomerID,$formId){
         $tasksToUpdate=On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->update(['state'=>1]);
         Form::where('id',$formId)->update(['status'=>1]);
-        return redirect('pendingReservations/0');
+        return redirect('pendingReservations');
     }
     public function reject_reservation($cusomerID,$formId){
         On_Going_Task::where([['customer_id',$cusomerID],['form_id',$formId]])->update(['state'=>2]);
@@ -379,7 +379,7 @@ class AdminController extends Controller
             Worker::where('id',$task->worker_id)->update(['status'=>"Available"]);
 
         }
-        return redirect('pendingReservations/0');
+        return redirect('pendingReservations');
     }
     public function view_tasks(){
         $tasks=On_Going_Task::whereNotNull('worker_id')->where('state',1)->get();
@@ -643,9 +643,13 @@ class AdminController extends Controller
 }
     //Here is the new part.
     //Call these functions Ya Magdy.
-    public function View_Pending_Reservations()
+    public function View_Pending_Reservations($idx)
     {
-        $Pending_Forms = Form::where('status',0)->get();   //0 -> means that the form is not accepted or rejected.
+        if($idx==1)        
+            $Pending_Forms = Form::where('status',0)->get();   //0 -> means that the form is not accepted or rejected.
+        else 
+            $Pending_Forms = Form::where('status','<>',0)->get();   
+
         $customerData=array();
         $forms=array();
         $idx = 0;

@@ -229,6 +229,8 @@ class UserController extends Controller
         {
             if($request->input((string)$i)) {
                 $Name = $request->input((string)$i);
+                $Name= Worker::where('id',$Name)->get();
+                $Name= $Name[0]->name;
                 $Name = str_replace("_"," ",$Name);
                 $Choosen_Workers = $Choosen_Workers.'['.$Prof[$i].' : '.$Name.'] ';
             }

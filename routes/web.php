@@ -41,7 +41,10 @@ Route::get('/adminDashboard','AdminController@Admin');
 Route::get('/JoinUsRequests','AdminController@View_Requests');
 Route::get('/acceptRequest/{id}','AdminController@Accept_Request');
 Route::get('/rejectRequest/{id}','AdminController@Reject_Request');
-Route::get('/pendingReservations','AdminController@View_Pending_Reservations');
+Route::get('/pendingReservations/{idx}','AdminController@View_Pending_Reservations');
+Route::get('/pendingReservations/{idx}','AdminController@View_Pending_Reservations');
+
+
 Route::get('/viewStaff','AdminController@View_Staff');
 Route::get('/EditWorker/{id}','AdminController@Edit_Staff');
 Route::post('/SubmitEditWorker', 'AdminController@Submit_Edit_worker');

@@ -27,14 +27,14 @@
                         <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/Homepage_images/Admin.png"></a>
                         <br><br><br><br><br><br><br>
                         <button class="navigation-bar-button" onclick="viewTab(1)">Pending Reservations</button>
-                        <button class="navigation-bar-button" onclick="viewTab(2)">Join us Requests</button>
-                        <button class="navigation-bar-button" onclick="viewTab(3)">View staff</button>
-                        <button class="navigation-bar-button" onclick="viewTab(4)">View clients</button>
-                        <button class="navigation-bar-button" onclick="viewTab(5)">Edit projects </button>
-
-                        <button class="navigation-bar-button" onclick="viewTab(6)">On-Going Tasks</button>
-                        <button class="navigation-bar-button" onclick="viewTab(7)">Edit form questions</button>
-                        <button class="navigation-bar-button" onclick="viewTab(8)">Homepage Slider</button>
+                        <button class="navigation-bar-button" onclick="viewTab(2)">Archive</button>
+                        <button class="navigation-bar-button" onclick="viewTab(3)">Join us Requests</button>
+                        <button class="navigation-bar-button" onclick="viewTab(4)">View staff</button>
+                        <button class="navigation-bar-button" onclick="viewTab(5)">View clients</button>
+                        <button class="navigation-bar-button" onclick="viewTab(6)">Edit projects </button>
+                        <button class="navigation-bar-button" onclick="viewTab(7)">On-Going Tasks</button>
+                        <button class="navigation-bar-button" onclick="viewTab(8)">Edit form questions</button>
+                        <button class="navigation-bar-button" onclick="viewTab(9)">Homepage Slider</button>
 
                         <a href="/adminLogout" style="text-decoration: none;"><button class="navigation-bar-button" >Log out</button></a>
 
