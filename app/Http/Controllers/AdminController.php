@@ -475,48 +475,6 @@ class AdminController extends Controller
         Session::put('admin','0');
         return redirect('/');
     }
-
-    public function Add_Question(Request $request)
-    {
-        $Question  = new Service;
-        $Question->descriptions = $request->input('QuesName');
-        $Question->type = $request->input('category');
-        $Question->save();
-        //Now The question is saved.
-
-
-        $Options = array (); $Prices = array ();
-        //Push all options.
-        foreach($_POST as $key=>$value)
-        {
-          if(strpos($key,'op')!==false&&$value!="")
-          {
-              array_push($Options,$value);
-          }
-        }
-        //Push all prices.
-        foreach($_POST as $key=>$value)
-        {
-          if(strpos($key,'pr')!==false&&$value!="")
-          {
-              array_push($Prices,$value);
-          }
-        }
-        for($idx = 0;$idx<sizeof($Options);$idx++)
-        {
-            $Price = new Price;     
-            $Price->name = $Options[$idx];
-            $Price->price = $Prices[$idx];
-            $Price->save();
-            //Now The choice is saved.
-
-            $Relation = new Service_option_Price;
-            $Relation->service_id = $Question->id;
-            $Relation->price_id = $Price->id;
-            $Relation->save();
-        }
-        AdminController::viewQuestions();
-    }
     
     public function Add_Project(Request $request)
     {
@@ -681,6 +639,48 @@ class AdminController extends Controller
         $variables['forms']=$forms;
         $data = view('fetchPendingReservations',['data'=>$variables])->render();
         return $data; 
+    }
+    //Edit Question Part.--------------------------------------------------------------------------
+    public function Add_Question(Request $request)
+    {
+        $Question  = new Service;
+        $Question->descriptions = $request->input('QuesName');
+        $Question->type = $request->input('category');
+        $Question->save();
+        //Now The question is saved.
+
+
+        $Options = array (); $Prices = array ();
+        //Push all options.
+        foreach($_POST as $key=>$value)
+        {
+          if(strpos($key,'op')!==false&&$value!="")
+          {
+              array_push($Options,$value);
+          }
+        }
+        //Push all prices.
+        foreach($_POST as $key=>$value)
+        {
+          if(strpos($key,'pr')!==false&&$value!="")
+          {
+              array_push($Prices,$value);
+          }
+        }
+        for($idx = 0;$idx<sizeof($Options);$idx++)
+        {
+            $Price = new Price;     
+            $Price->name = $Options[$idx];
+            $Price->price = $Prices[$idx];
+            $Price->save();
+            //Now The choice is saved.
+
+            $Relation = new Service_option_Price;
+            $Relation->service_id = $Question->id;
+            $Relation->price_id = $Price->id;
+            $Relation->save();
+        }
+        return view('AdminDashboard');
     }
     public function Delete_Question($id)
     {

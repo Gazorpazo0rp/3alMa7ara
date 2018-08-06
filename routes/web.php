@@ -64,9 +64,11 @@ Route::post('/AddProject', 'AdminController@Add_Project');
 Route::get('/deleteProject/{id}', 'AdminController@delete_project');
 Route::get('/homepageSlider', 'AdminController@edit_Slider');
 Route::post('/addHomepageSliderImage', 'AdminController@Homepage_slider_image');
+    //Edit Question Part.
 Route::get('/deleteQues/{id}', 'AdminController@Delete_Question');
 Route::get('/deleteOp/{id}', 'AdminController@Delete_Answer');
 Route::post('/editQuestion', 'AdminController@EditPrice');
+Route::post('/addNewQues', 'AdminController@Add_Question');
 
 
 
