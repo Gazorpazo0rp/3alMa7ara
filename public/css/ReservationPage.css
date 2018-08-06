@@ -266,6 +266,7 @@ left:25%;
 
 
 @media screen and (max-width:1200px){
+    
     #form-navigation-bar{
         width:95%;
         left:2.5%;
@@ -278,9 +279,9 @@ left:25%;
         height:35px;
         width:20%;
         
-        margin-left:4%;
+        margin-left:3.5%;
         margin-top:2.5%;
-       font-size:10px;
+        font-size:10px;
         }
         
     .form-navigation-bar-button:hover{

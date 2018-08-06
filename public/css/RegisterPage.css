@@ -8,7 +8,6 @@ body{
     margin-left:20%;
     width:60%;
     position:relative;
-    margin-top:80px;
 }
 .signup_form{
     position:relative;
@@ -72,4 +71,36 @@ h1{
 }
 .add:hover{
    opacity:0.9;
+}
+
+
+@media screen and (max-width:1200px){
+    .nav-bar{
+        top:-140px!important;
+    
+    }
+    .nav-bar ul{
+        width:85%!important;
+    }
+    .collapse-item{
+        position:absolute;
+        top:0;
+        right:20px;
+    }
+    .main-container{
+        width:80%;
+        margin-left:0%;
+        left:10%;
+        margin-top:140px;
+    }
+    
+.signup_form input{
+    height:35px;
+    margin-left:5%;
+    padding-left:10px;
+    font-size:15px;
+}
+
+.vertical_line{
+    display:none;
 }

@@ -33,8 +33,8 @@
                 <button class="form-navigation-bar-button" onclick="viewRefubrishmentTabs()">تشطيبات</button>
                     
                 <button class="form-navigation-bar-button" onclick="viewTab(8)">Design</button>
-                <button class="form-navigation-bar-button" onclick="viewTab(9)"></button>
-                <button style="font-size:18px;" class="form-navigation-bar-button" onclick="viewTab(10)">Fire Fighting & Air Conditioning</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(9)">Decor and furniture</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(10)">Fire Fighting & Air Conditioning</button>
                 <div id="refubrishment-categories-list">
                         <button class="refubrishment-button" onclick="viewTab(0)">نجارة</button>
                         <button class="refubrishment-button" onclick="viewTab(1)">محارة</button>

@@ -218,12 +218,18 @@ form a{
 	cursor:pointer;
 }
 
-
+@media only screen and (max-width: 600px) {
+    .Homepage_Form {
+		width: 80%;
+		left:10%;
+    }
+}
 
 @media screen and (max-width: 1200px) {
-	.nav-bar{
-		position:absolute;
-	}
+	
+.nav-bar{
+	position:absolute;
+}
 .collapse-item{
     cursor:pointer;
     display:block;
@@ -279,6 +285,8 @@ form a{
     position:relative;
     margin:auto;
 }
+
+
 }
 .profession{
 	width:100px;

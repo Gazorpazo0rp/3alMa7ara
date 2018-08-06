@@ -12,7 +12,7 @@
             var input_name="";
             $(document).ready(function(){
                 $('.main-container').animate({
-                    top:0},500);
+                    top:40},500);
                     $('.add').attr('src','images/Homepage_images/addIcon.png');
                     $('.add').attr('state','add');
                     $('.add').attr('class','add');
@@ -26,9 +26,11 @@
         </style>
         </head>
 <body>
-        @include('inc.messages')
         @include('inc.navbar')
+
 <div class="main-container">
+    
+        @include('inc.messages')
     <form class="signup_form" method="POST" action="SubmitRegistration">
         {{ csrf_field() }}
         <h1 style="text-align: center"> Sign Up </h1>
