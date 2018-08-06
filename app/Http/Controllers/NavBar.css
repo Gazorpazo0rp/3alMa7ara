@@ -1,0 +1,288 @@
+
+@import url('https://fonts.googleapis.com/css?family=Cairo|Oswald|Titillium+Web|Ubuntu');
+body{
+    position: relative;
+	margin:0px !important;
+	padding:0px !important;
+	height:100%;
+	font-family:sans-serif;
+}
+a{
+	text-decoration:none;
+	transition:all 0.5s; 
+}
+.nav-bar{
+	opacity:0.8;
+	position:fixed;
+	background-color:rgb(252, 252, 252);
+	height:60px;
+	margin:0px;
+	z-index:5;
+	width:100%;
+}
+.nav-bar:hover{
+	opacity:0.9;
+}
+.nav-bar ul{
+	padding-right:25px;
+	overflow: hidden;
+	display:block;
+	list-style:none;
+	margin:0px;
+	float:right;
+}
+
+.nav-bar li{
+	display:inline-block;
+	padding-top:0px;
+	height:60px;
+	transition:all .3s ease 0s; 
+}
+.nav-bar li:hover{
+	cursor:pointer;
+	border-bottom: 1px solid  #1c2233;
+	font-size:18px;
+}
+.nav-bar li a{
+	font-family: Cairo;
+	position:relative;
+	top:16px;
+	text-decoration:none;
+	padding-top:30px;
+	font-size:20px;
+	color:#233444;
+	margin-right:10px;
+	margin-left:10px;
+	
+}
+.nav-bar li a:hover{
+	color:#FFD200;
+	
+}
+.nav-bar li a.active{
+    color:#FFD200;
+ 
+}
+
+#logo{
+	position:absolute;
+	float :left;
+	width:90px;
+	left:5%;
+	transition:all .2s ease 0s; 
+	z-index:1;
+	top:2px;
+	opacity:1;
+	background-color:rgb(252, 252, 252);
+}
+#minilogo{
+	display: none;
+        position:absolute;
+        float :left;
+        width:140px;
+		left:80px;
+        transition:all .2s ease 0s; 
+        z-index:1;
+        top:8px;
+        opacity:1;
+}
+
+#Login-nav, #Signup-nav{
+	margin:0;
+	padding:0px;
+}
+#Login-nav a , #Signup-nav a{
+	text-align: left;
+	margin:0;
+	padding:0;
+}
+#Signup-nav a{
+	color:#FFD200;
+}
+.collapse-bars{
+	background-color:black;
+	height:1px;
+	width:40px;
+	display:block;
+	margin-top:15px;
+}
+
+
+span{
+	background-color:black;
+	height:1px;
+	width:40px;
+	display:block;
+	margin-top:15px;
+}
+.collapse-item{
+	float:right;
+	display:none;
+}
+
+.Homepage_Form_div{
+	
+	z-index:10;
+	width:100%;
+	height:900px;
+	position:fixed;
+	top:-900px;
+	background-color: #020202dc;
+}
+.Homepage_Form{
+	position:absolute;
+	background-color: #f2f2f2;
+	width:50%;
+	padding:2%;
+	top:10%;
+	left:25%;
+	text-align:center;
+	opacity:1;
+}
+#JoinUs_form{
+	top:5%;
+	width:70%;
+	left:15%;
+}
+#Login_form input{
+	width:60%;
+	margin:2%;
+	height:50px;
+	padding-left:20px;
+	opacity:1 !important;
+}
+#JoinUs_form input[type="text"]{
+	padding-left:20px;
+	opacity:1 !important;
+	margin:2%;
+	height:50px;
+	top:3%;
+	width:40%;
+	left:5%;
+	right:5%;
+}
+.Form_submit{
+	cursor:pointer;
+	color:#f2f2f2;
+	background-color: #233444;
+	border:0px;
+	font-family:Cairo;
+}
+#close{
+	position:absolute;
+	top:20px;
+	right:20px;
+	font-size:25px;
+	cursor:pointer;
+	color: #080808a1;
+	border-radius : 0px;
+	transition:all .05s ease 0s; 
+
+}
+#close:hover{
+	font-size:28px;
+	top:19px;
+	right:19px;
+}
+form a{
+	border-bottom:1px solid #1c45b6;
+	color:#1c45b6;
+}
+
+
+.footer{
+	top:0;
+	width:100%;
+	height:250px;
+	position:relative;
+}
+#footer_left{
+	position:absolute;
+	background-color: #233444e7;
+	width:70%;
+	height:100%;
+}
+#footer_right{
+	position:absolute;
+	background-color: #233444f3;
+	width:30%;
+	height:100%;
+	left:70%;
+}
+
+#back-to-top{
+	font-size:100px;
+	padding-left:43%;
+	padding-top:60px;
+	color:white;
+	cursor:pointer;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+	.nav-bar{
+		position:absolute;
+	}
+.collapse-item{
+    cursor:pointer;
+    display:block;
+    float:left;
+    z-index:2;
+}
+.nav-bar li{
+    display:none;
+}
+.nav-bar.collapsed ul{
+    width:100%;
+    overflow: visible;
+    display:block;
+    list-style:none;
+    margin:0px;
+}
+.nav-bar.collapsed li{
+    padding-top:0px;
+    display:block;
+    height:40px;
+}
+
+.nav-bar.collapsed li a{
+	padding-top:0px;
+	font-size:13px !important;
+    display:block;
+    height:40px;
+}
+.nav-bar.collapsed{
+    transition:all .6s ease 0s; 
+    position:relative;
+    margin:0px;
+    z-index:1;
+    height:600px;
+}
+ #logo{
+    position:relative;
+    margin:auto;
+	left:40%;
+}
+#logoLink{
+    position:relative;
+    margin:auto;
+}
+.nav-bar.collapsed li a{
+    position:relative;
+    margin:0;
+    top:0px;
+    font-size:30px;
+    padding-top:0px;
+}
+.nav-bar.collapsed .collapse-item{
+    position:relative;
+    margin:auto;
+}
+}
+.profession{
+	width:100px;
+	height:50px;
+}
+
+
