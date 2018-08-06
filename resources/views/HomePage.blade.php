@@ -216,13 +216,7 @@
 				</div>
 				
 			</div>
-			<div class="footer">
-				<div id="footer_left">
-
-				</div>
-				<div id="footer_right">
-					
-				</div>
+			@include('inc.footer')
 </body>
 </html>
 

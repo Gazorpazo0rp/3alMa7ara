@@ -1,3 +1,6 @@
+var cnt=2;
+var opname="";
+
 function viewTab(idx){
     var url_holder;
     if(idx==1) url_holder='/pendingReservations/'+idx
@@ -183,4 +186,23 @@ function deleteOp(id){
             //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
         }
     });
+}
+
+
+function addOp(){
+    cnt++;
+    opname="op"+cnt;
+    opprice="pr"+cnt;
+    var opName=document.createElement("INPUT");
+    opName.setAttribute("type","text");
+    opName.setAttribute("placeholder","Option Name ");
+    opName.setAttribute("name",opname);
+    $(".newOption").append(opName);
+
+    var opPrice=document.createElement("INPUT");
+    opPrice.setAttribute("type","text");
+    opPrice.setAttribute("placeholder","Option Price ");
+    opPrice.setAttribute("name",opprice);
+
+    $(".newOption").append(opPrice);
 }

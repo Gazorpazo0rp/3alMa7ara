@@ -105,7 +105,7 @@
         </div>
         
         
-        
+        <!--
         <div class="addresses">
 
             <div class="show-addresses">
@@ -122,7 +122,7 @@
                         <button class="button" id="edit" onclick="editaddresses()">Edit</button>
                     </div>
             </div>
-
+            
             <div class="edit-addresses">
                     <h1 class="data-panel-title">Addresses</h1>
                     <form class="edit-addresses-form" method="POST" action="/EditApartment">
@@ -144,18 +144,13 @@
 
                 </form>   
             </div>
+        -->
                
         </div>
 
     </div>
     
-    <div class="footer">
-        <div id="footer_left">
-
-        </div>
-        <div id="footer_right">
-
-    </div>
+   
 
 <script>
    

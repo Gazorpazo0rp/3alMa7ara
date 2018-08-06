@@ -66,6 +66,7 @@ Route::get('/homepageSlider', 'AdminController@edit_Slider');
 Route::post('/addHomepageSliderImage', 'AdminController@Homepage_slider_image');
 Route::get('/deleteQues/{id}', 'AdminController@Delete_Question');
 Route::get('/deleteOp/{id}', 'AdminController@Delete_Answer');
+Route::post('/editQuestion', 'AdminController@EditPrice');
 
 
 

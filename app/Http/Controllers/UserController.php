@@ -109,7 +109,7 @@ class UserController extends Controller
         Session::put('loggedIn','2'); // logged in
            
         Session::put('ID',$user['id']) ; // for future use 
-        return redirect('/');   
+        return redirect('/Reservation');   
     }
 
     public function EditPersonalInfo(Request $request)
@@ -245,7 +245,6 @@ class UserController extends Controller
                 $Ans = Price::where('id',$value)->first();
                 $Choosen_Services = $Choosen_Services.$key.'['.$Ans->name.'-'.(string)$Ans->price.'] ';
                 $total_cost+=$Ans->price;
-                            
         }
         $Form->workers = $Choosen_Workers;
         $Form->services = $Choosen_Services;
@@ -265,8 +264,8 @@ class UserController extends Controller
         Session::put('loggedIn','2'); // logged in
            // auth::user()->status = 1;
            Session::put('ID',$_user[0]['id']);
-            
-       }
+           return redirect('/Reservation');   
+        }
        else
        {
         Session::put('Message','Invalid email or password');
@@ -284,7 +283,7 @@ class UserController extends Controller
         if(Session::get('loggedIn')!=2)
         {
             Session::put('Message','You must be logged in to open a reservation');
-            return redirect('/');
+            return redirect('/Register');
         }
         $ngara = array(); //Array contains the available questions.
         $ngaraOp = array(); //Array of Arrays, every child array contains the answers of question of the same index.

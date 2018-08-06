@@ -45,9 +45,48 @@
 }
 .submitQues{
 position:absolute;
-left:50px;
-bottom:10px;
-width:150px;
-height:35px;
-border:0px;
+left:50px !important;
+top:255px !important;
+width:150px !important;
+height:35px !important;
+border:0px !important;
+}
+
+#new_ques{
+    width:80%;
+    height:auto;
+    border:3px solid black;
+    margin-left:10%;
+    padding:10px;
+    margin-bottom:25px;
+}
+#ques{
+    width:80%;
+}
+.clearfix{
+    clear:both;
+}
+.newOption{
+    width:80%;
+}
+.newOption input{
+    width:35%;
+    margin-left:0%;
+}
+#add{
+    width:40px;
+    height:40px;
+    font-size:40px;
+    color: rgb(73, 72, 72);
+    background-color:white;
+    position:absolute;
+    right:20px;
+    top:30px;
+}
+
+#new_ques input{
+    float:none!important;
+}
+#new_ques input[type="submit"]{
+   left:80%!important;
 }

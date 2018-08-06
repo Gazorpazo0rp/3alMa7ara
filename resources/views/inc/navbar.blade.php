@@ -6,16 +6,31 @@
     <a id ="minilogoLink"href="/"><img id="minilogo" src="/images/customerprofile_images/minilogo.png"></a>
 
     <ul>
-        <li> <a href="/" class="active">Home</a></li>
+        <?php if(Session::get('lang') == 1)echo'<li> <a href="/" class="active">الرئيسية</a></li>
+        <li> <a href="/Section/0">تشطيبات</a></li>
+        <li> <a href="/Section/1">تصميم</a></li>
+        <li> <a href="/Section/2">ديكور و أثاث</a></li>
+        <li> <a href="/Section/3">تكييفات و حرائق</a></li>
+        <li onclick="showJoinUsForm()"> <a href="#">اعمل معنا</a></li>';
+        else echo'<li> <a href="/" class="active">Home</a></li>
         <li> <a href="/Section/0">Refurbishment</a></li>
         <li> <a href="/Section/1">Design</a></li>
         <li> <a href="/Section/2">Decor & Furniture</a></li>
         <li> <a href="/Section/3">FireFighting | Air Conditioning</a></li>
-        <li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>
+        <li onclick="showJoinUsForm()"> <a href="#">Join us</a></li>';
+?>
         <?php
-        if(Session::get('loggedIn') == 2)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="/logout"><b>Log out</b></a></li>';
-        else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login|</a></li>
+        if(Session::get('loggedIn') == 2){
+        if(Session::get('lang') == 0)echo'<li> <a href="/profile"><b>My Profile</b></a></li><li> <a href="/logout"><b>Log out</b></a></li>';
+        else echo'<li> <a href="/profile"><b>صفحتى</b></a></li><li> <a href="/logout"><b>تسجيل الخروج</b></a></li>';
+        }
+        else {
+            if(Session::get('lang') == 0)echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">Login|</a></li>
         <li ID="Signup-nav"> <a  href="/Register">Sign up</a></li>';
+        else echo'<li ID="Login-nav" onclick="showLoginForm()"> <a  href="#">تسجيل الدخول|</a></li>
+        <li ID="Signup-nav"> <a  href="/Register">اشترك الان</a></li>';
+        
+        }
         if(Session::get('lang') == 0)echo'<li> <a href="changeLang/1">بالعربية</a></li>';
         else echo'<li> <a href="changeLang/0">English</a></li>';
         ?>

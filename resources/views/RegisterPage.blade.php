@@ -19,10 +19,15 @@
             });
 
         </script>
-
+        <style>
+            .nav-bar{
+                top:0px;
+            }
+        </style>
         </head>
 <body>
         @include('inc.messages')
+        @include('inc.navbar')
 <div class="main-container">
     <form class="signup_form" method="POST" action="SubmitRegistration">
         {{ csrf_field() }}
@@ -108,6 +113,8 @@
 
 
     </script>
+    			@include('inc.footer')
+
 </body>
 
 

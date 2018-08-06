@@ -696,10 +696,11 @@ class AdminController extends Controller
     {
         foreach($_POST as $key=>$value)
         {
-            $Ans = Price::find($key); //Get the Object and then edit its data.
+            if($key == "_token") continue;
+            $Ans = Price::find($key);
             $Ans->price = $value;
             $Ans->save();
         }
-        AdminController::viewQuestions();
+        return view('AdminDashboard');
     }
 }

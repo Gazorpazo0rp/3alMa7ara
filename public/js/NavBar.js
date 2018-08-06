@@ -26,3 +26,8 @@ function closeJoinUsForm(){
         top:-900
     },1000);
 }
+function backToTop(){
+    $("html,body").animate({
+        scrollTop: 0
+    },1500)
+}
