@@ -134,7 +134,7 @@ top:0px;}
     display:inline-block;
     padding-right: 35px;
     margin-bottom: 12px;
-    margin-left:30px;
+    margin-left:60px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -179,10 +179,16 @@ top:0px;}
 }
 /* Hide the browser's default radio button */
 .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  opacity: 1;
+  cursor: pointer;
+  width: 25px;
+  height: 20px;
+  left: -40px;
+  top: 2px;
+  text-align: center;
 }
+
 .container-img input {
     position: absolute;
     opacity: 0;
@@ -190,7 +196,7 @@ top:0px;}
 }
 
 /* Create a custom radio button */
-.checkmark {
+ .container span  {
     position: absolute;
     top: 0;
     right: 0;
@@ -207,8 +213,8 @@ top:0px;}
 }
 
 /* When the radio button is checked, add a blue background */
-.container input:checked ~ .checkmark {
-    background-color: #233444;
+.container  .check {
+    background-color: #233444!important;
 }
 
 

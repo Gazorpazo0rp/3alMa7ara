@@ -43,12 +43,6 @@ class UserController extends Controller
           }
         }
         
-        $validateObj=Validator::make($ToBeValidated, ['name' => ['required', 'regex:/^[a-zA-Z]+[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/','min:3','max:255']]);
-        if( $validateObj->fails()) 
-        { 
-            Session::put('Message','Error! Your name must contain letters only');
-            return view('RegisterPage');
-        }
 
         $validateObj=Validator::make($ToBeValidated, ['age' => 'required|integer|min:1|max:150']);
         if( $validateObj->fails()) 

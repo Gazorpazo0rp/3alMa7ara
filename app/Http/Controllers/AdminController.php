@@ -703,4 +703,14 @@ class AdminController extends Controller
         }
         return view('AdminDashboard');
     }
+    
+public function deleteHomepageSliderImage($id){
+    $obj= HomePageSliderImages::find($id);
+    HomePageSliderImages::where('id',$id)->delete();
+    $path='public/homepageImages/'.$obj->imagepath;
+    Storage::delete($path);
+    AdminController::edit_Slider();
+
+}
+
 }

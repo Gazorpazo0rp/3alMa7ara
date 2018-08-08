@@ -64,9 +64,10 @@
  
                         @foreach($ngaraOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                        <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
-                            <span class="checkmark"></span>
+                            <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
+                            <span></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
+                            <input class="num" name="{{'item'.$Ans->id}}" type="text" value="1" disabled>
                         </label>
                         @endforeach
                         

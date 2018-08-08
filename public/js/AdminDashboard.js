@@ -206,3 +206,22 @@ function addOp(){
 
     $(".newOption").append(opPrice);
 }
+
+
+function deleteSliderImage(id,icon){
+    icon.style.dispaly="none";
+    $.ajax({
+        method:'GET',
+        url: "deleteHomepageSliderImage/"+id,
+        success: function(response){
+            document.getElementById('action-center').innerHTML=response;
+
+        },
+        error:function(jqXHR, textStatus, errorThrown) { 
+            console.log(jqXHR);
+            //console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+        }
+    });
+}
+
+

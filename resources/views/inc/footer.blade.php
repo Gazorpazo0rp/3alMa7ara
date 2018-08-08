@@ -2,7 +2,7 @@
 
 <div class="footer">
         <div id="footer_left">
-
+                
         </div>
         <div id="footer_right">
                 <i class="fas fa-angle-double-up" id="back-to-top" onclick="backToTop()"></i>
