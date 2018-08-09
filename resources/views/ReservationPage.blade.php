@@ -64,7 +64,7 @@
  
                         @foreach($ngaraOp[$idx] as $Ans)
                         <label  class="container" id="{{$Ans->id}}">{{$Ans->name}}
-                            <input class="radio-option-has-cost" type="radio" name="{{$Q->descriptions}}" waschecked="false" value="{{$Ans->id}}">
+                            <input class="radio-option-has-cost" type="radio" name="{{$Ans->id}}" waschecked="false" value="{{$Ans->id}}">
                             <span></span>
                             <script> pricesArray["{{$Ans->id}}"]= {{$Ans->price}};</script>
                             <input class="num" name="{{'item'.$Ans->id}}" type="text" value="1" disabled>
@@ -176,7 +176,7 @@
                             @foreach($Workers[$idx] as $worker)
                             <label  class="container-img" id="{{$worker->id}}">
                             <h4 >{{$worker->name}}</h4>
-                            <input type="radio" name="{{$worker['profession']}}" waschecked="false" value="{{$worker->id}}">
+                            <input type="radio" name="worker{{$worker['profession']}}" waschecked="false" value="{{$worker->id}}">
                             <img src="/storage/Worker_images/{{$worker->imagepath}}" class="radiobutton-img w3-grayscale-min" alt="failed to load image">
                             <h4>rate:{{$worker->rate}}</h4>
                             <a target="_blank" href="/worker/{{$worker->id}}" class="show-profile">show profile</a>
