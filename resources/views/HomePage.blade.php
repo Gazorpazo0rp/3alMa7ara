@@ -177,7 +177,7 @@
 				<div  class="how-it-works" onclick="howItWorks(4)"><img src="images/Homepage_images/submit.png"><h4 style="text-align:center">Submit and wait for contact </h4></div>
 			</div>
 			<div class="how-it-works-exp-container">
-				<div class="how-it-works-explantion left-panel" data-aos="zoom-in">
+				<div class="how-it-works-explantion left-panel" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <?php if(Session::get('lang') == 0)echo'<h1 style="font-size:45px;color:#FFD200;">Personalize your own design</h1>
 					<p>Use the simulation to pick the colors for the floor,the walls, the roof and the furniture for Your appartment.</p>
 					<p>You Don\'t have to go through this step. It\'s optional.</p>
@@ -190,21 +190,21 @@
 					
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
-				<div class="how-it-works-explantion right-panel" data-aos="zoom-in-up">
+				<div class="how-it-works-explantion right-panel" data-aos="fade-up"data-aos-anchor-placement="top-bottom">
 					<h1 style="font-size:45px;color:#FFD200;">Open a reservation form</h1>
 					<p>Contact the company by filling a simple form. Fill up basic data about the apartment then choose the services you need</p>
 					<p>To open a form you must <a href="/register" style="color:#FFD200">Signup </a> first. Here is a </p>
 					<p>Already signued up? <a href="/Reservation" style="color:#FFD200">Open a form now</a></p>
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
-				<div class="how-it-works-explantion left-panel" data-aos="zoom-in-up">
+				<div class="how-it-works-explantion left-panel" data-aos="fade-up"data-aos-anchor-placement="top-bottom">
 					<h1 style="font-size:45px;color:#FFD200;">Pick your own worker or designer</h1>
 					<p>A variety of professional workers and designers are waiting for you to check them out.</p>
 					<p>You can open each worker's page. There,you can view his rating, hourly rate, reviews, and watch his previous deliverings.</p>
 					<p>Each worker's availability is displayed in the form. Have the joy of picking.</p>
 					<img src="images/Homepage_images/apartment.jpg">
 				</div>
-				<div class="how-it-works-explantion right-panel" data-aos="zoom-in-up">
+				<div class="how-it-works-explantion right-panel" data-aos="fade-up"data-aos-anchor-placement="top-bottom">
 					<h1 style="font-size:45px;color:#FFD200;">Review the estimated cost</h1>
 					<p>After choosing the services, The website will estimate the cost you will be charged to help you out.</p>
 					<p>You can change your workers after this estimation. You can also input a certain cost and the 
@@ -212,7 +212,7 @@
 					
 					<img src="images/Homepage_images/apartment3.jpg">
 				</div>
-				<div class="how-it-works-explantion left-panel" data-aos="zoom-in-up">
+				<div class="how-it-works-explantion left-panel" data-aos="fade-up"data-aos-anchor-placement="top-bottom">
 					<h1 style="font-size:45px;color:#FFD200;">Submit and wait for contact</h1>
 					<p>After submitting the form, The company will contact you shortly to confirm the order.</p>
 					<p>Those steps will help you decide which worker to go in the easiest, most efficient way</p>

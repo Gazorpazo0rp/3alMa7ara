@@ -60,12 +60,15 @@ $(document).ready(function(){
         if($(thisObj).attr('waschecked')=="false"){
             modifiedCost+=clickedCost*parseInt(num);
             $(this).attr('waschecked','true');
+            $(this).prop('checked',true);
             $(this).parent().children().last().prop('disabled',false);
 
         }
         else{
             modifiedCost-=clickedCost*parseInt(num);
             $(this).attr('waschecked','false');
+            $(this).prop('checked',false);
+
             $(this).parent().children().last().prop('disabled',true);
 
         }
