@@ -19,14 +19,16 @@ Route::post('/SubmitRegistration', 'UserController@Register');
 Route::post('/EditProfile', 'UserController@EditPersonalInfo');
 Route::post('/EditApartment', 'UserController@EditApartments');
 Route::post('/JoinUs', 'PagesController@Submit_Request');
-Route::post('/SubmitReservation', 'UserController@Submit_Reservation');
 Route::post('/SubmitComment', 'UserController@Submit_comment');
 Route::get('/rate/{rating}/{id}', 'UserController@rate');
 Route::get('/changeLang/{lang}', 'PagesController@change_Language');
 
+//Reservation
+Route::get('/Reservation','UserController@Reservation');
+Route::post('/SubmitReservation', 'UserController@Submit_Reservation');
+
 
 //URL
-Route::get('/Reservation','UserController@Reservation');
 Route::get('/Simulator','PagesController@Simulator');
 Route::get('/profile', 'UserController@View_Profile');
 Route::get('/Register', 'PagesController@Register');
@@ -77,10 +79,5 @@ Route::post('/addNewQues', 'AdminController@Add_Question');
 
 
 Route::get('/adminLogout','AdminController@logout');
-
-
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
