@@ -176,7 +176,7 @@
                             @foreach($Workers[$idx] as $worker)
                             <label  class="container-img" id="{{$worker->id}}">
                             <h4 >{{$worker->name}}</h4>
-                            <input type="radio" name="worker{{$worker['profession']}}" waschecked="false" value="{{$worker->id}}">
+                            <input type="radio" name="{{'worker'.$worker['profession']}}" waschecked="false" value="{{$worker->name}}">
                             <img src="/storage/Worker_images/{{$worker->imagepath}}" class="radiobutton-img w3-grayscale-min" alt="failed to load image">
                             <h4>rate:{{$worker->rate}}</h4>
                             <a target="_blank" href="/worker/{{$worker->id}}" class="show-profile">show profile</a>

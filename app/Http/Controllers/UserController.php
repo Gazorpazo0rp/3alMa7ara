@@ -201,7 +201,9 @@ class UserController extends Controller
         $workerObj = Worker::find($workerId);
         $numOfRatings=Rate::where('worker_id',$workerId)->count();
         $currentRate=$workerObj['rate'];
-        $newRate=($rating+($currentRate*$numOfRatings)/($numOfRatings+1));
+        $sum = $currentRate * $numOfRatings;
+        $sum += $rating;
+        $newRate= $sum / ($numOfRatings+1);
         $workerObj->rate=$newRate;
         $workerObj->save();
         $rateObj=new Rate;
@@ -219,26 +221,25 @@ class UserController extends Controller
         $Choosen_Workers = ""; $total_cost=0;
         $Choosen_Services = "";
 
-        for($i=0;$i<20;$i++)  //Iterate for the choosen profesiions.
-        {
-            if($request->input((string)$i)) {
-                $Name = $request->input((string)$i);
-                $Name= Worker::where('id',$Name)->get();
-                $Name= $Name[0]->name;
-                $Name = str_replace("_"," ",$Name);
-                $Choosen_Workers = $Choosen_Workers.'['.$Prof[$i].' : '.$Name.'] ';
-            }
-        }
         foreach($_POST as $key=>$value)
         {
-            $key = str_replace("_"," ",$key);
-            
-            if(($key >= '0' && $key <= '20') || $key ==' token') continue;
-                
-                
-                $Ans = Price::where('id',$value)->first();
-                $Choosen_Services = $Choosen_Services.$key.'['.$Ans->name.'-'.(string)$Ans->price.'] ';
-                $total_cost+=$Ans->price;
+            if($key == '_token') continue;
+
+            if(strpos($key, 'worker')== true) //Then this is a worker.
+            {
+                //Key -> his profession, value -> his name.
+                $idx = intval(str_replace("worker","",$key)); // The index of the profession.
+                $Choosen_Workers = $Choosen_Workers.'['.$Prof[$idx].' : '.$value.'] ';
+            }
+            else if(strpos($key, 'item') == false)
+            {
+                // This input is not an item or a worker, then it's a pure ID.
+                $Ans = Price::where('id',intval($value))->first();
+                $num = intval($request->input('item'.(string)$value)); //The quantity or area.
+                $Final_Price = $Ans->price * $num;
+                $Choosen_Services = $Choosen_Services.'['.'('.(string)$num.')'.$Ans->name.'='.(string)$Final_Price.']   ';
+                $total_cost+=$Final_Price;
+            }   
         }
         $Form->workers = $Choosen_Workers;
         $Form->services = $Choosen_Services;
