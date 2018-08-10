@@ -1,12 +1,11 @@
 <!DOCTYPE html> 
 <html>
 	<head>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script  type="text/javascript" src="js/ReservationPage.js"></script>
         <link rel="stylesheet" type="text/css" href="css/ReservationPage.css">
         <link rel="stylesheet" type="text/css" href="css/NavBar.css">
-
+        <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		
@@ -32,9 +31,9 @@
             <div id="form-navigation-bar">
                 <button class="form-navigation-bar-button" onclick="viewRefubrishmentTabs()">تشطيبات</button>
                     
-                <button class="form-navigation-bar-button" onclick="viewTab(8)">Design</button>
-                <button class="form-navigation-bar-button" onclick="viewTab(9)">Decor and furniture</button>
-                <button class="form-navigation-bar-button" onclick="viewTab(10)">Fire Fighting & Air Conditioning</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(8)" style="font-family:Cairo">Design</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(9)" style="font-family:Cairo">Decor and furniture</button>
+                <button class="form-navigation-bar-button" onclick="viewTab(10)" style="font-family:Cairo; font-size:16px;">Fire Fighting & Air Conditioning</button>
                 <div id="refubrishment-categories-list">
                         <button class="refubrishment-button" onclick="viewTab(0)">نجارة</button>
                         <button class="refubrishment-button" onclick="viewTab(1)">محارة</button>
@@ -162,7 +161,8 @@
                     <?php $idx++;?>
 
                     @endforeach
-                </div>                <div class="form-tab"> Decor and Atr</div>
+                </div>                
+                <div class="form-tab"> Decor and Atr</div>
                 <div class="form-tab"> Decor and Atr</div>
                 <div class="form-tab"> Decor and Atr</div>
                 <div class="form-tab"> Decor and Atr</div>

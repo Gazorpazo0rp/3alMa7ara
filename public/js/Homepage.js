@@ -9,7 +9,11 @@
             }
 
         });
-       
+		$(function() {
+			AOS.init();
+		  });
+		  window.addEventListener('load', AOS.refresh)
+
         document.getElementById("left").style.display="none";
 		
 
