@@ -220,26 +220,27 @@ class UserController extends Controller
         $Prof = [0=>"نجارة",1=>"نقاشة",2=>"محارة",3=>"جبس",4=>"جبس بلدى",5=>"بلاط",6=>"سباكة",7=>"كهربا",8=>"لاند سكيب",9=>"مهندسين",10=>"اخشاب"];
         $Choosen_Workers = ""; $total_cost=0;
         $Choosen_Services = "";
-
         foreach($_POST as $key=>$value)
         {
             if($key == '_token') continue;
 
-            if(strpos($key, 'worker')== true) //Then this is a worker.
+            if(strpos($key, 'worker') == true) //Then this is a worker.
             {
                 //Key -> his profession, value -> his name.
                 $idx = intval(str_replace("worker","",$key)); // The index of the profession.
                 $Choosen_Workers = $Choosen_Workers.'['.$Prof[$idx].' : '.$value.'] ';
             }
-            else if(strpos($key, 'item') == false)
+            else if(strpos($key, 'item') === false)
             {
                 // This input is not an item or a worker, then it's a pure ID.
                 $Ans = Price::where('id',intval($value))->first();
+                if($Ans == null) return strpos($key, 'item');
                 $num = intval($request->input('item'.(string)$value)); //The quantity or area.
                 $Final_Price = $Ans->price * $num;
                 $Choosen_Services = $Choosen_Services.'['.'('.(string)$num.')'.$Ans->name.'='.(string)$Final_Price.']   ';
                 $total_cost+=$Final_Price;
             }   
+            
         }
         $Form->workers = $Choosen_Workers;
         $Form->services = $Choosen_Services;

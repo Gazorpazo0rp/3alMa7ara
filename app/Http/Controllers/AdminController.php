@@ -684,6 +684,12 @@ class AdminController extends Controller
     }
     public function Delete_Question($id)
     {
+        $Answers = Service_option_Price::where('service_id', $id)->get();
+        
+        foreach($Answers as $Ans)
+        {
+            DB::table('prices')->where('id', $Ans->price_id)->delete();    
+        }
         DB::table('services')->where('id', $id)->delete();
         AdminController::viewQuestions();
     }
